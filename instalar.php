@@ -306,13 +306,13 @@ key (contrasena)
 }
 $codigo .=
 ";
-insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values ('".$fecha."','{$_POST['administrador']}','".$admin_contrasena."','".$fecha."')
+insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values (".$fecha.",'{$_POST['administrador']}','".$admin_contrasena."','".$fecha."')
 ;
 insert into eforo_categorias (orden,categoria) values ('10','Categoría de ejemplo')
 ;
 insert into eforo_foros (orden,id_categoria,foro,descripcion,num_temas,num_mensajes) values ('10','1','Foro de ejemplo','Descripción.','1','1')
 ;
-insert into eforo_mensajes (id_foro,id_tema,fecha,tema,mensaje,fecha_editado,fecha_ultimo) values ('1','1','".$fecha."','".$mensaje_titulo."','".$mensaje_contenido."','".$fecha."','".$fecha."')
+insert into eforo_mensajes (id_foro,id_tema,fecha,tema,mensaje,fecha_editado,fecha_ultimo) values ('1','1',".$fecha.",'".$mensaje_titulo."','".$mensaje_contenido."',".$fecha.",".$fecha.")
 ;
 insert into eforo_rangos (rango,descripcion) values ('-1','Banead@')
 ;
