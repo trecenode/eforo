@@ -45,9 +45,9 @@ switch($_GET['que']) {
 			if(mysqli_num_rows($con)) {
 				$datos = mysqli_fetch_row($con) ;
 				if($datos[1] == $contrasena) {
-					setcookie($c[0],$datos[0],time()+604800) ;
-					setcookie($c[1],$nick,time()+604800) ;
-					setcookie($c[2],$contrasena,time()+604800) ;
+					setcookie($c[0],$datos[0],date()+604800) ;
+					setcookie($c[1],$nick,date()+604800) ;
+					setcookie($c[2],$contrasena,date()+604800) ;
 					if(!empty($_POST['url_regresar'])) {
 						header('location: '.$_POST['url_regresar']) ;
 					}
@@ -119,7 +119,7 @@ switch($_GET['que']) {
 			}
 			if(!empty($_POST['u_contrasena'])) {
 				$contrasena = md5(md5(quitar($_POST['u_contrasena'],1))) ;
-				setcookie($c[2],$contrasena,time()+604800) ;
+				setcookie($c[2],$contrasena,date()+604800) ;
 				$contrasena = ",contrasena='$contrasena'" ;
 			}
 			$nick = quitar($_POST['u_nick'],1) ;
@@ -128,7 +128,7 @@ switch($_GET['que']) {
 				aviso('Error','<p>El nick <b>'.$nick.'</b> ya existe.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
 			}
 			else {
-				setcookie($c[1],$nick,time()+604800) ;
+				setcookie($c[1],$nick,date()+604800) ;
 			}
 			mysqli_free_result($con) ;
 			$email = email(quitar($_POST['u_email'],1)) ;

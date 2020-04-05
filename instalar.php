@@ -94,12 +94,13 @@ function comprobar(a) {
 <?php
 }
 else {
-$fecha = time() ;
+$actualDate = date_create();
+$fecha =  date_timestamp_get($actualDate);
+
 $admin_contrasena = md5(md5($_POST['contrasena'])) ;
 switch($_POST['instalacion']) {
 	case 1 :
 		$tabla_usuarios = 'eforo_usuarios' ;
-		$usuario = "insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values ('$fecha','{$_POST['administrador']}','$admin_contrasena','$fecha')" ;
 		break ;
 	case 2 :
 		$tabla_usuarios = $_POST['tabla_usuarios'] ;
@@ -111,7 +112,7 @@ switch($_POST['instalacion']) {
 			if($admin_contrasena != $datos[1]) $conectar->query("update $tabla_usuarios set contrasena='$admin_contrasena' where id='$admin_id'") ;
 		}
 		else {
-			$usuario = "insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values ('$fecha','{$_POST['administrador']}','$admin_contrasena','$fecha')" ;
+			$usuario = "insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values ('".$fecha."','{$_POST['administrador']}','".$admin_contrasena."','".$fecha."')" ;
 		}
 }
 $mensaje_titulo = 'Gracias por usar eForo v3.1' ;
@@ -165,7 +166,7 @@ id tinyint(3) unsigned not null auto_increment,
 id_administrador varchar(100) not null,
 email varchar(100) not null,
 foro_url varchar(100) not null,
-foro_titulo varchar(100) not null,
+foro_titulo varchar(100) not null DEFAULT 'eForo',
 temas tinyint(3) unsigned not null,
 mensajes tinyint(3) unsigned not null,
 ultimos tinyint(3) unsigned not null,
@@ -188,7 +189,7 @@ primary key (id)
 )
 ;
 create table eforo_enlinea (
-fecha int(10) unsigned not null,
+fecha datetime,
 ip varchar(15) not null,
 id_usuario mediumint(8) not null,
 key (fecha)
@@ -202,13 +203,13 @@ foro varchar(100) not null,
 descripcion text not null,
 num_temas mediumint(8) unsigned not null,
 num_mensajes mediumint(8) unsigned not null,
-p_leer smallint(5) not null,
-p_nuevo smallint(5) not null,
-p_responder smallint(5) not null,
-p_editar smallint(5) not null,
-p_borrar smallint(5) not null,
-p_importante smallint(5) not null,
-p_adjuntar smallint(5) not null,
+p_leer smallint(5),
+p_nuevo smallint(5),
+p_responder smallint(5),
+p_editar smallint(5),
+p_borrar smallint(5),
+p_importante smallint(5),
+p_adjuntar smallint(5),
 primary key (id),
 key (orden),
 key (id_categoria)
@@ -218,22 +219,22 @@ create table eforo_mensajes (
 id mediumint(8) unsigned not null auto_increment,
 id_foro tinyint(3) unsigned not null,
 id_tema mediumint(8) unsigned not null,
-num_visitas mediumint(8) unsigned not null,
-num_respuestas mediumint(8) unsigned not null,
-fecha int(10) unsigned not null,
-id_usuario mediumint(8) unsigned not null,
+num_visitas mediumint(8) unsigned not null DEFAULT '0',
+num_respuestas mediumint(8) unsigned not null DEFAULT '0',
+fecha datetime,
+id_usuario mediumint(8) unsigned not null DEFAULT '1',
 tema varchar(100) not null,
 mensaje text not null,
-o_caretos tinyint(1) unsigned not null,
-o_codigo tinyint(1) unsigned not null,
-o_url tinyint(1) unsigned not null,
-o_firma tinyint(1) unsigned not null,
-o_importante tinyint(1) unsigned not null,
-o_notificacion tinyint(1) unsigned not null,
-o_notificacion_email tinyint(1) unsigned not null,
-fecha_editado int(10) unsigned not null,
-fecha_ultimo int(10) unsigned not null,
-cerrado tinyint(1) unsigned not null,
+o_caretos tinyint(1) unsigned,
+o_codigo tinyint(1) unsigned,
+o_url tinyint(1) unsigned,
+o_firma tinyint(1) unsigned,
+o_importante tinyint(1) unsigned,
+o_notificacion tinyint(1) unsigned,
+o_notificacion_email tinyint(1) unsigned,
+fecha_editado datetime,
+fecha_ultimo datetime,
+cerrado tinyint(1) unsigned not null DEFAULT '1',
 primary key (id),
 key (id_foro),
 key (id_tema)
@@ -249,7 +250,7 @@ primary key (id)
 create table eforo_privados (
 id mediumint(8) unsigned not null auto_increment,
 leido tinyint(1) unsigned not null,
-fecha int(10) unsigned not null,
+fecha datetime,
 id_remitente mediumint(8) not null,
 id_destinatario mediumint(8) not null,
 mensaje text not null,
@@ -259,14 +260,14 @@ key (id_destinatario)
 ;
 create table eforo_rangos (
 rango smallint(5) not null,
-minimo smallint(5) unsigned not null,
+minimo smallint(5) unsigned not null DEFAULT '1',
 descripcion varchar(100) not null,
 primary key (rango)
 )
 ;
 create table eforo_recientes (
 id_usuario mediumint(8) unsigned not null,
-fecha int(10) unsigned not null,
+fecha datetime,
 id_foro smallint(5) unsigned not null,
 id_mensaje mediumint(8) unsigned not null,
 primary key (id_mensaje),
@@ -278,24 +279,24 @@ $codigo .=
 ";
 create table eforo_usuarios (
 id mediumint(8) unsigned not null auto_increment,
-fecha_registrado int(10) unsigned not null,
+fecha_registrado datetime not null,
 nick varchar(20) not null,
 contrasena varchar(32) not null,
-email varchar(50) not null,
-pais varchar(20) not null,
-edad tinyint(2) unsigned not null,
-sexo tinyint(1) unsigned not null,
-descripcion text not null,
-web varchar(100) not null,
-ip varchar(15) not null,
-firma text not null,
-mensajes smallint(5) unsigned not null,
-rango smallint(5) not null,
-rango_fijo tinyint(1) unsigned not null,
-fecha_conectado int(10) unsigned not null,
-fecha_rec_contrasena int(10) unsigned not null,
-gmt tinyint(2) not null,
-avatar char(3) not null,
+email varchar(50) not null default '',
+pais varchar(20) not null default '',
+edad tinyint(2) unsigned not null default '18',
+sexo tinyint(1) unsigned not null default '0',
+descripcion text,
+web varchar(100),
+ip varchar(15),
+firma text,
+mensajes smallint(5) unsigned,
+rango smallint(5),
+rango_fijo tinyint(1) unsigned,
+fecha_conectado datetime,
+fecha_rec_contrasena datetime,
+gmt tinyint(2),
+avatar char(3),
 primary key (id),
 key (nick),
 key (contrasena)
@@ -304,11 +305,13 @@ key (contrasena)
 }
 $codigo .=
 ";
+insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values ('".$fecha."','{$_POST['administrador']}','".$admin_contrasena."','".$fecha."')
+;
 insert into eforo_categorias (orden,categoria) values ('10','Categoría de ejemplo')
 ;
 insert into eforo_foros (orden,id_categoria,foro,descripcion,num_temas,num_mensajes) values ('10','1','Foro de ejemplo','Descripción.','1','1')
 ;
-insert into eforo_mensajes (id_foro,id_tema,fecha,tema,mensaje,fecha_editado,fecha_ultimo) values ('1','1','$fecha','$mensaje_titulo','$mensaje_contenido','$fecha','$fecha')
+insert into eforo_mensajes (id_foro,id_tema,fecha,tema,mensaje,fecha_editado,fecha_ultimo) values ('1','1','".$fecha."','".$mensaje_titulo."','".$mensaje_contenido."','".$fecha."','".$fecha."')
 ;
 insert into eforo_rangos (rango,descripcion) values ('-1','Banead@')
 ;
@@ -323,7 +326,7 @@ insert into eforo_rangos (rango,descripcion) values ('999','Administrador')
 if($_POST['instalacion'] == 2) {
 $codigo .=
 ";
-alter table '.$tabla_usuarios.' change fecha fecha_registrado int(10) unsigned not null
+alter table $tabla_usuarios change fecha fecha_registrado int(10) unsigned not null
 ;
 alter table $tabla_usuarios add firma text not null
 ;
@@ -351,17 +354,31 @@ update $tabla_usuarios set rango_fijo='1' where rango='999'
 $codigo = explode(';',$codigo) ;
 foreach($codigo as $linea) {
 $linea = trim($linea) ;
-$conectar->query($linea) ;
+//$conectar->query($linea) ;
+
+if (mysqli_query($conectar, $linea)) {
+	echo "<br><span style='color:green;'>New record created successfully</span><br>" . $linea . "<br>";
+} else {
+	echo "<br><span style='color:red;'>Error:</span>" . $linea . "<br><span style='color:red;'>" . mysqli_error($conectar) . "</span><br>";
+}
 }
 if($usuario) {
-	$conectar->query($usuario) ;
-	$admin_id = $conectar->insert_id ;
+	$conectar->query($usuario);
+	$admin_id = $conectar->insert_id;
 }
-$conectar->query("insert into eforo_config
+
+$latestQuery = "insert into eforo_config
 (id_administrador,email,foro_url,temas,mensajes,ultimos,codigo,caretos,url,firma,censurar,notificacion,plantilla,estilo,avatarlargo,avatarancho,avatartamano,privados,adjuntotamano,adjuntoext,adjuntonombre)
 values
-('$admin_id','nombre@email.com','{$_POST['foro_url']}','25','20','20','1','1','1','1','0','1','electros','electros','150','150','30','100','512','zip\r\nrar\r\ntxt\r\nrtf\r\ngif\r\njpg\r\njpeg\r\npng\r\ndoc\r\nxls\r\nppt\r\npps\r\npdf\r\nmid\r\nswf\r\nmpg\r\nmpeg\r\navi\r\nwma\r\nwmv','32')
-") ;
+('".$admin_id."','nombre@email.com','{$_POST['foro_url']}','25','20','20','1','1','1','1','0','1','electros','electros','150','150','30','100','512','zip\r\nrar\r\ntxt\r\nrtf\r\ngif\r\njpg\r\njpeg\r\npng\r\ndoc\r\nxls\r\nppt\r\npps\r\npdf\r\nmid\r\nswf\r\nmpg\r\nmpeg\r\navi\r\nwma\r\nwmv','32')
+";
+$conectar->query($latestQuery);
+
+if (mysqli_query($conectar, $latestQuery)) {
+	echo "<br><span style='color:green;'>New record created successfully</span><br>" . $latestQuery . "<br>";
+} else {
+	echo "<br><span style='color:red;'>Error:</span>" . $latestQuery . "<br><span style='color:red;'>" . mysqli_error($conectar) . "</span><br>";
+}
 ?>
 <p style="font-size: 12pt"><b>Instalación completada</b>
 <p>La instalación se ha completado. Ya puedes disfrutar de eForo.
