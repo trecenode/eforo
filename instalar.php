@@ -95,7 +95,7 @@ function comprobar(a) {
 }
 else {
 $actualDate = date_create();
-$fecha =  date_timestamp_get($actualDate);
+$fecha =  "NOW()"; //date_timestamp_get($actualDate);
 
 $admin_contrasena = md5(md5($_POST['contrasena'])) ;
 switch($_POST['instalacion']) {
@@ -113,7 +113,7 @@ switch($_POST['instalacion']) {
 			if($admin_contrasena != $datos[1]) $conectar->query("update $tabla_usuarios set contrasena='$admin_contrasena' where id='$admin_id'") ;
 		}
 		else {
-			$usuario = "insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values ('".$fecha."','{$_POST['administrador']}','".$admin_contrasena."','".$fecha."')" ;
+			$usuario = "insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values ('".$fecha."','{$_POST['administrador']}','".$admin_contrasena."',".$fecha.")" ;
 		}
 }
 $mensaje_titulo = 'Gracias por usar eForo v3.1' ;
