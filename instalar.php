@@ -113,7 +113,7 @@ switch($_POST['instalacion']) {
 			if($admin_contrasena != $datos[1]) $conectar->query("update $tabla_usuarios set contrasena='$admin_contrasena' where id='$admin_id'") ;
 		}
 		else {
-			$usuario = "insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values ('".$fecha."','{$_POST['administrador']}','".$admin_contrasena."',".$fecha.")" ;
+			$usuario = "insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values (".$fecha.",'{$_POST['administrador']}','".$admin_contrasena."',".$fecha.")" ;
 		}
 }
 $mensaje_titulo = 'Gracias por usar eForo v3.1' ;
@@ -306,7 +306,7 @@ key (contrasena)
 }
 $codigo .=
 ";
-insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values (".$fecha.",'{$_POST['administrador']}','".$admin_contrasena."','".$fecha."')
+insert into $tabla_usuarios (fecha_registrado,nick,contrasena,fecha_conectado) values (".$fecha.",'{$_POST['administrador']}','".$admin_contrasena."',".$fecha.")
 ;
 insert into eforo_categorias (orden,categoria) values ('10','Categoría de ejemplo')
 ;
@@ -373,7 +373,6 @@ $latestQuery = "insert into eforo_config
 values
 ('".$admin_id."','nombre@email.com','{$_POST['foro_url']}','25','20','20','1','1','1','1','0','1','electros','electros','150','150','30','100','512','zip\r\nrar\r\ntxt\r\nrtf\r\ngif\r\njpg\r\njpeg\r\npng\r\ndoc\r\nxls\r\nppt\r\npps\r\npdf\r\nmid\r\nswf\r\nmpg\r\nmpeg\r\navi\r\nwma\r\nwmv','32')
 ";
-$conectar->query($latestQuery);
 
 if (mysqli_query($conectar, $latestQuery)) {
 	echo "<br><span style='color:green;'>New record created successfully</span><br>" . $latestQuery . "<br>";

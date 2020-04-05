@@ -174,7 +174,7 @@ function usuario($a) {
 # Si el usuario eligi� la zona GMT de su pa�s, se sumar� o restar� la diferencia de horas
 # con respecto a la fecha GMT
 $actualDate = date_create();
-$fecha =  date_timestamp_get($actualDate);
+$fecha =  "NOW()"; //date_timestamp_get($actualDate);
 # * Fecha (Formato: 1 Ene 2004 12:00 AM)
 function fecha($a) {
 	$fecha_actual = $GLOBALS['fecha'] - $a ;
