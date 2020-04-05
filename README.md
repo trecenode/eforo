@@ -5,17 +5,17 @@ La idea es rehacer el eforo creado por Electros.net hace más de 15 años.
 # Indice
 Léeme - eForo v3.1
 
-*     Antes de comenzar
-*     Instalación típica
-*     Actualización
-*     Integración con web
-*     Uso con mod_rewrite de Apache
+* Antes de comenzar
+* Instalación típica
+* Actualización
+* Integración con web
+* Uso con mod_rewrite de Apache
 
-##     Antes de comenzar
+## Antes de comenzar
 
 Una vez que has descomprimido los archivos en tu disco duro, deberás modificar el archivo config.php con los datos de conexión a la base de datos. Antes de hacer una instalación o actualización cerciórate de lo siguiente:
 
-###     ¿Tienes un respaldo reciente de tu base de datos?
+### ¿Tienes un respaldo reciente de tu base de datos?
 
 Por un descuido durante la actualización puede llegar a pasar que se corrompa información o se pierda, por lo tanto recomiendo ampliamente realizar un respaldo de tu base de datos antes de realizar cualquier actualización.
 
