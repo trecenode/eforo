@@ -101,6 +101,7 @@ $admin_contrasena = md5(md5($_POST['contrasena'])) ;
 switch($_POST['instalacion']) {
 	case 1 :
 		$tabla_usuarios = 'eforo_usuarios' ;
+		$usuario = true ;
 		break ;
 	case 2 :
 		$tabla_usuarios = $_POST['tabla_usuarios'] ;
