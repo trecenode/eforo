@@ -91,15 +91,15 @@ if(!empty($_GET['borrar'])) {
 if(isset($_POST['editar'])) {
 	foreach($_POST as $nombre => $valor) {
 		switch(true) {
-			case ereg('^cat_',$nombre) :
+			case preg_match('^cat_',$nombre) :
 				list(,$id) = explode('_',$nombre) ;
 				$conectar->query("update eforo_categorias set categoria='$valor' where id='$id'") ;
 				break ;
-			case ereg('^foro_',$nombre) :
+			case preg_match('^foro_',$nombre) :
 				list(,$id) = explode('_',$nombre) ;
 				$conectar->query("update eforo_foros set foro='$valor' where id='$id'") ;
 				break ;
-			case ereg('^des_',$nombre) :
+			case preg_match('^des_',$nombre) :
 				list(,$id) = explode('_',$nombre) ;
 				$conectar->query("update eforo_foros set descripcion='$valor' where id='$id'") ;
 		}

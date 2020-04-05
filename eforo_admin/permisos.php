@@ -34,7 +34,7 @@ if(!$es_administrador) exit("<script type=\"text/javascript\">top.location='../$
 if(isset($_POST['enviar'])) {
 	require '../eforo_funciones/aviso.php' ;
 	foreach($_POST as $nombre => $valor) {
-		if(ereg('^p_',$nombre)) {
+		if(preg_match('^p_',$nombre)) {
 			list(,$permiso,$id_foro) = explode('_',$nombre) ;
 			$conectar->query("update eforo_foros set p_$permiso='$valor' where id='$id_foro'") ;
 		}

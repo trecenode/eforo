@@ -20,7 +20,7 @@ the Free Software Foundation; either version 2 of the License, or
 
 require 'config.php' ;
 # * Mostrar siempre un aviso de confirmaci�n antes de descargar el adjunto (no abrir autom�ticamente el archivo)
-if(empty($_GET['id']) && !ereg('^[0-9]+$',$_GET['id'])) exit('<p>No se indic� archivo adjunto para descargar.</p><p><a href="'.$_SERVER['HTTP_REFERER'].'" class="eforo">� Regresar al mensaje</a></p>') ;
+if(empty($_GET['id']) && !preg_match('^[0-9]+$',$_GET['id'])) exit('<p>No se indic� archivo adjunto para descargar.</p><p><a href="'.$_SERVER['HTTP_REFERER'].'" class="eforo">� Regresar al mensaje</a></p>') ;
 # --> Se suma una descarga al adjunto
 $conectar->query("update eforo_adjuntos set descargas=descargas+1 where id='{$_GET['id']}'") ;
 # --> Se obtiene el nombre real del archivo y se renombra el actual al momento de descargarlo

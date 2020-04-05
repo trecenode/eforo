@@ -35,7 +35,7 @@ if(!$es_administrador) exit("<script type=\"text/javascript\">top.location='../$
 if(isset($_POST['designar'])) {
 	$conectar->query("delete from eforo_moderadores where id_usuario='{$_POST['id_moderador']}'") ;
 	foreach($_POST as $nombre => $valor) {
-		if(ereg('^foro_',$nombre)) $conectar->query("insert into eforo_moderadores (id_foro,id_usuario) values('$valor','{$_POST['id_moderador']}')") ;
+		if(preg_match('^foro_',$nombre)) $conectar->query("insert into eforo_moderadores (id_foro,id_usuario) values('$valor','{$_POST['id_moderador']}')") ;
 	}
 	$conectar->query("update $tabla_usuarios set rango='500',rango_fijo='1' where id='{$_POST['id_moderador']}'") ;
 	aviso('Moderador designado','El usuario <b>'.usuario($_POST['id_moderador']).'</b> ha sido designado moderador.','','../') ;
@@ -50,12 +50,12 @@ if(!empty($_GET['quitar'])) {
 if(isset($_POST['rango'])) {
 	if($_POST['rango'] != 'defecto') {
 		foreach($_POST as $a => $b) {
-			if(ereg('^id_',$a)) $conectar->query("update $tabla_usuarios set rango='{$_POST['rango']}',rango_fijo='1' where id='$b'") ;
+			if(preg_match('^id_',$a)) $conectar->query("update $tabla_usuarios set rango='{$_POST['rango']}',rango_fijo='1' where id='$b'") ;
 		}
 	}
 	else {
 		foreach($_POST as $a => $b) {
-			if(ereg('^id_',$a)) $conectar->query("update $tabla_usuarios set rango='1',rango_fijo='0' where id='$b'") ;
+			if(preg_match('^id_',$a)) $conectar->query("update $tabla_usuarios set rango='1',rango_fijo='0' where id='$b'") ;
 		}
 	}
 	aviso('Rango asignado','El rango ha sido asignado.','','../') ;
@@ -88,7 +88,7 @@ if(!empty($_GET['letra'])) {
 		case $_GET['letra'] == 'num' :
 			$letra = " where nick regexp '^[0-9]+'" ;
 			break ;
-		case ereg('^[a-z]{1}$',$_GET['letra']) :
+		case preg_match('^[a-z]{1}$',$_GET['letra']) :
 			$letra = " where nick like '{$_GET['letra']}%'" ;
 	}
 }
@@ -97,9 +97,9 @@ else {
 	$letra = '' ;
 }
 $por = array('id','nick') ;
-$b = !empty($_GET['por']) && ereg('^[0-9]+$',$_GET['por']) ? $_GET['por'] - 1 : 0 ;
+$b = !empty($_GET['por']) && preg_match('^[0-9]+$',$_GET['por']) ? $_GET['por'] - 1 : 0 ;
 $orden = array('desc','asc') ;
-$c = !empty($_GET['orden']) && ereg('^[0-9]+$',$_GET['orden']) ? $_GET['orden'] - 1 : 0 ;
+$c = !empty($_GET['orden']) && preg_match('^[0-9]+$',$_GET['orden']) ? $_GET['orden'] - 1 : 0 ;
 $ePaginas = new ePaginas("select * from $tabla_usuarios$letra order by $por[$b] $orden[$c]",90) ;
 $ePaginas->u = array($u[2],$u[3],$u[4],$u[5]) ;
 $ePaginas->e = array('<a href="','" class="eforo_enlace">','</a>') ;

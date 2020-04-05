@@ -33,7 +33,7 @@ $ePiel->variables(array(
 $ePiel->mostrar('cabecera') ;
 $ePiel->mostrar('menu') ;
 # * Temas a mover desde el panel de moderadores
-if(!empty($_POST['id_foro']) && ereg('^[0-9]+$',$_POST['id_foro'])) {
+if(!empty($_POST['id_foro']) && preg_match('^[0-9]+$',$_POST['id_foro'])) {
 	if(!$es_moderador) {
 		aviso('Error','<p>Tu no puedes mover temas.',1) ;
 	}
@@ -44,7 +44,7 @@ if(!empty($_POST['id_foro']) && ereg('^[0-9]+$',$_POST['id_foro'])) {
 	mysqli_free_result($con) ;
 	$temas_sel = false ;
 	foreach($_POST as $a => $b) {
-		if(ereg('^id_tema[0-9]+$',$a)) {
+		if(preg_match('^id_tema[0-9]+$',$a)) {
 			$temas_sel = true ;
 			# * Se obtiene el n�mero de mensajes (el tema junto con las respuestas)
 			$con = $conectar->query("select num_respuestas from eforo_mensajes where id='$b'") ;

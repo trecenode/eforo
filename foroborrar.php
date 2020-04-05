@@ -40,7 +40,7 @@ if(isset($_POST['temas_borrar'])) {
 	if(!$es_moderador) aviso('Error','<p>T� no puedes borrar temas.',1) ;
 	$temas_sel = false ;
 	foreach($_POST as $a => $b) {
-		if(ereg('^id_tema[0-9]+$',$a)) {
+		if(preg_match('^id_tema[0-9]+$',$a)) {
 			$temas_sel = true ;
 			$con = $conectar->query("select id,id_usuario from eforo_mensajes where id_tema='$b' order by id asc") ;
 			while($datos = mysqli_fetch_assoc($con)) {

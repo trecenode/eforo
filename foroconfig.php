@@ -69,7 +69,7 @@ require 'config.php' ;
 # Con esto se evitar�n ataques de SQL Injection y otros parecidos.
 unset($error) ;
 if(!empty($_GET['foro'])) {
-	if(ereg('^[0-9]+$',$_GET['foro'])) {
+	if(preg_match('^[0-9]+$',$_GET['foro'])) {
 		# --> Comprueba si existe el subforo
 		$con = $conectar->query("select count(id) from eforo_foros where id='{$_GET['foro']}'") ;
 		if(!mysqli_result($con,0,0)) $error = 'No existe el subforo.' ;
@@ -80,7 +80,7 @@ if(!empty($_GET['foro'])) {
 	}
 }
 if(!empty($_GET['tema'])) {
-	if(ereg('^[0-9]+$',$_GET['tema'])) {
+	if(preg_match('^[0-9]+$',$_GET['tema'])) {
 		# --> Comprueba si existe el tema
 		$con = $conectar->query("select count(id) from eforo_mensajes where id_foro='{$_GET['foro']}' and id='{$_GET['tema']}'") ;
 		if(!mysqli_result($con,0,0)) $error = 'No existe el tema.' ;
@@ -91,7 +91,7 @@ if(!empty($_GET['tema'])) {
 	}
 }
 if(!empty($_GET['mensaje'])) {
-	if(ereg('^[0-9]+$',$_GET['mensaje'])) {
+	if(preg_match('^[0-9]+$',$_GET['mensaje'])) {
 		# --> Comprueba si existe el mensaje
 		$con = $conectar->query("select count(id) from eforo_mensajes where id_foro='{$_GET['foro']}' and id_tema='{$_GET['tema']}' and id='{$_GET['mensaje']}'") ;
 		if(!mysqli_result($con,0,0)) $error = 'No existe el mensaje.' ;
@@ -164,6 +164,7 @@ else {
 }
 # * Obtener el nick del usuario a trav�s de su ID
 function usuario($a) {
+	require 'config.php' ;
 	$con = $conectar->query("select nick from {$GLOBALS['tabla_usuarios']} where id='$a'") ;
 	$datos = mysqli_fetch_row($con) ;
 	$nick = $datos[0] ;

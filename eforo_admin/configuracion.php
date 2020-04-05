@@ -153,7 +153,7 @@ $datos = mysqli_fetch_row($con) ;
 $directorio = opendir('../eforo_plantillas/'.$datos[0].'/estilos/') ;
 while($archivo = readdir($directorio)) {
 	if($archivo != '.' && $archivo != '..') {
-		$archivo = eregi_replace('\.css$','',$archivo) ;
+		$archivo = preg_replace('\.css$','',$archivo) ;
 		if($archivo == $datos[1]) {
 			echo '<option value="'.$archivo.'" selected>'.$archivo ;
 		}

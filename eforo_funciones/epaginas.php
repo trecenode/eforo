@@ -17,10 +17,14 @@ the Free Software Foundation; either version 2 of the License, or
 */
 
 class ePaginas {
-	function ePaginas($a,$b) {
+	public function __construct() {
+
+	}
+	public function ePaginas($a,$b) {
+		require 'config.php' ;
 		$this->consulta = $a ;
 		# Obtener el total de resultados
-		$con = $conectar->query(eregi_replace('select (.+) from','select count(*) from',$this->consulta)) ;
+		$con = $conectar->query(preg_replace('select (.+) from','select count(*) from',$this->consulta)) ;
 		$this->total_res = mysqli_result($con,0,0) ;
 		# Resultados a mostrar por p�gina
 		$this->resultados = $b ;
@@ -36,8 +40,9 @@ class ePaginas {
 	}
 	# Procesar la consulta SQL
 	function consultar() {
+		require 'config.php' ;
 		$this->variables() ; # <-- Comprobar variables
-		if(empty($_GET[$this->p]) || !ereg('^[0-9]+$',$_GET[$this->p])) $_GET[$this->p] = 1 ;
+		if(empty($_GET[$this->p]) || !preg_match('^[0-9]+$',$_GET[$this->p])) $_GET[$this->p] = 1 ;
 		elseif($this->total_pag > 0 && $_GET[$this->p] > $this->total_pag) $_GET[$this->p] = $this->total_pag ;
 		$desde = ($_GET[$this->p] - 1) * $this->resultados ;
 		return $conectar->query($this->consulta." limit $desde,$this->resultados") ;

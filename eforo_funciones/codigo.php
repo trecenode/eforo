@@ -29,7 +29,7 @@ the Free Software Foundation; either version 2 of the License, or
 if($conf['permitir_codigo']) {
 	# Agrega el prefijo http:// a una URL si es necesario
 	function url($a,$b) {
-		if(!eregi('^http://',$a)) $a = 'http://'.$a ;
+		if(!preg_matchi('^http://',$a)) $a = 'http://'.$a ;
 		return '<a href="'.$a.'" target="_blank" class="eforo_enlace">'.$b.'</a>' ;
 	}
 	function codigo($texto) {
@@ -56,7 +56,7 @@ if($conf['permitir_codigo']) {
 				foreach($caracteres as $a => $b) {
 					$texto_codigo = str_replace($a,$b,$texto_codigo) ;
 				}
-				$texto = str_replace($texto_extraido[0][$i],'<div class="eforo_tabla_codigo">'.ereg_replace("\r|\n",'',highlight_string(trim($texto_codigo),1)).'</div>',$texto) ;
+				$texto = str_replace($texto_extraido[0][$i],'<div class="eforo_tabla_codigo">'.preg_replace("\r|\n",'',highlight_string(trim($texto_codigo),1)).'</div>',$texto) ;
 			}
 		}
 		# --> Reemplaza etiquetas [etiqueta] por <etiqueta>

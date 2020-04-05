@@ -127,7 +127,7 @@ else {
 $url_tema = !empty($_GET['tema']) ? "$u[3]tema$u[4]{$_GET['tema']}" : '' ;
 $url_mensaje = !empty($_GET['mensaje']) ? "$u[3]mensaje$u[4]{$_GET['mensaje']}" : '' ;
 # * Citar mensaje
-if($que == 2 && !empty($_GET['citar']) && ereg('^[0-9]+$',$_GET['citar'])) {
+if($que == 2 && !empty($_GET['citar']) && preg_match('^[0-9]+$',$_GET['citar'])) {
 	$con = $conectar->query("select id_usuario,mensaje from eforo_mensajes where id='{$_GET['citar']}'") ;
 	$datos = mysqli_fetch_row($con) ;
 	$form_mensaje = '[citar autor='.usuario($datos[0]).']'."\r\n".$datos[1]."\r\n".'[/citar]' ;

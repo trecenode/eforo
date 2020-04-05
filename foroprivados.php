@@ -57,7 +57,7 @@ if(isset($_POST['enviar'])) {
 	}
 	mysqli_free_result($con) ;
 }
-if(!empty($_GET['borrar']) && ereg('^[0-9]+$',$_GET['borrar'])) {
+if(!empty($_GET['borrar']) && preg_match('^[0-9]+$',$_GET['borrar'])) {
 	$conectar->query("delete from eforo_privados where id='{$_GET['borrar']}'") ;
 	aviso('Mensaje eliminado','El mensaje ha sido eliminado.') ;
 }

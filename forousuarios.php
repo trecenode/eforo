@@ -33,8 +33,8 @@ $ePiel->variables(array(
 $ePiel->mostrar('cabecera') ;
 $ePiel->mostrar('menu') ;
 $url_usuarios = "$u[0]forousuarios$u[1]$u[5]" ;
-if(empty($_GET['u']) || !ereg('^[0-9]+$',$_GET['u'])) {
-	$letra = !empty($_GET['letra']) && ereg('^[a-z]{1}$',$_GET['letra']) ? " where nick like '{$_GET['letra']}%'" : '' ;
+if(empty($_GET['u']) || !preg_match('^[0-9]+$',$_GET['u'])) {
+	$letra = !empty($_GET['letra']) && preg_match('^[a-z]{1}$',$_GET['letra']) ? " where nick like '{$_GET['letra']}%'" : '' ;
 	$orden = $letra ? 'nick asc' : 'id desc' ;
 	$ePaginas = new ePaginas("select * from $tabla_usuarios$letra order by $orden",30) ;
 	$ePaginas->u = array($u[2],$u[3],$u[4],$u[5]) ;
@@ -82,7 +82,7 @@ else {
 			}
 		}
 		if($datos['web']) {
-			$datos['web'] = '<a href="'.(!eregi('^http://',$datos['web']) ? 'http://'.$datos['web'] : $datos['web']).'" target="_blank" class="eforo_enlace">'.$datos['web'].'</a>' ;
+			$datos['web'] = '<a href="'.(!preg_matchi('^http://',$datos['web']) ? 'http://'.$datos['web'] : $datos['web']).'" target="_blank" class="eforo_enlace">'.$datos['web'].'</a>' ;
 		}
 		if($conf['permitir_firma']) {
 			require 'eforo_funciones/codigo.php' ;
