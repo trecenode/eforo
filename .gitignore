@@ -1,0 +1,14 @@
+/node_modules
+/public/storage
+/vendor
+
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+config.php
+.env
+package-lock.json
+package.json

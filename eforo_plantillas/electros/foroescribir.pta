@@ -1,0 +1,198 @@
+[blq vista_previa]
+<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Vista previa</div></td>
+</tr>
+<tr>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Autor</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Mensaje</div></td>
+</tr>
+<tr>
+<td width="20%" valign="top" class="eforo_tabla_mensaje_1">{vista_previa.autor_nick}</td>
+<td width="80%" valign="top" class="eforo_tabla_mensaje_1">
+Tema: <b>{vista_previa.tema}</b>
+<hr class="separador" />
+{vista_previa.mensaje}
+</td>
+</tr>
+</table>
+[/blq vista_previa]
+<script type="text/javascript">
+function codigo(a,b) {
+	if(navigator.appName == 'Microsoft Internet Explorer') {
+		if(seleccionado = document.selection.createRange().text) {
+			document.selection.createRange().text = a+seleccionado+b ;
+			document.m_formulario.m_mensaje.focus() ;
+		}
+		else {
+			document.m_formulario.m_mensaje.focus() ;
+			document.selection.createRange().text = a+b ;
+		}
+	}
+	else {
+		document.m_formulario.m_mensaje.value += a+b ;
+		document.m_formulario.m_mensaje.focus() ;
+	}
+}
+function ayuda1(a) {
+	document.getElementById('m_ayuda').innerHTML = '<b>'+a+'</b>' ;
+}
+function ayuda2() {
+	document.getElementById('m_ayuda').innerHTML = '&nbsp;' ;
+}
+function caretos(a) {
+	if(navigator.appName == 'Microsoft Internet Explorer') {
+		document.m_formulario.m_mensaje.focus() ;
+		document.selection.createRange().text = a ;
+	}
+	else {
+		document.m_formulario.m_mensaje.value += a ;
+		document.m_formulario.m_mensaje.focus() ;
+	}
+}
+enviado = 0 ;
+que = {que} ;
+function vista_previa() {
+	document.m_formulario.action = '{url_vista_previa}' ;
+	document.m_formulario.submit() ;
+}
+function revisar(a) {
+	if(a.vista_previa) {
+		a.action = '{url_vista_previa}' ;
+		a.submit() ;
+	}
+	if(que == 1) a.m_tema.value = a.m_tema.value.replace(/^\s*|\s*$/g,'') ;
+	a.m_mensaje.value = a.m_mensaje.value.replace(/^\s*|\s*$/g,'') ;
+	if(que == 1 && a.m_tema.value.length < 3) {
+		alert('Debes escribir un tema') ;
+		return false ;
+	}
+	if(a.m_mensaje.value.length < 3) {
+		alert('Debes escribir un mensaje') ;
+		return false ;
+	}
+	if(enviado == 0) {
+		enviado++ ;
+	}
+	else {
+		alert('El mensaje se está enviando por favor espera.') ;
+		return false ;
+	}
+}
+</script>
+<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
+<form name="m_formulario" method="post" action="{url_escribir}" enctype="multipart/form-data" onsubmit="return revisar(this)">
+<tr>
+<td colspan="2" class="eforo_tabla_titulo"><div align="center" class="eforo_titulo_1">{form_titulo}</div></td>
+</tr>
+<tr>
+<td valign="top" class="eforo_tabla_defecto"><b>Título:</b><br>Título del mensaje.</td>
+<td valign="top" class="eforo_tabla_defecto"><input type="text" name="m_tema" size="75" value="{form_tema}" maxlength="60" class="eforo_formulario" /></td>
+</tr>
+<tr>
+<td valign="top" class="eforo_tabla_defecto"><b>Mensaje:</b><br>Contenido del mensaje.</td>
+<td valign="top" class="eforo_tabla_defecto">
+<b>Código especial:</b>
+<div style="margin-top: 3"></div>
+<input type="button" onclick="codigo('[b]','[/b]')" value="[b]" onmouseover="ayuda1('Texto en negrita')" onmouseout="ayuda2()" class="eforo_formulario" />
+<input type="button" onclick="codigo('[i]','[/i]')" value="[i]" onmouseover="ayuda1('Texto en cursiva')" onmouseout="ayuda2()" class="eforo_formulario" />
+<input type="button" onclick="codigo('[u]','[/u]')" value="[u]" onmouseover="ayuda1('Texto subrayado')" onmouseout="ayuda2()" class="eforo_formulario" />
+<input type="button" onclick="codigo('[img]','[/img]')" value="[img]" onmouseover="ayuda1('Poner una imagen')" onmouseout="ayuda2()" class="eforo_formulario" />
+<input type="button" onclick="codigo('[url]','[/url]')" value="[url]" onmouseover="ayuda1('Crear un enlace')" onmouseout="ayuda2()" class="eforo_formulario" />
+<input type="button" onclick="codigo('[color=red]','[/color]')" value="[color]" onmouseover="ayuda1('Colorear texto (color en inglés o hexadecimal)')" onmouseout="ayuda2()" class="eforo_formulario" />
+<input type="button" onclick="codigo('[cod]','[/cod]')" value="[cod]" onmouseover="ayuda1('Colorear código (HTML, PHP, étc.)')" onmouseout="ayuda2()" class="eforo_formulario" />
+<div id="m_ayuda">&nbsp;</div>
+<div style="margin-top: 3"></div>
+<a href="javascript:caretos(':D')"><img src="eforo_imagenes/caretos/alegre.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':8')"><img src="eforo_imagenes/caretos/asustado.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':P')"><img src="eforo_imagenes/caretos/burla.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':S')"><img src="eforo_imagenes/caretos/confundido.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':(1')"><img src="eforo_imagenes/caretos/demonio.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':(2')"><img src="eforo_imagenes/caretos/demonio2.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':?')"><img src="eforo_imagenes/caretos/duda.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':-\(')"><img src="eforo_imagenes/caretos/enojado.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(';)')"><img src="eforo_imagenes/caretos/guino.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':\'(')"><img src="eforo_imagenes/caretos/llorar.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':lol')"><img src="eforo_imagenes/caretos/lol.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':M')"><img src="eforo_imagenes/caretos/moda.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':|')"><img src="eforo_imagenes/caretos/neutral.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':)')"><img src="eforo_imagenes/caretos/risa.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':-)')"><img src="eforo_imagenes/caretos/sonrisa.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':R')"><img src="eforo_imagenes/caretos/sonrojado.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':O')"><img src="eforo_imagenes/caretos/sorprendido.gif" width="15" height="15" border="0" /></a>
+<a href="javascript:caretos(':(')"><img src="eforo_imagenes/caretos/triste.gif" width="15" height="15" border="0" /></a>
+<div style="margin-top: 3"></div>
+[blq citar]
+<script type="text/javascript">
+function citar() {
+	document.m_formulario.m_mensaje.focus() ;
+	document.m_formulario.m_mensaje.value += '\n\n' ;
+}
+onload = citar ;
+</script>
+[/blq citar]
+<textarea name="m_mensaje" cols="75" rows="25" class="eforo_formulario">{form_mensaje}</textarea>
+</td>
+</tr>
+[blq adjunto]
+<tr>
+<td valign="top" class="eforo_tabla_defecto">{adjunto.titulo}</td>
+<td valign="top" class="eforo_tabla_defecto">{adjunto.contenido}</td>
+</tr>
+[/blq adjunto]
+<tr>
+<td valign="top" class="eforo_tabla_defecto">&nbsp;</td>
+<td valign="top" class="eforo_tabla_defecto">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td width="50%" valign="top">
+<input id="m_caretos" type="checkbox" name="m_caretos" value="1"{m_caretos_s}{m_caretos_e} /><label for="m_caretos"><b>Usar caretos en el mensaje</b></label><br />
+<input id="m_codigo" type="checkbox" name="m_codigo" value="1"{m_codigo_s}{m_codigo_e} /><label for="m_codigo"><b>Usar código especial en el mensaje</b></label><br />
+<input id="m_firma" type="checkbox" name="m_firma" value="1"{m_firma_s}{m_firma_e} /><label for="m_firma"><b>Agregar firma en el mensaje</b></label><br />
+</td>
+<td width="50%" valign="top">
+<input id="m_importante" type="checkbox" name="m_importante" value="1"{m_importante_s}{m_importante_e} /><label for="m_importante"><b>Marcar el tema como importante</b></label><br />
+<input id="m_notificacion" type="checkbox" name="m_notificacion" value="1"{m_notificacion_s}{m_notificacion_e} /><label for="m_notificacion"><b>Notificarme por email cuando haya respuestas</b></label>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="eforo_tabla_defecto">&nbsp;</td>
+<td class="eforo_tabla_defecto">
+<div align="center"><input type="button" onclick="vista_previa()" value="Vista Previa" class="eforo_formulario" /> <input type="submit" name="enviar" value="Enviar Mensaje" class="eforo_formulario" /></div>
+</td>
+</tr>
+</table>
+</form>
+[blq ult_mensajes]
+<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Ultimos {ult_mensajes.total} mensajes del tema</div></td>
+</tr>
+<tr>
+<td class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Autor</div></td>
+<td class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Mensaje</div></td>
+</tr>
+[blq mensaje]
+<tr>
+<td width="20%" valign="top" class="eforo_tabla_mensaje_{ult_mensajes.mensaje.estilo_num}">
+{ult_mensajes.mensaje.autor_nick}<br>
+</td>
+<td width="80%" valign="top" class="eforo_tabla_mensaje_{ult_mensajes.mensaje.estilo_num}">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<td>Tema: <b>{ult_mensajes.mensaje.tema}</b></td>
+<td><div align="right">Fecha: <b>{ult_mensajes.mensaje.fecha}</b></div></td>
+</tr>
+</table>
+<hr class="separador" />
+{ult_mensajes.mensaje.mensaje}
+[blq editado]
+<br /><br /><i><b>Editado por última vez: {ult_mensajes.mensaje.editado.fecha}</b></i>
+[/blq editado]
+</td>
+</tr>
+[/blq mensaje]
+</table>
+[/blq ultimas_respuestas]

@@ -1,0 +1,114 @@
+<script type="text/javascript">
+function borrar(que) {
+	if(que == 1) {
+		que = 'el tema completo?' ;
+	}
+	else {
+		que = 'el mensaje?' ;
+	}
+	if(confirm('¿Deseas borrar '+que)) {
+		return true ;
+	}
+	else {
+		return false ;
+	}
+}
+</script>
+<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Autor</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Mensaje</div></td>
+</tr>
+<tr>
+<td colspan="2" class="eforo_tabla_defecto">{paginas}</td>
+</tr>
+[blq mensaje]
+<tr>
+<td width="20%" valign="top" class="eforo_tabla_mensaje_{mensaje.estilo_num}">
+<a name="{mensaje.id}"></a>
+{mensaje.autor_nick}<br />
+[blq usuario]
+{mensaje.usuario.autor_rango}<br />
+<span style="font-size: 7pt">Mensajes: <b>{mensaje.usuario.autor_mensajes}</b></span><br />
+<span style="font-size: 7pt">Estado: <b>{mensaje.usuario.autor_estado}</b></span><br />
+[blq avatar]
+<br /><img src="eforo_imagenes/avatares/{mensaje.usuario.avatar.autor_id}.{mensaje.usuario.avatar.ext}" border="0" alt="{mensaje.usuario.avatar.alt}" /><br /><br />
+[/blq avatar]
+[/blq usuario]
+</td>
+<td width="80%" valign="top" class="eforo_tabla_mensaje_{mensaje.estilo_num}">
+Tema: <b>{mensaje.tema}</b>
+<hr class="separador" />
+{mensaje.contenido}
+[blq firma]
+<hr class="separador_c" />
+{mensaje.firma.contenido}
+[/blq firma]
+[blq editado]
+<br /><br /><b>Editado por última vez:</b> {mensaje.editado.fecha}
+[/blq editado]
+[blq adjunto]
+<br /><br /><fieldset><legend>Archivo adjunto</legend><a href="{mensaje.adjunto.url}" class="eforo_enlace">{mensaje.adjunto.archivo}</a></fieldset>
+[/blq adjunto]
+</td>
+</tr>
+<tr>
+<td class="eforo_tabla_mensaje_{mensaje.estilo_num}"><div style="text-align: center"><span style="font-size: 7pt"><b>{mensaje.fecha}</b></span></div></td>
+<td class="eforo_tabla_mensaje_{mensaje.estilo_num}">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><input type="button" value="Citar Mensaje" onclick="location = '{mensaje.url_citar}'" class="eforo_formulario" /></td>
+<td>
+<div style="text-align: right">
+<input type="button" value="Editar" onclick="location = '{mensaje.url_editar}'" class="eforo_formulario" />
+<input type="button" value="Borrar" onclick="if(borrar('{mensaje.que}')) location = '{mensaje.url_borrar}'" class="eforo_formulario" />
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+[/blq mensaje]
+<tr>
+<td colspan="2" class="eforo_tabla_defecto">{paginas}</td>
+</tr>
+<tr>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Autor</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Mensaje</div></td>
+</tr>
+</table>
+[blq respuesta_r]
+<script>
+enviado = 0 ;
+function comprobar(a) {
+	a.m_mensaje.value = a.m_mensaje.value.replace(/^\s*|\s*$/g,'') ;
+	if(a.m_mensaje.value.length < 3) {
+		alert('Debes escribir un mensaje.') ;
+		return false ;
+	}
+	if(enviado == 0) {
+		enviado++ ;
+	}
+	else {
+		alert('El mensaje se está enviando por favor espera.') ;
+		return false ;
+	}
+}
+</script>
+<form method="post" action="{url_escribir}" onsubmit="return comprobar(this)" style="display: inline">
+<input type="hidden" name="m_caretos" value="1" />
+<input type="hidden" name="m_codigo" value="1" />
+<input type="hidden" name="m_firma" value="1" />
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<tr>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Respuesta rápida</div></td>
+</tr>
+<tr>
+<td class="eforo_tabla_defecto"><textarea name="m_mensaje" cols="50" rows="10" class="eforo_formulario"></textarea></td>
+</tr>
+<tr>
+<td class="eforo_tabla_defecto"><div style="text-align: center"><input type="submit" name="enviar" value="Enviar Mensaje" class="eforo_formulario" /></div></td>
+</tr>
+</table>
+</form>
+[/blq respuesta_r]

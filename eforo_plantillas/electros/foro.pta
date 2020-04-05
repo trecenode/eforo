@@ -1,0 +1,45 @@
+<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Categoria</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Ultimo mensaje</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Tem</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Men</div></td>
+</tr>
+[blq categoria]
+<tr>
+<td colspan="5" class="eforo_tabla_subtitulo"><div class="eforo_titulo_2">{categoria.titulo}</div></td>
+</tr>
+[blq subforo]
+<tr>
+<td class="eforo_tabla_mensaje_{categoria.subforo.estilo_num}"><div align="center"><img src="{categoria.subforo.ind_imagen}" alt="{categoria.subforo.ind_mensaje}" width="24" height="24" /></div></td>
+<td class="eforo_tabla_mensaje_{categoria.subforo.estilo_num}"><a href="{categoria.subforo.titulo_url}" class="eforo_enlace">{categoria.subforo.titulo}</a><br />{categoria.subforo.descripcion}</td>
+<td class="eforo_tabla_mensaje_{categoria.subforo.estilo_num}"><div align="center">{categoria.subforo.ult_mensaje}</div></td>
+<td class="eforo_tabla_mensaje_{categoria.subforo.estilo_num}"><div align="center">{categoria.subforo.num_temas}</div></td>
+<td class="eforo_tabla_mensaje_{categoria.subforo.estilo_num}"><div align="center">{categoria.subforo.num_mensajes}</div></td>
+</tr>
+[/blq subforo]
+[/blq categoria]
+<tr>
+<td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Categoria</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Ultimo mensaje</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Tem</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Men</div></td>
+</tr>
+</table>
+<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td colspan="2" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Estadísticas</div></td>
+</tr>
+<tr>
+<td width="50%" valign="top" class="eforo_tabla_defecto">
+Nos visitan <b>{usuarios_total}</b> usuarios: <b>{usuarios_registrados}</b> registrados y <b>{usuarios_anonimos}</b> anónimos
+<br /><br />
+{usuarios_reg_en_linea}
+</td>
+<td width="50%" valign="top" class="eforo_tabla_defecto">
+Total de usuarios: <b>{usuarios_reg_total}</b><br />
+Ultimo registrado: <b>{usuarios_reg_ultimo}</b><br />
+<a href="{usuarios_lista}" class="eforo_enlace">» Lista de usuarios</a>
+</td>
+</tr>
+</table>

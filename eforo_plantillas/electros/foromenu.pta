@@ -1,0 +1,80 @@
+<table width="100%" border="0" cellpadding="5" cellspacing="1" align="center" class="eforo_tabla_defecto">
+<tr>
+<td>
+<a href="{subforo_indice_url}" class="eforo_enlace">Indice de subforos</a>
+[blq menu_subforo]
+ · <a href="{menu_subforo.url}" class="eforo_enlace">{menu_subforo.titulo}</a>
+[blq menu_tema]
+ · <a href="{menu_subforo.menu_tema.url}" class="eforo_enlace">{menu_subforo.menu_tema.titulo}</a>
+[/blq menu_tema]
+[/blq menu_subforo]
+</td>
+</tr>
+[blq nuevo_tema]
+<tr>
+<td>
+<a href="{nuevo_tema.nuevo_tema_url}" class="eforo_enlace">Nuevo tema</a>
+[blq responder]
+| <a href="{nuevo_tema.responder.responder_url}" class="eforo_enlace">Responder</a>
+[/blq responder]
+</td>
+</tr>
+[/blq nuevo_tema]
+<tr>
+<td>
+[blq anonimo]
+<script type="text/javascript">
+function comprobar(a) {
+	a.u_nick.value = a.u_nick.value.replace(/^\s*|\s*$/g,'') ;
+	a.u_contrasena.value = a.u_contrasena.value.replace(/^\s*|\s*$/g,'') ;
+	if(a.u_nick.value.length == 0) {
+		alert('Debes escribir un nick.') ;
+		return false ;
+	}
+	if(a.u_contrasena.value.length == 0) {
+		alert('Debes escribir una contraseña.') ;
+		return false ;
+	}
+}
+</script>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top">
+<form name="u_formulario" method="post" action="forousuariopro.php?que=entrar" onsubmit="return comprobar(this)" style="display: inline">
+<b>Nick:</b>
+<input type="text" name="u_nick" size="10" maxlength="20" class="eforo_formulario" />
+<b>Contraseña:</b>
+<input type="password" name="u_contrasena" size="10" maxlength="10" class="eforo_formulario" />
+<input type="submit" name="enviar" value="Entrar" class="eforo_formulario" />
+</form>
+</td>
+<td valign="top"><div align="right"><a href="{anonimo.nuevo_usuario_e}" class="eforo_enlace">Nuevo usuario</a> | <a href="{anonimo.recuperar_contrasena_e}" class="eforo_enlace">Perdí mi contraseña</a></div></td>
+</tr>
+</table>
+[/blq anonimo]
+[blq usuario]
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>Bienvenid@ <b>{usuario.usuario_nick}</b>
+[blq nuevos_mensajes]
+, <a href="{usuario.nuevos_mensajes.url_privados}" class="eforo_enlace">tienes {usuario.nuevos_mensajes.total} mensaje(s) nuevo(s)</a>
+[/blq nuevos_mensajes]
+</td>
+<td>
+<center>
+<select onchange="if(value) location = options[selectedIndex].value" class="eforo_formulario">
+<option value="">Opción ...</option>
+<option value="{usuario.url_privados}">Mensajes privados</option>
+<option value="{usuario.url_perfil}">Editar mi perfil</option>
+<option value="{usuario.url_leidos}">Marcar subforos como leídos</option>
+{usuario.url_panel}
+</select>
+</center>
+</td>
+<td><div align="right"><a href="forousuariopro.php?que=salir" class="eforo_enlace">Salir del foro</a></div></td>
+</tr>
+</table>
+[/blq usuario]
+</td>
+</tr>
+</table>

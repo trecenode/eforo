@@ -1,0 +1,120 @@
+<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td colspan="8" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Lista de usuarios</div></td>
+</tr>
+[blq lista]
+<tr>
+<td colspan="8" class="eforo_tabla_defecto">
+<div style="text-align: center">
+<a href="{lista.url_usuarios}" class="eforo_enlace">Más recientes</a> |
+<a href="{lista.url_inicio}a{lista.url_fin}" class="eforo_enlace">A</a> |
+<a href="{lista.url_inicio}b{lista.url_fin}" class="eforo_enlace">B</a> |
+<a href="{lista.url_inicio}c{lista.url_fin}" class="eforo_enlace">C</a> |
+<a href="{lista.url_inicio}d{lista.url_fin}" class="eforo_enlace">D</a> |
+<a href="{lista.url_inicio}e{lista.url_fin}" class="eforo_enlace">E</a> |
+<a href="{lista.url_inicio}f{lista.url_fin}" class="eforo_enlace">F</a> |
+<a href="{lista.url_inicio}g{lista.url_fin}" class="eforo_enlace">G</a> |
+<a href="{lista.url_inicio}h{lista.url_fin}" class="eforo_enlace">H</a> |
+<a href="{lista.url_inicio}i{lista.url_fin}" class="eforo_enlace">I</a> |
+<a href="{lista.url_inicio}j{lista.url_fin}" class="eforo_enlace">J</a> |
+<a href="{lista.url_inicio}k{lista.url_fin}" class="eforo_enlace">K</a> |
+<a href="{lista.url_inicio}l{lista.url_fin}" class="eforo_enlace">L</a> |
+<a href="{lista.url_inicio}m{lista.url_fin}" class="eforo_enlace">M</a> |
+<a href="{lista.url_inicio}n{lista.url_fin}" class="eforo_enlace">N</a> |
+<a href="{lista.url_inicio}o{lista.url_fin}" class="eforo_enlace">O</a> |
+<a href="{lista.url_inicio}p{lista.url_fin}" class="eforo_enlace">P</a> |
+<a href="{lista.url_inicio}q{lista.url_fin}" class="eforo_enlace">Q</a> |
+<a href="{lista.url_inicio}r{lista.url_fin}" class="eforo_enlace">R</a> |
+<a href="{lista.url_inicio}s{lista.url_fin}" class="eforo_enlace">S</a> |
+<a href="{lista.url_inicio}t{lista.url_fin}" class="eforo_enlace">T</a> |
+<a href="{lista.url_inicio}u{lista.url_fin}" class="eforo_enlace">U</a> |
+<a href="{lista.url_inicio}v{lista.url_fin}" class="eforo_enlace">V</a> |
+<a href="{lista.url_inicio}w{lista.url_fin}" class="eforo_enlace">W</a> |
+<a href="{lista.url_inicio}x{lista.url_fin}" class="eforo_enlace">X</a> |
+<a href="{lista.url_inicio}y{lista.url_fin}" class="eforo_enlace">Y</a> |
+<a href="{lista.url_inicio}z{lista.url_fin}" class="eforo_enlace">Z</a>
+</div>
+</td>
+</tr>
+<tr>
+<td colspan="8" class="eforo_tabla_defecto">{lista.paginas}</td>
+</tr>
+<tr>
+<td class="eforo_tabla_titulo"><b>Nick</b></td>
+<td class="eforo_tabla_titulo"><b>Sexo</b></td>
+<td class="eforo_tabla_titulo"><b>Edad</b></td>
+<td class="eforo_tabla_titulo"><b>País</b></td>
+<td class="eforo_tabla_titulo"><b>Fecha de registro</b></td>
+</tr>
+[blq usuario]
+<tr>
+<td class="eforo_tabla_mensaje_{lista.usuario.estilo_num}"><a href="{lista.usuario.url_usuario}" class="eforo_enlace">{lista.usuario.nick}</a></td>
+<td class="eforo_tabla_mensaje_{lista.usuario.estilo_num}">{lista.usuario.sexo}</td>
+<td class="eforo_tabla_mensaje_{lista.usuario.estilo_num}">{lista.usuario.edad}</td>
+<td class="eforo_tabla_mensaje_{lista.usuario.estilo_num}">{lista.usuario.pais}</td>
+<td class="eforo_tabla_mensaje_{lista.usuario.estilo_num}">{lista.usuario.fecha}</td>
+</tr>
+[/blq usuario]
+<tr>
+<td colspan="8" class="eforo_tabla_defecto">{lista.paginas}</td>
+</tr>
+[/blq lista]
+[blq perfil]
+<tr>
+<td class="eforo_tabla_subtitulo"><div class="eforo_titulo_2">Perfil de {perfil.nick}</div></td>
+</tr>
+<tr>
+<td class="eforo_tabla_defecto">
+<p><a href="{perfil.url_usuarios}" class="eforo_enlace">» Regresar a Lista de usuarios</a></p>
+<table width="100%" border="0" cellpadding="5" cellspacing="0">
+<tr>
+<td width="30%" valign="top"><b>Sexo:</b></td>
+<td width="30%" valign="top">{perfil.sexo}</td>
+<td width="35%" rowspan="6" valign="top"><img src="eforo_imagenes/avatares/{perfil.avatar}" border="0" alt="Avatar de {perfil.nick}" /></td>
+</tr>
+<tr>
+<td valign="top"><b>Edad:</b></td>
+<td valign="top">{perfil.edad}</td>
+</tr>
+<tr>
+<td valign="top"><b>País:</b></td>
+<td valign="top">{perfil.pais}</td>
+</tr>
+<tr>
+<td valign="top"><b>Descripción:</b></td>
+<td valign="top">{perfil.descripcion}</td>
+</tr>
+<tr>
+<td valign="top"><b>Web:</b></td>
+<td valign="top">{perfil.web}</td>
+</tr>
+<tr>
+<td valign="top"><b>Firma en los mensajes:</b></td>
+<td valign="top">{perfil.firma}</td>
+</tr>
+<tr>
+<td valign="top"><b>Mensajes publicados:</b></td>
+<td valign="top">{perfil.total_mensajes}</td>
+</tr>
+<tr>
+<td valign="top"><b>Rango ó nivel:</b></td>
+<td valign="top">{perfil.rango}</td>
+</tr>
+<tr>
+<td valign="top"><b>Fecha de registro:</b></td>
+<td valign="top">{perfil.fecha}</td>
+</tr>
+<tr>
+<td valign="top"><b>Conectado por última vez:</b></td>
+<td valign="top">{perfil.fecha_conectado}</td>
+</tr>
+</table>
+</td>
+</tr>
+[/blq perfil]
+[blq no]
+<tr>
+<td class="eforo_tabla_defecto"><center><b>El usuario no existe.</b></center></td>
+</tr>
+[/blq no]
+</table>

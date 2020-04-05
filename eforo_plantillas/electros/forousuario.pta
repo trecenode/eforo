@@ -1,0 +1,199 @@
+<table width="100%" border="0" cellpadding="5" cellspacing="0" align="center" class="eforo_tabla_principal">
+<tr>
+<td class="eforo_tabla_titulo"><div align="center" class="eforo_titulo_1">Usuario</div></td>
+</tr>
+<tr>
+<td class="eforo_tabla_defecto">
+[blq modo_iniciar_sesion]
+<script type="text/javascript">
+function comprobar(a) {
+	a.u_nick.value = a.u_nick.value.replace(/^\s*|\s*$/g,'') ;
+	a.u_contrasena.value = a.u_contrasena.value.replace(/^\s*|\s*$/g,'') ;
+	if(a.u_nick.value.length == 0) {
+		alert('Debes escribir un nick.') ;
+		return false ;
+	}
+	if(a.u_contrasena.value.length == 0) {
+		alert('Debes escribir una contraseña.') ;
+		return false ;
+	}
+}
+</script>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top">
+<form method="post" action="forousuariopro.php?que=entrar" onsubmit="return comprobar(this)">
+<b>Nick:</b>
+<input type="text" name="u_nick" size="10" maxlength="20" class="eforo_formulario" />
+<b>Contraseña:</b>
+<input type="password" name="u_contrasena" size="10" maxlength="10" class="eforo_formulario" />
+<input type="submit" name="enviar" value="Entrar" class="eforo_formulario" />
+</td></form>
+<td valign="top"><div align="right"><a href="{modo_iniciar_sesion.url_nuevo_usuario}" class="eforo_enlace">Nuevo usuario</a> | <a href="{modo_iniciar_sesion.url_rec_contrasena}" class="eforo_enlace">Perdí mi contraseña</a></div></td>
+</tr>
+</table>
+[/blq modo_iniciar_sesion]
+[blq modo_nuevo_usuario]
+<script type="text/javascript">
+function comprobar(a) {
+	a.u_nick.value = a.u_nick.value.replace(/^\s*|\s*$/g,'') ;
+	a.u_contrasena.value = a.u_contrasena.value.replace(/^\s*|\s*$/g,'') ;
+	a.u_email.value = a.u_email.value.replace(/^\s*|\s*$/g,'') ;
+	if(a.u_nick.value == '') {
+		alert('Debes escribir un nick.') ;
+		return false ;
+		}
+	if(a.u_contrasena.value.length < 8) {
+		alert('La contraseña debe contener por lo mínimo 8 caractéres.') ;
+		return false ;
+	}
+	if(a.u_contrasena.value != a.u_contrasena_c.value) {
+		alert('Las contraseñas no son iguales.') ;
+		return false ;
+	} 
+	if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})$/.test(a.u_email.value)) {
+		alert('Debes escribir un email válido.') ;
+		return false ;
+	}
+}
+</script>
+<p><a href="javascript:history.back()" class="eforo_enlace">» Regresar</a>
+<p><b>Nuev@ usuari@</b>
+<p>Como usuari@ registrad@ podrás tener tu propio perfil, escribir mensajes con tu nick,
+editar y borrar tus mensajes y muchas cosas más. La contraseña se guarda encriptada así que en caso de
+extravío se te enviará una nueva al email indicado.
+<form method="post" action="forousuariopro.php?que=registrar" onsubmit="return comprobar(this)">
+<b>Nick:</b><br />
+<input type="text" name="u_nick" maxlength="20" class="eforo_formulario" /><br />
+<b>Contraseña:</b><br />
+<input type="password" name="u_contrasena" maxlength="10" class="eforo_formulario" /><br />
+<b>Confirmar contraseña:</b><br />
+<input type="password" name="u_contrasena_c" maxlength="10" class="eforo_formulario" /><br />
+<b>Email:</b><br />
+<input type="text" name="u_email" maxlength="40" class="eforo_formulario" /><br />
+<b>Sexo:</b><br />
+<select name="u_sexo" class="eforo_formulario">
+<option value="0">Masculino</option>
+<option value="1">Femenino</option>
+</select><br /><br />
+<input type="submit" name="enviar" value="Registrar Nuevo Usuario" class="eforo_formulario" />
+</form>
+[/blq modo_nuevo_usuario]
+[blq modo_rec_contrasena]
+<script type="text/javascript">
+function comprobar(a) {
+	if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})$/.test(a.u_email.value)) {
+		alert('Debes poner un email válido.') ;
+		return false ;
+	}
+}
+</script>
+<p><a href="javascript:history.back()" class="eforo_enlace">» Regresar</a>
+<p><b>Recuperar contraseña</b>
+<p>Para recuperar tus datos debes escribir el email
+con el que te registraste. Debido a que la contraseña se guarda encriptada no hay forma de recuperarla por lo que se te enviara una
+nueva, más tarde puedes cambiarla desde tu perfil.
+<p>
+<form method="post" action="forousuariopro.php?que=contrasena" onsubmit="return comprobar(this)">
+<input type="text" name="u_email" size="25" maxlength="40" class="eforo_formulario" /><br /><br />
+<input type="submit" value="Recuperar Contraseña" class="eforo_formulario" />
+</form>
+[/blq modo_rec_contrasena]
+[blq modo_perfil]
+<p><a href="{modo_perfil.url_regresar}" class="eforo_enlace">» Regresar</a></p>
+<p><b>Editar perfil</b></p>
+<p>En esta sección puedes editar tu perfil, el avatar no debe pesar más de <b>{modo_perfil.avatar_tamano} KB</b> y debe medir entre
+<b>{modo_perfil.avatar_largo}</b> x <b>{modo_perfil.avatar_ancho}</b> pixeles.</p>
+<script type="text/javascript">
+function comprobar(a) {
+	if(a.u_nick.value == '') {
+		alert('Debes escribir un nick.') ;
+		return false ;
+	}
+	if(a.u_contrasena.value != '') {
+		if(a.u_contrasena.value.length < 8) {
+			alert('La contraseña debe contener por lo mínimo 8 caractéres.') ;
+			return false ;
+		}
+		if(a.u_contrasena.value != a.u_contrasena_c.value) {
+			alert('Las contraseñas no son correctas.') ;
+			return false ;
+		}
+	}
+	if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})$/.test(a.u_email.value)) {
+		alert('Debes poner un email válido.') ;
+		return false ;
+	}
+	if(a.u_descripcion.value.length > 255) {
+		alert('La descripción supera los 255 caractéres.') ;
+		return false ;
+	}
+}
+</script>
+<form method="post" action="forousuariopro.php?que=perfil" enctype="multipart/form-data" onsubmit="return comprobar(this)">
+<b>* Nick:</b><br />
+<input type="text" name="u_nick" maxlength="20" value="{modo_perfil.u_nick}" class="eforo_formulario" /><br />
+<b>Contraseña nueva:</b><br />
+<input type="password" name="u_contrasena" maxlength="20" onkeyup="if(value) u_contrasena_c.disabled = false" onblur="if(!value) u_contrasena_c.disabled = true" class="eforo_formulario" /><br />
+<b>Repite la contraseña:</b><br />
+<input type="password" name="u_contrasena_c" maxlength="20" class="eforo_formulario" disabled="disabled" /><br />
+<b>* Email:</b><br />
+<input type="text" name="u_email" maxlength="40" value="{modo_perfil.u_email}" class="eforo_formulario" /><br />
+<b>País:</b><br />
+<input type="text" name="u_pais" maxlength="20" value="{modo_perfil.u_pais}" class="eforo_formulario" /><br />
+<b>Edad:</b><br />
+<input type="text" name="u_edad" maxlength="2" size="3" value="{modo_perfil.u_edad}" class="eforo_formulario" /><br />
+<b>Sexo:</b><br />
+<select name="u_sexo" class="eforo_formulario">
+<option value="0">Masculino</option>
+<option value="1"{modo_perfil.u_sexo_s}>Femenino</option>
+</select><br />
+<b>Descripción:</b><br />
+<textarea name="u_descripcion" cols="30" rows="5" class="eforo_formulario">{modo_perfil.u_descripcion}</textarea><br />
+<b>Web:</b><br />
+<input type="text" name="u_web" maxlength="100" size="30" value="{modo_perfil.u_web}" class="eforo_formulario" /><br />
+<b>Firma:</b><br />
+<textarea name="u_firma" cols="30" rows="5" class="eforo_formulario">{modo_perfil.u_firma}</textarea><br />
+<b>Zona horaria GMT:</b><br />
+<input type="text" name="u_gmt" maxlength="2" size="3" value="{modo_perfil.u_gmt}" class="eforo_formulario" />
+<select name="u_gmt_lista" onchange="u_gmt.value = value" class="eforo_formulario">
+<option value="-12">(GMT-12) Eniwetok, Kwajalein
+<option value="-11">(GMT-11) Midway, Samoa
+<option value="-10">(GMT-10) Hawaii
+<option value="-9">(GMT-9) Alaska
+<option value="-8">(GMT-8) Tijuana, Pacific Time (USA)
+<option value="-7">(GMT-7) Arizona, Mountain Time (USA)
+<option value="-6">(GMT-6) Mexico (D.F.), Central Time (USA)
+<option value="-5">(GMT-5) New York, Eastern Time (USA)
+<option value="-4">(GMT-4) Caracas, Atlantic Time (Canada)
+<option value="-3">(GMT-3) Brasilia, Buenos Aires
+<option value="-2">(GMT-2) Mid-Atlantic
+<option value="-1">(GMT-1) Azores, Cabo Verde
+<option value="0" selected="selected">(GMT 0) Dublin, Lisboa, Londres
+<option value="1">(GMT+1) Amsterdam, Madrid, Paris
+<option value="2">(GMT+2) Atenas, Estambul, Israel
+<option value="3">(GMT+3) Bagdad, Kuwait, Riyad, Moscu
+<option value="4">(GMT+4) Abu Dhabi, Baku, Tbilisi
+<option value="5">(GMT+5) Islamabad, Karachi
+<option value="6">(GMT+6) Almaty, Dhaka, Colombo
+<option value="7">(GMT+7) Bangkok, Hanoi, Yakarta
+<option value="8">(GMT+8) Beijing, Hong Kong, Singapur
+<option value="9">(GMT+9) Tokyo, Seul
+<option value="10">(GMT+10) Melbourne, Sydney
+<option value="11">(GMT+11) Solomon, Nueva Caledonia
+<option value="12">(GMT+12) Auckland, Wellington, Fiji
+</select><br />
+<b>Avatar:</b><br />
+<input type="file" name="u_archivo" class="eforo_formulario" /><br />
+[blq mostrar_avatar]
+<b>Avatar actual:</b><br />
+<img src="eforo_imagenes/avatares/{modo_perfil.mostrar_avatar.id}.{modo_perfil.mostrar_avatar.ext}" alt="{modo_perfil.mostrar_avatar.alt}" /><br />
+<input type="checkbox" name="borrar" value="1" id="borrar" /><label for="borrar">Borrar el avatar</label><br />
+[/blq mostrar_avatar]
+<br />
+<input type="submit" name="enviar" value="Editar Perfil" class="eforo_formulario" />
+</form>
+[/blq modo_perfil]
+</td>
+</tr>
+</table>

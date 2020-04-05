@@ -1,0 +1,72 @@
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<tr>
+<td colspan="2" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Mensajes privados</div></td>
+</tr>
+<tr>
+<td colspan="2" valign="top" class="eforo_tabla_defecto">
+<p><a href="{url_regresar}" class="eforo_enlace">» Regresar</a></p>
+Mensajes: <b>{total_res}/{max_privados}</b>
+<table width="100" cellpadding="0" cellspacing="0" style="border: #000000 1px solid ; background-color: #ffffff">
+<tr>
+<td>
+<table width="{barra_porcentaje}%" style="background-color: {barra_color}"><tr><td></td></tr></table>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+maximo = 1024 ;
+function caracteres(a) {
+	if(a.value.length > maximo) {
+		a.value = a.value.substring(0,maximo) ;
+	}
+	else {
+		document.p_formulario.p_contador.value = maximo - a.value.length ;
+	}
+}
+function comprobar(a) {
+	if(a.p_destinatario.value == '') {
+		alert('Debes escribir un destinatario.') ;
+		return false ;
+	}
+	if(a.p_mensaje.value == '') {
+		alert('Debes escribir un mensaje.') ;
+		return false ;
+	}
+}
+</script>
+<p><b>Enviar mensaje</b></p>
+<form name="p_formulario" method="post" action="{url_privados}" onsubmit="return comprobar(this)" style="display: inline">
+<b>Destinatario:</b><br />
+<input type="text" name="p_destinatario" value="{p_destinatario}" maxlength="20" size="15" class="eforo_formulario" /><br />
+<b>Mensaje:</b><br />
+<textarea name="p_mensaje" cols="30" rows="5" onkeyup="caracteres(this)" class="eforo_formulario">{p_mensaje}</textarea><br />
+<input type="text" name="p_contador" size="5" class="eforo_formulario" /><br /><br />
+<input type="submit" name="enviar" value="Enviar Mensaje" class="eforo_formulario" />
+</form>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="eforo_tabla_defecto">{paginas}</td>
+</tr>
+[blq mensaje]
+<tr>
+<td width="20%" valign="top" class="eforo_tabla_mensaje_{mensaje.estilo_num}"><a href="{mensaje.url_remitente}" target="_blank" class="eforo_enlace">{mensaje.remitente}</a>
+[blq avatar]
+<br /><br />
+<img src="eforo_imagenes/avatares/{mensaje.avatar.id}.{mensaje.avatar.ext}" alt="{mensaje.avatar.alt}" />
+[/blq avatar]
+</td>
+<td width="80%" valign="top" class="eforo_tabla_mensaje_{mensaje.estilo_num}"><b>Fecha:</b> {mensaje.fecha}<hr class="separador" />{mensaje.contenido}</td>
+</tr>
+<tr>
+<td class="eforo_tabla_mensaje_{mensaje.estilo_num}">&nbsp;</td>
+<td class="eforo_tabla_mensaje_{mensaje.estilo_num}">
+<input type="button" value="Responder" onclick="document.p_formulario.p_destinatario.value = '{mensaje.remitente}' ; location.href = '#' ; document.p_formulario.p_mensaje.focus()" class="eforo_formulario" />
+<input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar este mensaje?')) location='{mensaje.url_borrar}'" class="eforo_formulario" />
+</td>
+</tr>
+[/blq mensaje]
+<tr>
+<td colspan="2" class="eforo_tabla_defecto">{paginas}</td>
+</tr>
+</table>
