@@ -2,8 +2,8 @@
 /*
 *************************************************
 *** eForo v3.1
-*** Creado por: Electros en 2006
-*** Sitio web: www.13node.com
+*** Creado por: Electros en 2004-2006
+*** Sitio web: https://electros.dev
 *** Licencia: GNU General Public License
 *************************************************
 

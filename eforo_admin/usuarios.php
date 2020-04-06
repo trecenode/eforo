@@ -3,7 +3,7 @@
 *************************************************
 *** eForo v3.0
 *** Creado por: Electros <electros@electros.net>
-*** Sitio web: www.13node.com
+*** Sitio web: https://electros.dev
 *** Licencia: GNU General Public License
 *************************************************
 
