@@ -1,9 +1,9 @@
-# Eforo 4.0
+# Eforo 4.0 - 2020
 La idea es rehacer el eforo creado por Electros.net hace más de 15 años.
 
+Team: [Luis Orozco](https://github.com/luisorozcoo) , [Danilo Ulloa](https://github.com/trecenode)
 
-# Indice
-Léeme - eForo v3.1
+# eForo v3.1 2004-2006
 
 * Antes de comenzar
 * Instalación típica
