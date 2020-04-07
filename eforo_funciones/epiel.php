@@ -104,7 +104,13 @@ class ePiel {
 			elseif(strpos($lineas[$i],'[/blq ') !== false && preg_match('/\[\/blq ([\w_]+)\]/',$lineas[$i],$a)) {
 				$lineas[$i] = '}' ;
 				# Se quita el bloque actual a la variable $bloques
-				$bloques = preg_replace($a[1].'\.$','',$bloques) ;
+				
+				$tmp = explode(".",$bloques);
+
+				unset($tmp[0]);
+				//$bloques = preg_replace($a[1].'\.$','',$bloques) ;
+				$bloques = join(".",$tmp);
+				
 			}
 			else {
 				$lineas[$i] = '$resultado .= \''.$lineas[$i].'\'."\n" ;' ;

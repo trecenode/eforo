@@ -18,6 +18,8 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 
+
+error_reporting(E_ALL);
 ob_start() ;
 require 'foroconfig.php' ;
 require 'eforo_funciones/quitar.php' ;
@@ -45,9 +47,9 @@ switch($_GET['que']) {
 			if(mysqli_num_rows($con)) {
 				$datos = mysqli_fetch_row($con) ;
 				if($datos[1] == $contrasena) {
-					setcookie($c[0],$datos[0],date()+604800) ;
-					setcookie($c[1],$nick,date()+604800) ;
-					setcookie($c[2],$contrasena,date()+604800) ;
+					setcookie($c[0],$datos[0],time()+604800) ;
+					setcookie($c[1],$nick,time()+604800) ;
+					setcookie($c[2],$contrasena,time()+604800) ;
 					if(!empty($_POST['url_regresar'])) {
 						header('location: '.$_POST['url_regresar']) ;
 					}
@@ -155,7 +157,7 @@ switch($_GET['que']) {
 			}
 			else {
 				$contrasena = md5(md5(quitar($_POST['u_contrasena'],1))) ;
-				$conectar->query("insert into $tabla_usuarios (fecha_registrado,nick,contrasena,email,sexo,ip,rango,fecha_conectado) values ('$fecha','$nick','$contrasena','$email','$sexo','{$_SERVER['REMOTE_ADDR']}','1','$fecha')") ;
+				$conectar->query("insert into $tabla_usuarios (fecha_registrado,nick,contrasena,email,sexo,ip,rango,fecha_conectado) values ($fecha,'$nick','$contrasena','$email','$sexo','{$_SERVER['REMOTE_ADDR']}','1',$fecha)") ;
 				$aviso_titulo = 'Bienvenid@ '.$nick ;
 				$aviso_mensaje =
 				"<p>Ya eres miembro de este foro, ahora podr�s tener tu propio perfil de usuario, escribir mensajes con tu nick, editar y borrar tus mensajes
@@ -201,7 +203,7 @@ puedes cambiarla en cualquier momento en tu perfil. Para entrar al foro haz clic
 " ;
 				mail($_POST['u_email'],"{$conf['foro_titulo']} � Recuperaci�n de contrase�a",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html") ;
 				$contrasena = md5(md5($contrasena)) ;
-				$conectar->query("update $tabla_usuarios set contrasena='$contrasena',fecha_rec_contrasena='$fecha' where id='$datos[0]'") ;
+				$conectar->query("update $tabla_usuarios set contrasena='$contrasena',fecha_rec_contrasena=$fecha where id='$datos[0]'") ;
 				aviso('Datos enviados',"<p>Los datos han sido enviados al email indicado.</p><p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a></p>") ;
 			}
 			else {

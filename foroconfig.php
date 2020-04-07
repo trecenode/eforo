@@ -69,7 +69,7 @@ require 'config.php' ;
 # Con esto se evitar�n ataques de SQL Injection y otros parecidos.
 unset($error) ;
 if(!empty($_GET['foro'])) {
-	if(preg_match('^[0-9]+$',$_GET['foro'])) {
+	if(preg_match('/^([0-9]+)$/i',$_GET['foro'])) {
 		# --> Comprueba si existe el subforo
 		$con = $conectar->query("select count(id) from eforo_foros where id='{$_GET['foro']}'") ;
 		if(!mysqli_result($con,0,0)) $error = 'No existe el subforo.' ;
@@ -80,7 +80,7 @@ if(!empty($_GET['foro'])) {
 	}
 }
 if(!empty($_GET['tema'])) {
-	if(preg_match('^[0-9]+$',$_GET['tema'])) {
+	if(preg_match('/^[0-9]+$/i',$_GET['tema'])) {
 		# --> Comprueba si existe el tema
 		$con = $conectar->query("select count(id) from eforo_mensajes where id_foro='{$_GET['foro']}' and id='{$_GET['tema']}'") ;
 		if(!mysqli_result($con,0,0)) $error = 'No existe el tema.' ;
@@ -176,9 +176,11 @@ function usuario($a) {
 # con respecto a la fecha GMT
 $actualDate = date_create();
 $fecha =  "NOW()"; //date_timestamp_get($actualDate);
+$fechaTime = time();
 # * Fecha (Formato: 1 Ene 2004 12:00 AM)
 function fecha($a) {
-	$fecha_actual = $GLOBALS['fecha'] - $a ;
+	$a = strtotime($a);
+	$fecha_actual = $GLOBALS['fechaTime'] - $a ;
 	switch(true) {
 		# --> De 0 a 59 minutos
 		case $fecha_actual > 0 && $fecha_actual < 3600 :
@@ -201,7 +203,7 @@ function fecha($a) {
 if(empty($_SERVER['HTTP_REFERER'])) $_SERVER['HTTP_REFERER'] = "$u[0]foro$u[1]" ;
 # * Se obtienen los usuarios en l�nea en el foro
 $tiempo_limite = 600 ; # <-- Tiempo en segundos en el cu�l se considerar� al usuario en l�nea
-$fecha_limite = $fecha - $tiempo_limite ;
+$fecha_limite = $fechaTime - $tiempo_limite ;
 # --> Se eliminan los usuarios que superaron el tiempo l�mite
 $conectar->query("delete from eforo_enlinea where fecha<'$fecha_limite'") ;
 # --> Si es un usuario registrado se guarda su ID

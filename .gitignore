@@ -12,3 +12,4 @@ config.php
 .env
 package-lock.json
 package.json
+.vscode/sftp.json

@@ -33,8 +33,9 @@ if(!empty($_GET['foro'])) {
 # * Se comprueba si el usuario tiene el permiso suficiente para realizar una determinada acci�n
 if(!$es_moderador) {
 	function permiso($permiso) {
+		$conectar = &$GLOBALS["conectar"];
 		$con = $conectar->query("select $permiso from eforo_foros where id='{$_GET['foro']}'") ;
-		$datos = mysql_fetch_array($con) ;
+		$datos = mysqli_fetch_assoc($con) ;
 		if($GLOBALS['usuario']['rango'] < $datos[$permiso]) aviso('Nivel m�nimo insuficiente','<p>No tienes suficiente nivel. Intenta iniciar sesi�n desde el men�.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
 		mysqli_free_result($con) ;
 	}

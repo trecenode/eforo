@@ -22,7 +22,7 @@ the Free Software Foundation; either version 2 of the License, or
 if($c_id) {
 	# Borrar mensajes del recordatorio (mensajes nuevos sin leer)
 	$max_tiempo = 86400 ; # <-- Tiempo en segundos durante el cu�l se recordar�n los mensajes (por defecto 24 horas)
-	$max_tiempo = $fecha - $max_tiempo ;
+	$max_tiempo = $fechaTime - $max_tiempo ;
 	$conectar->query("delete from eforo_recientes where fecha<'$max_tiempo'") ;
 	# Guardar los mensajes nuevos en el recordatorio
 	$con = $conectar->query("select id from eforo_foros order by id asc") ;

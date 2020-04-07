@@ -96,8 +96,10 @@ if(isset($_POST['enviar'])) {
 		case 1 :
 			$_POST['m_tema'] = quitar($_POST['m_tema'],1) ;
 			$_POST['m_mensaje'] = quitar($_POST['m_mensaje'],1) ;
-			$conectar->query("insert into eforo_mensajes (id_foro,fecha,id_usuario,tema,mensaje,o_caretos,o_codigo,o_firma,o_importante,o_notificacion,fecha_ultimo) values ('{$_GET['foro']}','$fecha','$c_id','{$_POST['m_tema']}','{$_POST['m_mensaje']}','{$_POST['m_caretos']}','{$_POST['m_codigo']}','{$_POST['m_firma']}','{$_POST['m_importante']}','{$_POST['m_notificacion']}','$fecha')") ;
-			$id_ultimo = mysql_insert_id() ;
+
+			echo("insert into eforo_mensajes (id_foro,fecha,id_usuario,tema,mensaje,o_caretos,o_codigo,o_firma,o_importante,o_notificacion,fecha_ultimo) values ('{$_GET['foro']}',$fecha,'$c_id','{$_POST['m_tema']}','{$_POST['m_mensaje']}','{$_POST['m_caretos']}','{$_POST['m_codigo']}','{$_POST['m_firma']}','{$_POST['m_importante']}','{$_POST['m_notificacion']}',$fecha)");
+			$conectar->query("insert into eforo_mensajes (id_foro,fecha,id_usuario,tema,mensaje,o_caretos,o_codigo,o_firma,o_importante,o_notificacion,fecha_ultimo) values ('{$_GET['foro']}',$fecha,'$c_id','{$_POST['m_tema']}','{$_POST['m_mensaje']}','{$_POST['m_caretos']}','{$_POST['m_codigo']}','{$_POST['m_firma']}','{$_POST['m_importante']}','{$_POST['m_notificacion']}',$fecha)") ;
+			$id_ultimo = mysqli_insert_id($conectar) ;
 			$conectar->query("update eforo_mensajes set id_tema='$id_ultimo' where id='$id_ultimo'") ;
 			$conectar->query("update eforo_foros set num_temas=num_temas+1,num_mensajes=num_mensajes+1 where id='{$_GET['foro']}'") ;
 			if($c_id) $conectar->query("update $tabla_usuarios set mensajes=mensajes+1 where id='$c_id'") ;
@@ -107,7 +109,7 @@ if(isset($_POST['enviar'])) {
 		case 2 :
 			if(!empty($_POST['m_tema'])) $_POST['m_tema'] = quitar($_POST['m_tema']) ;
 			$_POST['m_mensaje'] = quitar($_POST['m_mensaje'],1) ;
-			$conectar->query("insert into eforo_mensajes (id_foro,id_tema,fecha,id_usuario,mensaje,o_caretos,o_codigo,o_firma,o_importante) values ('{$_GET['foro']}','{$_GET['tema']}','$fecha','$c_id','{$_POST['m_mensaje']}','{$_POST['m_caretos']}','{$_POST['m_codigo']}','{$_POST['m_firma']}','{$_POST['m_importante']}')") ;
+			$conectar->query("insert into eforo_mensajes (id_foro,id_tema,fecha,id_usuario,mensaje,o_caretos,o_codigo,o_firma,o_importante) values ('{$_GET['foro']}','{$_GET['tema']}',$fecha,'$c_id','{$_POST['m_mensaje']}','{$_POST['m_caretos']}','{$_POST['m_codigo']}','{$_POST['m_firma']}','{$_POST['m_importante']}')") ;
 			$id_ultimo = mysql_insert_id() ;
 			$conectar->query("update eforo_foros set num_mensajes=num_mensajes+1 where id='{$_GET['foro']}'") ;
 			$conectar->query("update eforo_mensajes set num_respuestas=num_respuestas+1,fecha_ultimo='$fecha' where id='{$_GET['tema']}'") ;
