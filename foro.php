@@ -72,7 +72,7 @@ while($cat = $buscar->fetch_assoc()) {
 			$ult = $busUlt->fetch_assoc();
 			if($ult['id_usuario']) {
 				$autor = ($autor = usuario($ult['id_usuario']))
-					? "<a href=\"{$u[0]}forousuarios{$u[1]}{$u[2]}u{$u[4]}{$ult['id_usuario']}{$u[5]}\" class=\"eforo_enlace\"{>$autor}</a>"
+					? "<a href=\"{$u[0]}forousuarios{$u[1]}{$u[2]}u{$u[4]}{$ult['id_usuario']}{$u[5]}\" class=\"eforo_enlace\">{$autor}</a>"
 					: '<i>Eliminad@</i>';
 			}
 			else {
