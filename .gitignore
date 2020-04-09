@@ -8,11 +8,13 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-config.php
 .env
 package-lock.json
 package.json
 .vscode/sftp.json
+
+# PHP Files
+config.php
 
 # KDE Linux
 .directory
