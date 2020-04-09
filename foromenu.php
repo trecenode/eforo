@@ -25,7 +25,7 @@ $ePiel->cargar([
 $ePiel->variable('subforo_indice_url', $u[0].'foro'.$u[1].$u[5]);
 
 // Limpiar el ID del foro
-$idForo = intval($_GET['foro']);
+$idForo = @intval($_GET['foro']);
 
 // Menú de navegación del foro
 if(!empty($idForo)) {
