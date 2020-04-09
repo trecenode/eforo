@@ -20,11 +20,12 @@ the Free Software Foundation; either version 2 of the License, or
 */
 
 // Conexión a la base de datos
-$config = [];
-$config[0] = '13node.me'; // Generalmente "localhost", una URL o una IP
-$config[1] = ''; // Usuario
-$config[2] = ''; // Contraseña
-$config[3] = 'eforo'; // Base de datos
+$config = [
+	'13node.me',	// Generalmente "localhost", una URL o una IP
+	'',				// Usuario
+	'',				// Contraseña
+	'eforo'			// Base de datos
+];
 
 $conectar = new mysqli($config[0], $config[1], $config[2], $config[3]);
 
