@@ -19,7 +19,7 @@ the Free Software Foundation; either version 2 of the License, or
 
 */
 
-require 'config.php' ;
+require 'config.php';
 
 // Limpiar ID
 $id = intval($_GET['id']);
