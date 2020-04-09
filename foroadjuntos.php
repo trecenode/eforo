@@ -56,7 +56,7 @@ else {
 		<a href="{$_SERVER['HTTP_REFERER']}" class="eforo">Regresar al mensaje</a>
 	</p>
 	EOT;
-	exit('<p>El archivo adjunto no se subi� correctamente.</p><p><a href="'.$_SERVER['HTTP_REFERER'].'" class="eforo">� Regresar al mensaje</a></p>') ;
+	exit;
 }
 
 $conectar->close();
