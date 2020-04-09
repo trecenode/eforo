@@ -13,3 +13,6 @@ config.php
 package-lock.json
 package.json
 .vscode/sftp.json
+
+# KDE Linux
+.directory
