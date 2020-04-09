@@ -72,12 +72,12 @@ if($conf['permitir_codigo']) {
 			$texto = str_replace($a,$b,$texto) ;
 		}
 		# --> Reemplaza etiquetas usando tambi�n expresiones regulares
-		$texto = preg_replace('/\[img\](.+)\[\/img\]/U','<img src="$1" border="0" alt="Imagen obtenida de $1" />',$texto) ;
+		$texto = preg_replace('/\[img\](.+)\[\/img\]/i','<img src="$1" border="0" alt="Imagen obtenida de $1" />',$texto) ;
 		$texto = preg_replace('/\[color=(#?[\w]+)\]/','<span style="color: $1">',$texto) ;
 		$texto = str_replace('[/color]','</span>',$texto) ;
-		$texto = preg_replace('/\[url\](.+)\[\/url\]/eU','url(\'$1\',\'$1\')',$texto) ;
-		$texto = preg_replace('/\[url=(.+)\](.+)\[\/url\]/eU','url(\'$1\',\'$2\')',$texto) ;
-		$texto = preg_replace('/\[email\](.+)\[\/email\]/U','<a href="mailto:$1">$1</a>',$texto) ;
+		$texto = preg_replace('/\[url\](.+)\[\/url\]/i','url(\'$1\',\'$1\')',$texto) ;
+		$texto = preg_replace('/\[url=(.+)\](.+)\[\/url\]/i','url(\'$1\',\'$2\')',$texto) ;
+		$texto = preg_replace('/\[email\](.+)\[\/email\]/i','<a href="mailto:$1">$1</a>',$texto) ;
 		$texto = preg_replace('/\[citar autor=(.+)\]/','<div class="eforo_tabla_codigo">Escrito originalmente por: <b>$1</b><hr class="separador" />',$texto) ;
 		$texto = str_replace('[/citar]','</div>',$texto) ;
 		return $texto ;
