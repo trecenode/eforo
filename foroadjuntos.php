@@ -31,7 +31,7 @@ if(empty($id)) {
 		<p>
 			<a href="{$_SERVER['HTTP_REFERER']}" class="eforo">Regresar al mensaje</a>
 		</p>
-	EOT;
+EOT;
 	exit;
 }
 
@@ -51,11 +51,11 @@ if(is_file($archivo)) {
 }
 else {
 	echo <<<EOT
-	<p>El archivo adjunto no se subió correctamente.</p>
-	<p>
-		<a href="{$_SERVER['HTTP_REFERER']}" class="eforo">Regresar al mensaje</a>
-	</p>
-	EOT;
+		<p>El archivo adjunto no se subió correctamente.</p>
+		<p>
+			<a href="{$_SERVER['HTTP_REFERER']}" class="eforo">Regresar al mensaje</a>
+		</p>
+EOT;
 	exit;
 }
 
