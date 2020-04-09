@@ -1,5 +1,5 @@
 <?php
-/*
+/**
 *************************************************
 *** eForo v3.1
 *** Creado por: Electros en 2006
@@ -16,21 +16,21 @@ eForo is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
+
 */
 
-# * Conexión a la base de datos
-$config = array() ;
-$config[0] = '13node.me' ; # Generalmente "localhost", una URL o una IP
-$config[1] = '' ; # Usuario
-$config[2] = '' ; # Contraseña
-$config[3] = 'eforo' ; # Nombre
+// Conexión a la base de datos
+$config = [];
+$config[0] = '13node.me'; // Generalmente "localhost", una URL o una IP
+$config[1] = ''; // Usuario
+$config[2] = ''; // Contraseña
+$config[3] = 'eforo'; // Base de datos
 
-$conectar = new mysqli($config[0],$config[1],$config[2],$config[3]) ;
+$conectar = new mysqli($config[0], $config[1], $config[2], $config[3]);
 
-if ($conectar->connect_errno) {
-    echo "<br>Error: Fallo al conectarse a MySQL debido a: \n";
-    echo "<br><br>Errno: " . $conectar->connect_errno . "\n";
-    echo "<br>Error: " . $conectar->connect_error . "\n";
-    exit;
+if($conectar->connect_errno) {
+	die('Error MySQLi: '.$conectar->connect_error);
 }
-?>
+if(!$conectar->set_charset('utf8')) {
+	die('Error MySQLi: '.$conectar->error);
+}
