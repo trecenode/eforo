@@ -50,7 +50,7 @@ while($cat = $buscar->fetch_assoc()) {
 	$ePiel->variables_bloque('categoria', [
 		'titulo' => $cat['categoria']
 	]);
-	$buscar2 = $conectar->query("SELECT `id`,`foro`,`descripcion`,`num_temas`,`num_mensajes` FROM `eforo_foros` WHERE `id_categoria`='{$datos['id']]' ORDER BY `orden` ASC");
+	$buscar2 = $conectar->query("SELECT `id`,`foro`,`descripcion`,`num_temas`,`num_mensajes` FROM `eforo_foros` WHERE `id_categoria`='{$datos['id']}' ORDER BY `orden` ASC");
 	$estilo_num = 1;
 	while($foros = $buscar2->fetch_assoc()) {
 		// Buscar mensajes en el recordatorio (sólo usuarios)
@@ -88,7 +88,7 @@ while($cat = $buscar->fetch_assoc()) {
 		$ePiel->variables_bloque('categoria.subforo', [
 			'ind_imagen'	=> $conf['plantilla'].'imagenes/'.$ind_imagen,
 			'ind_mensaje'	=> $ind_mensaje,
-			'titulo_url'	=> $u[0].'forotemas'.$u[1].$u[2].'foro'.$u[4].$foros['id']}.$u[5],
+			'titulo_url'	=> $u[0].'forotemas'.$u[1].$u[2].'foro'.$u[4].$foros['id'].$u[5],
 			'titulo'		=> $foros['foro'],
 			'descripcion'	=> $foros['descripcion'],
 			'ult_mensaje'	=> $ult_mensaje,
