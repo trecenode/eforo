@@ -28,6 +28,6 @@ no perderás información y podrás reintentar la actualización sin problemas. 
 el parche para esta versión y posteriormente el parche que le sigue que es el de la versión v3.0.</p>
 <p><b>Parches de actualización</b></p>
 <p><a href="eforo_parches/v.2.2.x.php">v.2.2.x</a> - Para actualizar desde las versiones v.2.2 y v.2.2.1.</p>
-<p><a href="eforo_parches/v3.0.php">v3.0</a> - Para actualizar desde la versi�n v3.0.</p>
+<p><a href="eforo_parches/v3.0.php">v3.0</a> - Para actualizar desde la versión v3.0.</p>
 </body>
 </html>

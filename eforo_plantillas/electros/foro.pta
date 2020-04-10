@@ -21,25 +21,25 @@
 [/blq categoria]
 <tr>
 <td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Categoria</div></td>
-<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Ultimo mensaje</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Ãšltimo mensaje</div></td>
 <td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Tem</div></td>
 <td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Men</div></td>
 </tr>
 </table>
 <table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
 <tr>
-<td colspan="2" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Estadísticas</div></td>
+<td colspan="2" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Estadï¿½sticas</div></td>
 </tr>
 <tr>
 <td width="50%" valign="top" class="eforo_tabla_defecto">
-Nos visitan <b>{usuarios_total}</b> usuarios: <b>{usuarios_registrados}</b> registrados y <b>{usuarios_anonimos}</b> anónimos
+Nos visitan <b>{usuarios_total}</b> usuarios: <b>{usuarios_registrados}</b> registrados y <b>{usuarios_anonimos}</b> anÃ³nimos
 <br /><br />
 {usuarios_reg_en_linea}
 </td>
 <td width="50%" valign="top" class="eforo_tabla_defecto">
 Total de usuarios: <b>{usuarios_reg_total}</b><br />
 Ultimo registrado: <b>{usuarios_reg_ultimo}</b><br />
-<a href="{usuarios_lista}" class="eforo_enlace">» Lista de usuarios</a>
+<a href="{usuarios_lista}" class="eforo_enlace">ï¿½ Lista de usuarios</a>
 </td>
 </tr>
 </table>

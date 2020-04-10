@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -179,7 +179,7 @@ foreach($categorias as $categoria_id => $categoria_nom) {
 </center>
 </td>
 <td class="eforo_tabla_titulo"><input type="text" name="cat_<?=$categoria_id?>" value="<?=$categoria_nom?>" size="30" maxlength="100" class="eforo_formulario"></td>
-<td class="eforo_tabla_titulo"><center><input type="button" value="Borrar" onclick="if(confirm('�Deseas borrar la categor�a?')) location = 'foros.php?id=<?=$categoria_id?>&borrar=1'" class="eforo_formulario"></center></td>
+<td class="eforo_tabla_titulo"><center><input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar la categor�a?')) location = 'foros.php?id=<?=$categoria_id?>&borrar=1'" class="eforo_formulario"></center></td>
 </tr>
 <?
 	$con = $conectar->query("select * from eforo_foros where id_categoria='$categoria_id' order by orden asc") ;
@@ -206,7 +206,7 @@ foreach($categorias as $categoria_id => $categoria_nom) {
 <br><br>
 <textarea name="des_<?=$datos['id']?>" cols="30" rows="3" class="eforo_formulario"><?=$datos['descripcion']?></textarea>
 </td>
-<td class="eforo_tabla_defecto"><center><input type="button" value="Borrar" onclick="if(confirm('�Deseas borrar el foro y todos sus mensajes?')) location='foros.php?id=<?=$datos['id']?>&borrar=2'" class="eforo_formulario"></center></td>
+<td class="eforo_tabla_defecto"><center><input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar el foro y todos sus mensajes?')) location='foros.php?id=<?=$datos['id']?>&borrar=2'" class="eforo_formulario"></center></td>
 </tr>
 <?
 	}

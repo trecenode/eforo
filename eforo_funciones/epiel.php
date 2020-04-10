@@ -8,7 +8,7 @@
 *************************************************
 
 ePiel - Sistema de plantillas para separar la programaci�n del dise�o
-Copyright � 2006 Daniel Osorio "Electros"
+Copyright © 2006 Daniel Osorio "Electros"
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ class ePiel {
 			$this->plantillas[$plantilla_nom] = $plantilla_arc ;
 		}
 	}
-	# * Almacenamos las variables que no est�n dentro de bloques
+	# * Almacenamos las variables que no están dentro de bloques
 	function variable($variable,$valor) {
 		$this->variables[$variable] = $valor ;
 	}
@@ -77,7 +77,7 @@ class ePiel {
 		# Reemplazar \ con \\ y ' con \' (para que no provoquen error al aplicar eval())
 		$contenido = str_replace('\\','\\\\',$contenido) ;
 		$contenido = str_replace('\'','\\\'',$contenido) ;
-		# Sustituimos las variables que no est�n dentro de bloques
+		# Sustituimos las variables que no están dentro de bloques
 		$contenido = preg_replace('/{([\w_]+)}/','\'.(isset($this->variables[\'$1\']) ? $this->variables[\'$1\'] : \'\').\'',$contenido) ;
 		# Sustituimos las variables que se encuentran dentro de bloques
 		preg_match_all('/{(([\w_]+\.)+)([\w_]+)}/U',$contenido,$a) ;
@@ -90,7 +90,7 @@ class ePiel {
 		$lineas = explode("\n",$contenido) ;
 		$total = count($lineas) ;
 		for($i = 0 ; $i < $total ; $i++) {
-			# Esta variable servir� para identificar si existen bloques anidados
+			# Esta variable Servirápara identificar si existen bloques anidados
 			# Ejemplo: 'bloque1.bloque2.bloque3. ... .bloque_final.'
 			static $bloques = '' ;
 			$lineas[$i] = rtrim($lineas[$i]) ;

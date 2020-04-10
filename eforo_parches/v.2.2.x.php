@@ -1,6 +1,6 @@
 <?php
 // *** Convertir de v.2.2.x a v3.0
-// Este parche actualizar� la base de datos de tu antiguo foro para que sea compatible con la nueva versi�n.
+// Este parche actualizar� la base de datos de tu antiguo foro para que sea compatible con la nueva versión.
 include '../config.php' ;
 ?>
 <style type="text/css">
@@ -19,18 +19,18 @@ if(!isset($_POST['enviar'])) {
 <p align="center"><b>Actualizaci�n de v.2.2.x a v3.0</b>
 <p><span style="color: #aa0000"><b>Advertencia:</b></span> Se recomienda tener un respaldo reciente de la base de datos antes de comenzar con la actualizaci�n ya que algunos de los cambios efectuados no tendr�n forma de revertirse.
 <p><b>� Compatibilidad con sistema "Registro de usuarios"</b>
-<p>Si usaste alguna vez eForo en conjunto con el sistema "Registro de usuarios", deber�s indicar el nombre de la tabla en donde se almacenan tus usuarios, de otra forma d�jalo como est�.
+<p>Si usaste alguna vez eForo en conjunto con el sistema "Registro de usuarios", deber�s indicar el nombre de la tabla en donde se almacenan tus usuarios, de otra forma d�jalo como está.
 <p><b>Tabla de usuarios:</b><br>
 <input type="text" name="tabla_usuarios" value="eforo_usuarios"><br>
-<p><b>� Encriptaci�n de contrase�as con md5()</b>
-<p>Esta versi�n de eForo utiliza el sistema de usuarios con contrase�as encriptadas en md5(), as� que deber�s indicar si deseas que el parche encripte
-las contrase�as.
-<p>Si las contrase�as ya est�n encriptadas se crear� una nueva encriptaci�n la cu�l ser� irreversible, para evitar
-esto observa si tus contrase�as se componen de 32 caract�res entre ellos letras y n�meros, por ejemplo:
+<p><b>� Encriptaci�n de Contraseñas con md5()</b>
+<p>Esta versión de eForo utiliza el sistema de usuarios con Contraseñas encriptadas en md5(), as� que deber�s indicar si deseas que el parche encripte
+las Contraseñas.
+<p>Si las Contraseñas ya están encriptadas se crear� una nueva encriptaci�n la cu�l ser� irreversible, para evitar
+esto observa si tus Contraseñas se componen de 32 caract�res entre ellos letras y números, por ejemplo:
 8b87d55d6m32m2919811dib9slamn3ka.
 <p><b>Encriptar contrasenas en md5():</b><br>
 <input type="radio" name="contrasenas_md5" value="0" id="a" checked><label for="a">No</label> <input type="radio" name="contrasenas_md5" value="1" id="b"><label for="b">S�</label>
-<p>Por �ltimo debes escribir el nick del administrador del foro, una vez finalizada la actualizaci�n podr�s designar a m�s de un administrador.
+<p>Por �ltimo debes escribir el nick del administrador del foro, una vez finalizada la actualizaci�n podr�s designar a más de un administrador.
 <p><b>Nick del administrador:</b><br>
 <input type="text" name="administrador"><br><br>
 <center><input type="submit" name="enviar" value="Actualizar"></center>
@@ -221,7 +221,7 @@ foreach($codigo as $linea) {
 @$conectar->query($linea) ;
 }
 
-// * Conversi�n de contrase�as a md5()
+// * Conversión de Contraseñas a md5()
 if($_POST[contrasenas_md5]) {
 $conectar->query("update $_POST[tabla_usuarios] set contrasena=md5(md5(contrasena))") ;
 }
@@ -234,7 +234,7 @@ mysqli_free_result($con) ;
 ?>
 <p align="center"><b>Actualizaci�n de la base de datos completada</b>
 <p><b>Importante:</b> No te olvides de entrar al panel de control que se encuentra en el men� desplegable una vez que has iniciado sesi�n, deber�s llenar correctamente todos los campos y as� finalizar la actualizaci�n de eForo.
-<p><b>Notas adicionales:</b> El parche <b>sincronizar.php</b> comprueba si las estad�sticas de n�mero de temas y mensajes son correctos, esto es porque en anteriores versiones pudieron haberse corrompido las estad�sticas y estas muestren datos err�neos.
+<p><b>Notas adicionales:</b> El parche <b>sincronizar.php</b> comprueba si las estad�sticas de número de temas y mensajes son correctos, esto es porque en anteriores versiones pudieron haberse corrompido las estad�sticas y estas muestren datos err�neos.
 De cualquier forma el usarlo no afectar� ni corromper� la base de datos as� que puedes aplicarlo con toda confianza.
 <p>Para empezar a usar eForo da click en el siguiente bot�n.
 <p>

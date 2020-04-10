@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -53,14 +53,14 @@ else {
 </tr>
 <tr>
 <td class="eforo_tabla_defecto">
-<p>Esta sencilla pero �til funci�n permite recontar el n�mero de temas y mensajes en cada subforo, estas estad�sticas pudieran estar
+<p>Esta sencilla pero �til Función permite recontar el número de temas y mensajes en cada subforo, estas estad�sticas pudieran estar
 mal por las siguientes razones:</p>
 <ul>
 <li>Errores en versiones anteriores de eForo</li>
 <li>Informaci�n perdida al momento de hacer respaldos</li>
 <li>Modificaciones no contabilizadas debido a manipulaci�n directa de la base de datos</li>
 </ul>
-Puedes aplicar esta funci�n con toda confianza y sin riesgos de corromper tu informaci�n.<br /><br />
+Puedes aplicar esta Función con toda confianza y sin riesgos de corromper tu informaci�n.<br /><br />
 <div style="text-align: center"><input type="button" value="Sincronizar" onclick="location = 'sincronizador.php?sincronizar=1'" class="eforo_formulario" /></div>
 </td>
 </tr>

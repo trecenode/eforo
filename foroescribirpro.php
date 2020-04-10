@@ -7,14 +7,14 @@
 *** Licencia: GNU General Public License
 *************************************************
 
---- P�gina: foroescribirpro.php ---
+--- Página: foroescribirpro.php ---
 
 eForo - Una comunidad para que tus visitantes se comuniquen y se sientan parte de tu web
-Copyright � 2003-2005 Daniel Osorio "Electros"
+Copyright © 2003-2005 Daniel Osorio "Electros"
 
-Este programa es software libre, puedes redistribuirlo y/o modificarlo bajo los t�rminos
+Este programa es software libre, puedes redistribuirlo y/o modificarlo bajo los términos
 de la GNU General Public License publicados por la Free Software Foundation; desde la
-versi�n 2 de la licencia, o (si lo deseas) cualquiera m�s reciente.
+versión 2 de la licencia, o (si lo deseas) cualquiera más reciente.
 */
 
 require 'foroconfig.php' ;
@@ -25,7 +25,7 @@ $ePiel->cargar(array(
 'piedepagina' => $conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de moderaci�n � Mover',
+'titulo' => $conf['foro_titulo'].' � Panel de moderación � Mover',
 'estilo' => $conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -46,16 +46,16 @@ switch(true) {
 	default :
 		aviso('Error','No se ha escrito ning�n mensaje.',1) ;
 }
-# * Comprobar si el tema est� cerrado
+# * Comprobar si el tema está cerrado
 if($que != 1) {
 	$con = $conectar->query("select count(id) from eforo_mensajes where id='{$_GET['tema']}' and cerrado='1'") ;
-	if(mysqli_result($con,0,0)) aviso('Error','El tema est� cerrado y no se puede responder ni editar mensajes.',1) ;
+	if(mysqli_result($con,0,0)) aviso('Error','El tema está cerrado y no se puede responder ni editar mensajes.',1) ;
 }
 # * Comprobar permiso de usuario
 if(!$es_moderador) permiso($permiso) ;
-# * El mensaje se guardar� dependiendo de lo que se haya elegido (escribir, responder o editar el mensaje)
+# * El mensaje se guardará dependiendo de lo que se haya elegido (escribir, responder o editar el mensaje)
 if(isset($_POST['enviar'])) {
-	# Funci�n para adjuntar archivos a los mensajes
+	# Función para adjuntar archivos a los mensajes
 	if(!empty($_FILES['m_archivo'])) {
 		# --> Se comprueba el tama�o del archivo adjunto
 		$tamano_max = @ini_get('upload_max_filesize') ? str_replace('M','',ini_get('upload_max_filesize')) * 1024 : 2048 ;
@@ -63,20 +63,20 @@ if(isset($_POST['enviar'])) {
 		if(!$_FILES['m_archivo']['size'] || $_FILES['m_archivo']['size'] > ($conf['adjunto_tamano'] * 1024)) {
 			aviso('Error al subir el archivo','<p>El archivo debe ser menor de <b>'.$conf['adjunto_tamano'].' KB</b>.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
 		}
-		# --> Se comprueba si la extensi�n est� permitida
+		# --> Se comprueba si la extensi�n está permitida
 		preg_match('/(.+)\.([\w_]+)/i',$_FILES['m_archivo']['name'],$parte) ;
 		$nombre_archivo = $parte[1] ;
 		$extension_archivo = strtolower($parte[2]) ;
 		if(!in_array($extension_archivo,$conf['adjunto_ext'])) {
-			aviso('Error al subir el archivo','<p>La extensi�n <b>'.$extension_archivo.'</b> no est� permitida.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+			aviso('Error al subir el archivo','<p>La extensi�n <b>'.$extension_archivo.'</b> no está permitida.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
 		}
-		# --> Se comprueba el n�mero de caract�res en el nombre de archivo
+		# --> Se comprueba el número de caract�res en el nombre de archivo
 		if(strlen($nombre_archivo) > $conf['adjunto_nombre']) {
 			aviso('Error al subir el archivo','<p>El nombre de archivo debe ser menor de <b>'.$conf['adjunto_nombre'].'</b> caract�res.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
 		}
 		# --> Se guarda el nombre real del archivo en la base de datos
 		$conectar->query("insert into eforo_adjuntos (archivo) values ('{$_FILES['m_archivo']['name']}')") ;
-		# --> El archivo se guardar� con el n�mero del �ltimo registro en la base de datos
+		# --> El archivo se guardará con el número del �ltimo registro en la base de datos
 		$id_adjunto = mysql_insert_id() ;
 		move_uploaded_file($_FILES['m_archivo']['tmp_name'],"eforo_adjuntos/$id_adjunto.dat") ;
 	}
@@ -114,7 +114,7 @@ if(isset($_POST['enviar'])) {
 			$conectar->query("update eforo_foros set num_mensajes=num_mensajes+1 where id='{$_GET['foro']}'") ;
 			$conectar->query("update eforo_mensajes set num_respuestas=num_respuestas+1,fecha_ultimo='$fecha' where id='{$_GET['tema']}'") ;
 			if($c_id) $conectar->query("update $tabla_usuarios set mensajes=mensajes+1 where id='$c_id'") ;
-			# Obtener el n�mero de la �ltima p�gina
+			# Obtener el número de la última Página
 			$con = $conectar->query("select count(id) from eforo_mensajes where id_tema='{$_GET['tema']}'") ;
 			$ult_pagina = ceil(mysqli_result($con,0,0) / $conf['max_mensajes']) ;
 			mysqli_free_result($con) ;
@@ -155,12 +155,12 @@ a { color: #000000 ; font-weight: bold ; text-decoration: none }
 <p>Han respondido a tu mensaje <b>{$datos['tema']}</b>
 <p>Puedes visitarlo en la siguiente direcci�n:
 <p><a href=\"{$conf['foro_url']}$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[5]#$id_ultimo\" target=\"_blank\">{$conf['foro_url']}$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[5]#$id_ultimo</a>
-<p>No recibir�s m�s notificaciones hasta que visites tu mensaje. Para desactivar esta opci�n edita
+<p>No recibir�s más notificaciones hasta que visites tu mensaje. Para desactivar esta opci�n edita
 tu mensaje y desactiva la casilla <b>Notificar por email cuando haya respuestas</b>.
 </body>
 " ;
 				if(!@mail($datos2[1],"Saludos $datos2[0] han respondido a tu mensaje",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html")) {
-					aviso('Error','No se pudo enviar la notificaci�n. El servidor est� mal configurado o no soporta env�os de email a trav�s de SMTP.') ;
+					aviso('Error','No se pudo enviar la notificaci�n. El servidor está mal configurado o no soporta env�os de email a trav�s de SMTP.') ;
 				}
 				# --> Se desactivan la notificaciones hasta que el usuario revise su mensaje
 				$conectar->query("update eforo_mensajes set o_notificacion_email='0' where id='{$_GET['tema']}'") ;

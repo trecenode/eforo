@@ -4,7 +4,7 @@
 </tr>
 <tr>
 <td colspan="2" valign="top" class="eforo_tabla_defecto">
-<p><a href="{url_regresar}" class="eforo_enlace">» Regresar</a></p>
+<p><a href="{url_regresar}" class="eforo_enlace">ï¿½ Regresar</a></p>
 Mensajes: <b>{total_res}/{max_privados}</b>
 <table width="100" cellpadding="0" cellspacing="0" style="border: #000000 1px solid ; background-color: #ffffff">
 <tr>
@@ -62,7 +62,7 @@ function comprobar(a) {
 <td class="eforo_tabla_mensaje_{mensaje.estilo_num}">&nbsp;</td>
 <td class="eforo_tabla_mensaje_{mensaje.estilo_num}">
 <input type="button" value="Responder" onclick="document.p_formulario.p_destinatario.value = '{mensaje.remitente}' ; location.href = '#' ; document.p_formulario.p_mensaje.focus()" class="eforo_formulario" />
-<input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar este mensaje?')) location='{mensaje.url_borrar}'" class="eforo_formulario" />
+<input type="button" value="Borrar" onclick="if(confirm('Â¿Deseas borrar este mensaje?')) location='{mensaje.url_borrar}'" class="eforo_formulario" />
 </td>
 </tr>
 [/blq mensaje]

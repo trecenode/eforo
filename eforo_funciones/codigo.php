@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -18,14 +18,14 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 
-# * C�digo Especial
-# El c�digo especial sirve para formatear un texto, crear enlaces, poner im�genes, sin necesidad de usar HTML,
-# estas etiquetas est�n representadas por [etiqueta]texto[/etiqueta] y se sustituyen ya sea haciendo un simple
-# str_replace() hasta el uso de funciones m�s avanzadas como preg_match(), preg_replace() y otras donde el texto
-# contenido entre las etiquetas es pasado por varias funciones, como la aplicaci�n de la funci�n highlight_string()
-# propia de PHP que sirve para colorear c�digo PHP.
+# * código Especial
+# El código especial sirve para formatear un texto, crear enlaces, poner im�genes, sin necesidad de usar HTML,
+# estas etiquetas están representadas por [etiqueta]texto[/etiqueta] y se sustituyen ya sea haciendo un simple
+# str_replace() hasta el uso de funciones más avanzadas como preg_match(), preg_replace() y otras donde el texto
+# contenido entre las etiquetas es pasado por varias funciones, como la aplicaci�n de la Función highlight_string()
+# propia de PHP que sirve para colorear código PHP.
 
-# * Sustituye el c�digo especial por su respectivo c�digo HTML
+# * Sustituye el código especial por su respectivo código HTML
 if($conf['permitir_codigo']) {
 	# Agrega el prefijo http:// a una URL si es necesario
 	function url($a,$b) {
@@ -33,15 +33,15 @@ if($conf['permitir_codigo']) {
 		return '<a href="'.$a.'" target="_blank" class="eforo_enlace">'.$b.'</a>' ;
 	}
 	function codigo($texto) {
-		# --> Colorear c�digo
-		# Colorea el texto contenido entre las etiquetas [cod] y [/cod] mediante la funci�n highlight_string() de PHP.
+		# --> Colorear código
+		# Colorea el texto contenido entre las etiquetas [cod] y [/cod] mediante la Función highlight_string() de PHP.
 		if(strpos($texto,'[cod]')) {
 			# --> Modifica los colores por defecto de PHP (sin tocar el php.ini)
-			# No todos los servidores permiten accesar a la funci�n ini_set() 
+			# No todos los servidores permiten accesar a la Función ini_set() 
 			@ini_set('highlight.bg','') ; # Fondo
 			@ini_set('highlight.comment','#757575') ; # Comentarios
 			@ini_set('highlight.default','#0075cc') ; # Texto por defecto
-			@ini_set('highlight.html','#aa7500') ; # C�digo HTML
+			@ini_set('highlight.html','#aa7500') ; # código HTML
 			@ini_set('highlight.keyword','#008000') ; # Caract�res y funciones de PHP
 			@ini_set('highlight.string','#0000ff') ; # Cadenas de texto
 			$caracteres = array(

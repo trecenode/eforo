@@ -7,14 +7,14 @@
 *** Licencia: GNU General Public License
 *************************************************
 
---- P�gina: eforo_admin/usuarios.php ---
+--- Página: eforo_admin/usuarios.php ---
 
 eForo - Una comunidad para tus visitantes
-Copyright � 2003-2004 Daniel Osorio "Electros"
+Copyright © 2003-2004 Daniel Osorio "Electros"
 
-Este programa es software libre, puedes redistribuirlo y/o modificarlo bajo los t�rminos
+Este programa es software libre, puedes redistribuirlo y/o modificarlo bajo los términos
 de la GNU General Public License publicados por la Free Software Foundation; desde la
-versi�n 2 de la licencia, o (si lo deseas) cualquiera m�s reciente.
+versión 2 de la licencia, o (si lo deseas) cualquiera más reciente.
 */
 
 require '../foroconfig.php' ;
@@ -44,7 +44,7 @@ if(isset($_POST['designar'])) {
 if(!empty($_GET['quitar'])) {
 	$conectar->query("delete from eforo_moderadores where id_usuario='{$_GET['quitar']}'") ;
 	$conectar->query("update $tabla_usuarios set rango='1',rango_fijo='0' where id='{$_GET['quitar']}'") ;
-	aviso('Moderador quitado','Se han quitado los privilegios de moderaci�n a <b>'.usuario($_GET['quitar']).'</b>.','','../') ;
+	aviso('Moderador quitado','Se han quitado los privilegios de moderación a <b>'.usuario($_GET['quitar']).'</b>.','','../') ;
 }
 # * Asignar rangos
 if(isset($_POST['rango'])) {
@@ -81,7 +81,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 	$rangos[$datos['rango']] = array($datos['minimo'],$datos['descripcion']) ;
 }
 mysqli_free_result($con) ;
-# --> N�mero de columnas
+# --> número de columnas
 $columnas = 3 ;
 if(!empty($_GET['letra'])) {
 	switch(true) {
@@ -145,7 +145,7 @@ if(empty($_GET['moderador'])) {
 <b>Ver usuarios que empiecen por:</b>
 <select name="letra" class="eforo_formulario">
 <option value="">Cualquier caract�r</option>
-<option value="num"<? if($_GET['letra'] == 'num') echo ' selected="selected"' ?>>N�mero</option>
+<option value="num"<? if($_GET['letra'] == 'num') echo ' selected="selected"' ?>>número</option>
 <option value="a"<? if($_GET['letra'] == 'a') echo ' selected="selected"' ?>>A</option>
 <option value="b"<? if($_GET['letra'] == 'b') echo ' selected="selected"' ?>>B</option>
 <option value="c"<? if($_GET['letra'] == 'c') echo ' selected="selected"' ?>>C</option>
@@ -175,7 +175,7 @@ if(empty($_GET['moderador'])) {
 </select>
 <b>Por:</b>
 <select name="por" class="eforo_formulario">
-<option value="1">M�s recientes</option>
+<option value="1">más recientes</option>
 <option value="2"<? if(!empty($_GET['por']) && $_GET['por'] == 2) echo ' selected="selected"' ?>>Orden alfab�tico</option>
 </select>
 <b>En orden:</b>
@@ -230,7 +230,7 @@ IP: <?=$datos['ip']?>
 </div>
 </td>
 <td class="eforo_tabla_mensaje_<?=$estilo_num?>"><input type="button" value=" M " onclick="location='usuarios.php?moderador=<?=$datos['id']?>'" class="eforo_formulario" /></td>
-<td class="eforo_tabla_mensaje_<?=$estilo_num?>"><input type="button" value=" B " onclick="if(confirm('�Deseas borrar a este usuario junto con todos sus mensajes?')) location='usuarios.php?borrar=<?=$datos['id']?>'" class="eforo_formulario" /></td>
+<td class="eforo_tabla_mensaje_<?=$estilo_num?>"><input type="button" value=" B " onclick="if(confirm('¿Deseas borrar a este usuario junto con todos sus mensajes?')) location='usuarios.php?borrar=<?=$datos['id']?>'" class="eforo_formulario" /></td>
 <?
 		$estilo_num = $estilo_num == 1 ? 2 : 1 ;
 	}
@@ -253,21 +253,21 @@ function ayuda() {
 		a++ ;
 	}
 	else {
-		document.getElementById('ayuda_enlace').value = 'Ver m�s >>' ;
+		document.getElementById('ayuda_enlace').value = 'Ver más >>' ;
 		document.getElementById('ayuda_texto').style.display = 'none' ;
 		a-- ;
 	}
 }
 </script>
-<input type="button" id="ayuda_enlace" value="Ver m�s >>" onclick="ayuda()" class="eforo_formulario" />
+<input type="button" id="ayuda_enlace" value="Ver más >>" onclick="ayuda()" class="eforo_formulario" />
 <div id="ayuda_texto" style="display: none">
 <p><b>�Como se designan moderadores?</b><br />
 Para designar a un moderador haz clic en el bot�n M y luego selecciona los subforos en donde tendr�
-privilegios de moderaci�n. Para quitar estos privilegios a un usuario que ya es moderador haz click
+privilegios de moderación. Para quitar estos privilegios a un usuario que ya es moderador haz click
 en M y despu�s en la opci�n Quitar Moderador.</p>
 <p><b>�Como se asignan rangos fijos?</b><br />
 Para asignar un rango fijo selecciona las casillas al lado de cada usuario y luego selecciona de la
-lista el rango deseado. Este rango no variar� con el n�mero de mensajes (si es un rango normal s�lo
+lista el rango deseado. Este rango no variar� con el número de mensajes (si es un rango normal Sólo
 ser� fijo para los usuarios seleccionados). Para que su rango sea normal de nuevo haz click en Asignar por defecto.</p>
 </div>
 </td>
@@ -275,7 +275,7 @@ ser� fijo para los usuarios seleccionados). Para que su rango sea normal de nu
 <?
 }
 else {
-# * Funci�n para designar moderadores en el foro
+# * Función para designar moderadores en el foro
 ?>
 <tr>
 <td class="eforo_tabla_subtitulo"><div class="eforo_titulo_2">Designar moderador</div></td>
@@ -312,7 +312,7 @@ else {
 <br>
 <center>
 <input type="submit" name="designar" value="Designar Moderador" class="eforo_formulario" />
-<input type="button" value="Quitar Moderador" onclick="if(confirm('�Deseas quitar los privilegios de moderaci�n a <?=$nick_moderador?>?')) location = 'usuarios.php?quitar=<?=$_GET['moderador']?>'" class="eforo_formulario" />
+<input type="button" value="Quitar Moderador" onclick="if(confirm('¿Deseas quitar los privilegios de moderación a <?=$nick_moderador?>?')) location = 'usuarios.php?quitar=<?=$_GET['moderador']?>'" class="eforo_formulario" />
 </center>
 </td>
 </tr>

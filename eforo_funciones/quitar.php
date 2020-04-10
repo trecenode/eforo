@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -18,7 +18,7 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 
-# * Funci�n que limpia la informaci�n enviada de formularios para evitar ataques
+# * Función que limpia la informaci�n enviada de formularios para evitar ataques
 function quitar($texto,$comprobar = 0,$no_escapar = 0) {
 	$texto = trim($texto) ;
 	$texto = htmlspecialchars($texto) ;

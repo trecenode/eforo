@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright  2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 

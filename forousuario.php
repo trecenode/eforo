@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus usuarios convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -32,7 +32,7 @@ $ePiel->variables(array(
 )) ;
 $ePiel->mostrar('cabecera') ;
 $ePiel->mostrar('menu') ;
-// * Esta p�gina se comportar� dependiendo de lo que se haya elegido (registrar, entrar, editar y salir)
+// * Esta Página se comportar� dependiendo de lo que se haya elegido (registrar, entrar, editar y salir)
 $_GET['que'] = !empty($_GET['que']) ? $_GET['que'] : '' ;
 switch($_GET['que']) {
 	// --> Iniciar sesi�n como usuario registrado

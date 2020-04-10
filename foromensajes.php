@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus usuarios convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -48,8 +48,8 @@ while($datos = mysqli_fetch_assoc($con)) {
 	$rangos[$datos['rango']] = array($datos['minimo'],$datos['descripcion']) ;
 }
 mysqli_free_result($con) ;
-# * Almacenar lista de usuarios en l�nea en una variable
-# Servir� para comprobar si el autor del tema o de alguna respuesta est� conectado.
+# * Almacenar lista de usuarios en líneaen una variable
+# Servirápara comprobar si el autor del tema o de alguna respuesta está conectado.
 $usuarios_en_linea = array() ;
 $con = $conectar->query("select id_usuario from eforo_enlinea order by fecha asc") ;
 while($datos = mysqli_fetch_row($con)) {
@@ -64,7 +64,7 @@ $ePaginas->u = array($u[2],$u[3],$u[4],$u[5]) ;
 $ePaginas->e = array('<a href="','" class="eforo_enlace">','</a>') ;
 $con = $ePaginas->consultar() ;
 # * Se suma una visita al tema seleccionado y se elimina del recordatorio
-# S�lo se sumar�n visitas si se est� viendo la �ltima p�gina
+# Sólo se sumar�n visitas si se está viendo la última Página
 if($ePaginas->total_pag == $_GET['pag']) {
 	$conectar->query("update eforo_mensajes set num_visitas=num_visitas+1 where id='{$_GET['tema']}'") ;
 	# Se considera visto el tema y se elimina del recordatorio
@@ -91,7 +91,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 		$datos2 = mysqli_fetch_assoc($con2) ;
 		# --> Nick
 		$autor_nick = "<a href=\"$u[0]forousuarios$u[1]$u[2]u$u[4]{$datos['id_usuario']}$u[5]\" class=\"eforo_enlace\">{$datos2['nick']}</a>" ;
-		# --> Rango (se utiliza el array $rangos creado m�s arriba)
+		# --> Rango (se utiliza el array $rangos creado más arriba)
 		if($datos2['rango_fijo']) {
 			$autor_rango = $rangos[$datos2['rango']][1] ;
 		}
@@ -112,7 +112,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 	else {
 		$autor_existe = false ;
 		# --> Si el autor tiene una ID diferente de cero pero no existe en la base de datos entonces se muestra como "Eliminad@"
-		$autor_nick = !$datos['id_usuario'] ? '<i>An�nim@</i>' : '<i>Eliminad@</i>' ;
+		$autor_nick = !$datos['id_usuario'] ? '<i>Anónim@</i>' : '<i>Eliminad@</i>' ;
 		$autor_rango = '' ;
 		$autor_mensajes = '' ;
 		$autor_avatar = '' ;
@@ -123,16 +123,16 @@ while($datos = mysqli_fetch_assoc($con)) {
 	# Se agrega el t�tulo del tema por defecto si la respuesta no tiene
 	if(!$datos['tema']) $datos['tema'] = 'RE: '.$titulo_tema ;
 	# Se aplican las funciones especiales seg�n la configuraci�n del foro y si el autor lo desea
-	# --> C�digo especial
+	# --> código especial
 	if($conf['permitir_codigo'] && $datos['o_codigo']) $datos['mensaje'] = codigo($datos['mensaje']) ;
 	# --> Caretos
 	if($conf['permitir_caretos'] && $datos['o_caretos']) $datos['mensaje'] = caretos($datos['mensaje']) ;
-	# --> Censurar palabras (s�lo modificable a trav�s de la configuraci�n del foro)
+	# --> Censurar palabras (Sólo modificable a trav�s de la configuraci�n del foro)
 	if($conf['censurar_palabras']) {
 		$datos['tema'] = censurar($datos['tema']) ;
 		$datos['mensaje'] = censurar($datos['mensaje']) ;
 	}
-	# --> Sustituir saltos de l�nea por c�digo HTML
+	# --> Sustituir saltos de líneapor código HTML
 	$datos['mensaje'] = nl2br($datos['mensaje']) ;
 	$ePiel->variables_bloque('mensaje',array(
 	'id' => $datos['id'],
@@ -147,14 +147,14 @@ while($datos = mysqli_fetch_assoc($con)) {
 	'url_borrar' => "$u[0]foroborrar$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]mensaje$u[4]{$datos['id']}$u[3]pag$u[4]{$_GET['pag']}$u[5]",
 	'url_citar' => "$u[0]foroescribir$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]citar$u[4]{$datos['id']}$u[5]"
 	)) ;
-	# --> S�lo se muestran los datos del autor si este existe en la base de datos de otra forma s�lo se mostrar� "An�nimo" o "Eliminad@"
+	# --> Sólo se muestran los datos del autor si este existe en la base de datos de otra forma Sólo se mostrar� "Anónimo" o "Eliminad@"
 	if($autor_existe) {
 		$ePiel->variables_bloque('mensaje.usuario',array(
 		'autor_rango' => $autor_rango,
 		'autor_mensajes' => $autor_mensajes,
 		'autor_estado' => $autor_estado
 		)) ;
-		# --> Se muestra el avatar del usuario (s�lo si lo ha subido)
+		# --> Se muestra el avatar del usuario (Sólo si lo ha subido)
 		if($autor_avatar) {
 			$ePiel->variables_bloque('mensaje.usuario.avatar',array(
 			'autor_id' => $datos['id_usuario'],
@@ -163,7 +163,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 			)) ;
 		}
 	}
-	# --> Se muestra la firma si est� creada en el perfil
+	# --> Se muestra la firma si está creada en el perfil
 	if($conf['permitir_firma'] && $datos['o_firma'] && $autor_existe) {
 		$con2 = $conectar->query("select firma from $tabla_usuarios where id='{$datos['id_usuario']}'") ;
 		$datos2 = mysqli_fetch_row($con2) ;
@@ -175,7 +175,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 		}
 		mysqli_free_result($con2) ;
 	}
-	# --> Si el mensaje ha sido editado se muestra la fecha de la �ltima vez que se edit�
+	# --> Si el mensaje ha sido editado se muestra la fecha de la última vez que se edit�
 	if($datos['fecha_editado'] > $datos['fecha']) {
 		$ePiel->variables_bloque('mensaje.editado',array(
 		'fecha' => fecha($datos['fecha_editado'])

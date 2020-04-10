@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus usuarios convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -32,7 +32,7 @@ $ePiel->variables(array(
 )) ;
 $ePiel->mostrar('cabecera') ;
 $ePiel->mostrar('menu') ;
-if(!$es_usuario) aviso('Error','S�lo los usuarios registrados pueden borrar mensajes. Intenta iniciar sesi�n desde el men�.',1) ;
+if(!$es_usuario) aviso('Error','Sólo los usuarios registrados pueden borrar mensajes. Intenta iniciar sesi�n desde el men�.',1) ;
 # * Comprobar permiso de usuario (si es que no es moderador o administrador)
 if(!$es_moderador) permiso('p_borrar') ;
 # * Mensajes a borrar desde el panel de moderadores

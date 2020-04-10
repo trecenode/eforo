@@ -3,9 +3,9 @@
 <td>
 <a href="{subforo_indice_url}" class="eforo_enlace">Indice de subforos</a>
 [blq menu_subforo]
- · <a href="{menu_subforo.url}" class="eforo_enlace">{menu_subforo.titulo}</a>
+ <i class="fas fa-chevron-right"></i> <a href="{menu_subforo.url}" class="eforo_enlace">{menu_subforo.titulo}</a>
 [blq menu_tema]
- · <a href="{menu_subforo.menu_tema.url}" class="eforo_enlace">{menu_subforo.menu_tema.titulo}</a>
+ <i class="fas fa-chevron-right"></i> <a href="{menu_subforo.menu_tema.url}" class="eforo_enlace">{menu_subforo.menu_tema.titulo}</a>
 [/blq menu_tema]
 [/blq menu_subforo]
 </td>
@@ -13,9 +13,9 @@
 [blq nuevo_tema]
 <tr>
 <td>
-<a href="{nuevo_tema.nuevo_tema_url}" class="eforo_enlace">Nuevo tema</a>
+<a href="{nuevo_tema.nuevo_tema_url}" class="btn eforo_formulario">Nuevo tema</a>
 [blq responder]
-| <a href="{nuevo_tema.responder.responder_url}" class="eforo_enlace">Responder</a>
+ <a href="{nuevo_tema.responder.responder_url}" class="btn eforo_formulario">Responder</a>
 [/blq responder]
 </td>
 </tr>
@@ -32,7 +32,7 @@ function comprobar(a) {
 		return false ;
 	}
 	if(a.u_contrasena.value.length == 0) {
-		alert('Debes escribir una contraseña.') ;
+		alert('Debes escribir una contraseï¿½a.') ;
 		return false ;
 	}
 }
@@ -40,15 +40,19 @@ function comprobar(a) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td valign="top">
-<form name="u_formulario" method="post" action="forousuariopro.php?que=entrar" onsubmit="return comprobar(this)" style="display: inline">
-<b>Nick:</b>
-<input type="text" name="u_nick" size="10" maxlength="20" class="eforo_formulario" />
-<b>Contraseña:</b>
-<input type="password" name="u_contrasena" size="10" maxlength="10" class="eforo_formulario" />
-<input type="submit" name="enviar" value="Entrar" class="eforo_formulario" />
+<form name="u_formulario" method="post" action="forousuariopro.php?que=entrar" onsubmit="return comprobar(this)" class="form-inline">
+<div class="form-group">
+	<label for="u_nick"><b>Nick:</b></label>
+	<input type="text" name="u_nick" size="10" maxlength="20" class="eforo_formulario form-control" />
+</div>
+<div class="form-group">
+	<label for="u_contrasena"><b>ContraseÃ±a:</b></label>
+	<input type="password" name="u_contrasena" size="10" maxlength="10" class="eforo_formulario form-control" />
+</div>
+<input type="submit" name="enviar" value="Entrar" class="btn eforo_formulario" />
 </form>
 </td>
-<td valign="top"><div align="right"><a href="{anonimo.nuevo_usuario_e}" class="eforo_enlace">Nuevo usuario</a> | <a href="{anonimo.recuperar_contrasena_e}" class="eforo_enlace">Perdí mi contraseña</a></div></td>
+<td valign="top"><div align="right"><a href="{anonimo.nuevo_usuario_e}" class="eforo_enlace">Nuevo usuario</a> | <a href="{anonimo.recuperar_contrasena_e}" class="eforo_enlace">PerdÃ­ mi contraseÃ±aa</a></div></td>
 </tr>
 </table>
 [/blq anonimo]
@@ -61,17 +65,14 @@ function comprobar(a) {
 [/blq nuevos_mensajes]
 </td>
 <td>
-<center>
-<select onchange="if(value) location = options[selectedIndex].value" class="eforo_formulario">
-<option value="">Opción ...</option>
-<option value="{usuario.url_privados}">Mensajes privados</option>
-<option value="{usuario.url_perfil}">Editar mi perfil</option>
-<option value="{usuario.url_leidos}">Marcar subforos como leídos</option>
-{usuario.url_panel}
-</select>
-</center>
+<div class="text-right pr-1">
+<a href="{usuario.url_privados}"><i class="fas fa-2x fa-envelope" aria-hidden="true" title="Mensajes Privados"></i></a>
+<a href="{usuario.url_perfil}"><i class="fas fa-2x fa-user-circle" aria-hidden="true" title="Perfil"></i></a>
+<a href="{usuario.url_leidos}"><i class="fas fa-2x fa-book-open" aria-hidden="true" title="Marcar subforos como leÃ­dos"></i></a>
+{usuario.url_panel} 
+<a href="forousuariopro.php?que=salir"> <i class="fas fa-2x fa-sign-out-alt eforo_logout" title="Salir del Foro"></i></a>
+</div>
 </td>
-<td><div align="right"><a href="forousuariopro.php?que=salir" class="eforo_enlace">Salir del foro</a></div></td>
 </tr>
 </table>
 [/blq usuario]

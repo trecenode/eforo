@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -71,7 +71,7 @@ else {
 </tr>
 <tr>
 <td width="50%" class="eforo_tabla_defecto">
-<b>Administrador:</b><br />ID del administrador (ej. 5. Para 2 o m�s separa por comas ej. 5,12,150).<br />
+<b>Administrador:</b><br />ID del administrador (ej. 5. Para 2 o más separa por comas ej. 5,12,150).<br />
 <script type="text/javascript">
 function abrir(url,largo,alto,titulo) {
 	margen1 = (screen.width - largo) / 2 ;
@@ -108,7 +108,7 @@ function abrir(url,largo,alto,titulo) {
 <td class="eforo_tabla_defecto"><input type="text" name="c_ultimos" value="<?=$conf['max_ultimos']?>" maxlength="3"class="eforo_formulario"></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>Permitir c�digo especial:</b><br>El c�digo especial sirve para personalizar los mensajes sin necesidad de usar HTML.</td>
+<td class="eforo_tabla_defecto"><b>Permitir código especial:</b><br>El código especial sirve para personalizar los mensajes sin necesidad de usar HTML.</td>
 <td class="eforo_tabla_defecto">
 <input type="radio" name="c_codigo" value="0"<? if(!$conf['permitir_codigo']) echo ' checked' ; ?>>No
 <input type="radio" name="c_codigo" value="1"<? if($conf['permitir_codigo']) echo ' checked' ; ?>>S�
@@ -172,7 +172,7 @@ mysqli_free_result($con) ;
 <td colspan="2" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Mensajes privados</div></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>M�ximo de mensajes privados:</b><br>Es el n�mero m�ximo de mensajes privados que cada usuario podr� recibir.</td>
+<td class="eforo_tabla_defecto"><b>máximo de mensajes privados:</b><br>Es el número máximo de mensajes privados que cada usuario podr� recibir.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_privados" value="<?=$conf['max_privados']?>" maxlength="3" class="eforo_formulario"></td>
 </tr>
 <tr>
@@ -194,8 +194,8 @@ mysqli_free_result($con) ;
 <td colspan="2" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Adjuntos</div></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>Tama�o del archivo:</b><br>Tama�o del archivo adjunto en KB. El valor m�ximo permitido por
-el servidor es de <b><?=@ini_get('upload_max_filesize') ? str_replace('M','',ini_get('upload_max_filesize')) * 1024 : 'un valor desconocido, aunque por lo general es de 2048'?> KB</b>. Este s�lo podr� ser modificado
+<td class="eforo_tabla_defecto"><b>Tama�o del archivo:</b><br>Tama�o del archivo adjunto en KB. El valor máximo permitido por
+el servidor es de <b><?=@ini_get('upload_max_filesize') ? str_replace('M','',ini_get('upload_max_filesize')) * 1024 : 'un valor desconocido, aunque por lo general es de 2048'?> KB</b>. Este Sólo podr� ser modificado
 desde el archivo de configuraci�n de PHP php.ini.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_adjuntotamano" value="<?=$conf['adjunto_tamano']?>" maxlength="5" class="eforo_formulario"></td>
 </tr>

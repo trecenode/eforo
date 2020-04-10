@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus usuarios convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -102,7 +102,7 @@ $ePiel->variable('paginas',$ePaginas->paginar()) ;
 $estilo_num = 1 ;
 if(mysqli_num_rows($con)) {
 	while($datos = mysqli_fetch_assoc($con)) {
-		# Se buscan mensajes que est�n en el recordatorio
+		# Se buscan mensajes que están en el recordatorio
 		$ind_imagen = 'foco_apagado.gif' ;
 		$ind_mensaje = 'No hay mensajes nuevos' ;
 		if($c_id) {
@@ -123,7 +123,7 @@ if(mysqli_num_rows($con)) {
 			}
 		}
 		else {
-			$tema_autor = '<i>An�nim@</i>' ;
+			$tema_autor = '<i>Anónim@</i>' ;
 		}
 		$tema_autor .= '<br />'.fecha($datos['fecha']) ;
 		# Se obtiene el nombre del autor del �ltimo mensaje
@@ -139,7 +139,7 @@ if(mysqli_num_rows($con)) {
 				}
 			}
 			else {
-				$ult_men_autor = '<i>An�nim@</i>' ;
+				$ult_men_autor = '<i>Anónim@</i>' ;
 			}
 			$ult_men_autor .= '<br />'.fecha($datos['fecha_ultimo']) ;
 			mysqli_free_result($con2) ;

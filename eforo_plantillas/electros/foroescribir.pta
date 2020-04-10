@@ -75,7 +75,7 @@ function revisar(a) {
 		enviado++ ;
 	}
 	else {
-		alert('El mensaje se está enviando por favor espera.') ;
+		alert('El mensaje se estÃ¡ enviando por favor espera.') ;
 		return false ;
 	}
 }
@@ -86,21 +86,21 @@ function revisar(a) {
 <td colspan="2" class="eforo_tabla_titulo"><div align="center" class="eforo_titulo_1">{form_titulo}</div></td>
 </tr>
 <tr>
-<td valign="top" class="eforo_tabla_defecto"><b>Título:</b><br>Título del mensaje.</td>
+<td valign="top" class="eforo_tabla_defecto"><b>Tï¿½tulo:</b><br>Tï¿½tulo del mensaje.</td>
 <td valign="top" class="eforo_tabla_defecto"><input type="text" name="m_tema" size="75" value="{form_tema}" maxlength="60" class="eforo_formulario" /></td>
 </tr>
 <tr>
 <td valign="top" class="eforo_tabla_defecto"><b>Mensaje:</b><br>Contenido del mensaje.</td>
 <td valign="top" class="eforo_tabla_defecto">
-<b>Código especial:</b>
+<b>cÃ³digo especial:</b>
 <div style="margin-top: 3"></div>
 <input type="button" onclick="codigo('[b]','[/b]')" value="[b]" onmouseover="ayuda1('Texto en negrita')" onmouseout="ayuda2()" class="eforo_formulario" />
 <input type="button" onclick="codigo('[i]','[/i]')" value="[i]" onmouseover="ayuda1('Texto en cursiva')" onmouseout="ayuda2()" class="eforo_formulario" />
 <input type="button" onclick="codigo('[u]','[/u]')" value="[u]" onmouseover="ayuda1('Texto subrayado')" onmouseout="ayuda2()" class="eforo_formulario" />
 <input type="button" onclick="codigo('[img]','[/img]')" value="[img]" onmouseover="ayuda1('Poner una imagen')" onmouseout="ayuda2()" class="eforo_formulario" />
 <input type="button" onclick="codigo('[url]','[/url]')" value="[url]" onmouseover="ayuda1('Crear un enlace')" onmouseout="ayuda2()" class="eforo_formulario" />
-<input type="button" onclick="codigo('[color=red]','[/color]')" value="[color]" onmouseover="ayuda1('Colorear texto (color en inglés o hexadecimal)')" onmouseout="ayuda2()" class="eforo_formulario" />
-<input type="button" onclick="codigo('[cod]','[/cod]')" value="[cod]" onmouseover="ayuda1('Colorear código (HTML, PHP, étc.)')" onmouseout="ayuda2()" class="eforo_formulario" />
+<input type="button" onclick="codigo('[color=red]','[/color]')" value="[color]" onmouseover="ayuda1('Colorear texto (color en inglÃ©s o hexadecimal)')" onmouseout="ayuda2()" class="eforo_formulario" />
+<input type="button" onclick="codigo('[cod]','[/cod]')" value="[cod]" onmouseover="ayuda1('Colorear cÃ³digo (HTML, PHP, etc.)')" onmouseout="ayuda2()" class="eforo_formulario" />
 <div id="m_ayuda">&nbsp;</div>
 <div style="margin-top: 3"></div>
 <a href="javascript:caretos(':D')"><img src="eforo_imagenes/caretos/alegre.gif" width="15" height="15" border="0" /></a>
@@ -147,7 +147,7 @@ onload = citar ;
 <tr>
 <td width="50%" valign="top">
 <input id="m_caretos" type="checkbox" name="m_caretos" value="1"{m_caretos_s}{m_caretos_e} /><label for="m_caretos"><b>Usar caretos en el mensaje</b></label><br />
-<input id="m_codigo" type="checkbox" name="m_codigo" value="1"{m_codigo_s}{m_codigo_e} /><label for="m_codigo"><b>Usar código especial en el mensaje</b></label><br />
+<input id="m_codigo" type="checkbox" name="m_codigo" value="1"{m_codigo_s}{m_codigo_e} /><label for="m_codigo"><b>Usar cÃ³digo especial en el mensaje</b></label><br />
 <input id="m_firma" type="checkbox" name="m_firma" value="1"{m_firma_s}{m_firma_e} /><label for="m_firma"><b>Agregar firma en el mensaje</b></label><br />
 </td>
 <td width="50%" valign="top">
@@ -189,7 +189,7 @@ onload = citar ;
 <hr class="separador" />
 {ult_mensajes.mensaje.mensaje}
 [blq editado]
-<br /><br /><i><b>Editado por última vez: {ult_mensajes.mensaje.editado.fecha}</b></i>
+<br /><br /><i><b>Editado por Ãºltima vez: {ult_mensajes.mensaje.editado.fecha}</b></i>
 [/blq editado]
 </td>
 </tr>

@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -18,7 +18,7 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 
-# * Revisar si hay mensajes nuevos desde la �ltima visita del usuario
+# * Revisar si hay mensajes nuevos desde la última visita del usuario
 if($c_id) {
 	# Borrar mensajes del recordatorio (mensajes nuevos sin leer)
 	$max_tiempo = 86400 ; # <-- Tiempo en segundos durante el cu�l se recordar�n los mensajes (por defecto 24 horas)

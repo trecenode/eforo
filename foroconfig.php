@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus usuarios convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -39,7 +39,7 @@ function tiempo_carga() {
 $tiempo = tiempo_carga() ;
 # * El reporte de errores mostrar� todo
 @error_reporting(E_ALL) ;
-# * Comprimir la p�gina (si el navegador acepta contenido comprimido y si el servidor tiene la librer�a zlib)
+# * Comprimir la Página (si el navegador acepta contenido comprimido y si el servidor tiene la librer�a zlib)
 ob_start('ob_gzhandler') ;
 # **************************
 # *** Configuraci�n avanzada
@@ -47,7 +47,7 @@ ob_start('ob_gzhandler') ;
 # * Nombre de las "cookies"
 $c[0] = 'eforo_id' ; # --> ID del usuario
 $c[1] = 'eforo_nick' ; # --> Nick del usuario
-$c[2] = 'eforo_con' ; # --> Contrase�a del usuario
+$c[2] = 'eforo_con' ; # --> Contraseña del usuario
 # * Sintaxis de URL (para integrar eForo como una secci�n de tu web o para uso con mod_rewrite)
 # La URL se forma como se observa en el siguiente ejemplo:
 # $u[0]foromensajes$u[1]$u[2]foro$u[4]10$u[3]tema$u[4]10$u[5]
@@ -59,7 +59,7 @@ $u = array('','.php','?','&','=','') ;
 $tabla_usuarios = 'eforo_usuarios' ;
 # *** Fin configuraci�n avanzada
 # * Pasar el valor de las cookies a variables
-# Para simplificar el c�digo y evitarse muchas molestias.
+# Para simplificar el código y evitarse muchas molestias.
 $c_id = !empty($_COOKIE[$c[0]]) ? $_COOKIE[$c[0]] : '' ;
 $c_nick = !empty($_COOKIE[$c[1]]) ? $_COOKIE[$c[1]] : '' ;
 $c_con = !empty($_COOKIE[$c[2]]) ? $_COOKIE[$c[2]] : '' ;
@@ -102,7 +102,7 @@ if(!empty($_GET['mensaje'])) {
 	}
 }
 if(isset($error)) exit('<p><b>Error</b></p><p>'.$error.'</p><script>setTimeout(\'history.back()\',1500)</script>') ;
-# * Cargar configuraci�n del foro (todo se guardar� en un array llamado $conf)
+# * Cargar configuraci�n del foro (todo se guardará en un array llamado $conf)
 unset($conf) ;
 $con = $conectar->query('select * from eforo_config limit 1') ;
 $datos = mysqli_fetch_assoc($con) ;
@@ -127,7 +127,7 @@ $conf['max_privados'] = $datos['privados'] ;
 $conf['adjunto_tamano'] = $datos['adjuntotamano'] ;
 $conf['adjunto_ext'] = $datos['adjuntoext'] ;
 $conf['adjunto_nombre'] = $datos['adjuntonombre'] ;
-# * Obtener datos del usuario que est� conectado en este momento
+# * Obtener datos del usuario que está conectado en este momento
 $es_usuario = false ;
 if($c_id && $c_nick && $c_con) {
 	$con = $conectar->query("select mensajes,rango,rango_fijo,fecha_conectado,gmt from $tabla_usuarios where id='$c_id' and nick='$c_nick' and contrasena='$c_con'") ;
@@ -136,7 +136,7 @@ if($c_id && $c_nick && $c_con) {
 		$datos = mysqli_fetch_assoc($con) ;
 		# Rango actual
 		if($datos['rango_fijo'] == 0) {
-			# Todo usuario registrado tiene rango 1, se aumenta dependiendo de su n�mero
+			# Todo usuario registrado tiene rango 1, se aumenta dependiendo de su número
 			# de mensajes � si es designado manualmente
 			$usuario['rango'] = 1 ;
 			$con2 = $conectar->query("select rango,minimo from eforo_rangos where minimo!='0' order by rango asc") ;
@@ -172,7 +172,7 @@ function usuario($a) {
 	return $nick ? $nick : false ;
 }
 # * La fecha que ser� usada en el foro (por defecto se usar� la fecha GMT)
-# Si el usuario eligi� la zona GMT de su pa�s, se sumar� o restar� la diferencia de horas
+# Si el usuario eligi� la zona GMT de su País, se sumar� o restar� la diferencia de horas
 # con respecto a la fecha GMT
 $actualDate = date_create();
 $fecha =  "NOW()"; //date_timestamp_get($actualDate);
@@ -199,9 +199,9 @@ function fecha($a) {
 			return date('j',$gmt).' '.$meses[date('n',$gmt)].' '.date('Y',$gmt).' '.date('h:i A',$gmt) ;
 	}
 }
-# * Comprobar si la variable $_SERVER['HTTP_REFERER'] est� disponible
+# * Comprobar si la variable $_SERVER['HTTP_REFERER'] está disponible
 if(empty($_SERVER['HTTP_REFERER'])) $_SERVER['HTTP_REFERER'] = "$u[0]foro$u[1]" ;
-# * Se obtienen los usuarios en l�nea en el foro
+# * Se obtienen los usuarios en líneaen el foro
 $tiempo_limite = 600 ; # <-- Tiempo en segundos en el cu�l se considerar� al usuario en l�nea
 $fecha_limite = $fechaTime - $tiempo_limite ;
 # --> Se eliminan los usuarios que superaron el tiempo l�mite
@@ -229,7 +229,7 @@ else {
 	}
 	mysqli_free_result($con) ;
 }
-# --> Se obtiene el total de usuarios an�nimos
+# --> Se obtiene el total de usuarios anónimos
 $con = $conectar->query("select count(ip) from eforo_enlinea where ip!=''") ;
 $total_en_linea[0] = mysqli_result($con,0,0) ;
 mysqli_free_result($con) ;

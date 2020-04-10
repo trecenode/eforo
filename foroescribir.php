@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -93,12 +93,12 @@ else {
 	# Vista previa del mensaje
 	require 'eforo_funciones/codigo.php' ;
 	if($que != 3) {
-		$autor_nick = ($autor_nick = usuario($c_id)) ? "<a href=\"$u[0]forousuarios$u[1]$u[2]u$u[4]$c_id$u[5]\" target=\"_blank\" class=\"eforo_enlace\">$autor_nick</a>" : '<i>An�nim@</i>' ;
+		$autor_nick = ($autor_nick = usuario($c_id)) ? "<a href=\"$u[0]forousuarios$u[1]$u[2]u$u[4]$c_id$u[5]\" target=\"_blank\" class=\"eforo_enlace\">$autor_nick</a>" : '<i>Anónim@</i>' ;
 	}
 	else {
 		$con = $conectar->query("select id_usuario from eforo_mensajes where id='{$_GET['mensaje']}'") ;
 		$datos = mysqli_fetch_row($con) ;
-		$autor_nick = ($autor_nick = usuario($datos[0])) ? "<a href=\"$u[0]forousuarios$u[1]$u[2]u$u[4]$datos[0]$u[5]\" target=\"_blank\" class=\"eforo_enlace\">$autor_nick</a>" : '<i>An�nim@</i>' ;
+		$autor_nick = ($autor_nick = usuario($datos[0])) ? "<a href=\"$u[0]forousuarios$u[1]$u[2]u$u[4]$datos[0]$u[5]\" target=\"_blank\" class=\"eforo_enlace\">$autor_nick</a>" : '<i>Anónim@</i>' ;
 		mysqli_free_result($con) ;
 	}
 	$form_tema = !empty($_POST['m_tema']) ? quitar($_POST['m_tema'],0,1) : '' ;
@@ -159,7 +159,7 @@ if($usuario['rango'] >= mysqli_result($con,0,0) || $es_moderador) {
 	$adjuntar = true ;
 	$adjuntar_titulo = '<b>Adjuntar archivo (M�x. '.$conf['adjunto_tamano'].' KB):</b><br />Anexar un archivo a tu mensaje.' ;
 	$adjuntar_contenido = '<input type="file" name="m_archivo" size="50" class="eforo_formulario" />' ;
-	# --> Comprobar si ya hay un archivo adjunto (s�lo al editar el mensaje)
+	# --> Comprobar si ya hay un archivo adjunto (Sólo al editar el mensaje)
 	if($que == 3) {
 		$con = $conectar->query("select archivo from eforo_adjuntos where id_mensaje='{$_GET['mensaje']}' limit 1") ;
 		if(mysqli_num_rows($con)) {
@@ -184,7 +184,7 @@ $ePiel->variables(array(
 'm_importante_s' => $form_imp ? ' checked="checked"' : '',
 'm_notificacion_s' => $form_not ? ' checked="checked"' : ''
 )) ;
-# --> Deshabilitar las casillas si no est�n permitidas en la configuraci�n o si no se van a utilizar
+# --> Deshabilitar las casillas si no están permitidas en la configuraci�n o si no se van a utilizar
 $ePiel->variables(array(
 'm_caretos_e' => !$conf['permitir_caretos'] ? ' disabled="disabled"' : '',
 'm_codigo_e' => !$conf['permitir_codigo'] ? ' disabled="disabled"' : '',
@@ -192,7 +192,7 @@ $ePiel->variables(array(
 'm_importante_e' => $usuario['rango'] < $p_importante && !$es_moderador ? ' disabled="disabled"' : '',
 'm_notificacion_e' => $que == 2 || ($que == 3 && $_GET['tema'] != $_GET['mensaje']) || !$conf['notificacion_email'] || !$es_usuario ? ' disabled="disabled"' : '',
 )) ;
-# * Si el formulario est� en modo responder se muestran los �ltimos mensajes del tema
+# * Si el formulario está en modo responder se muestran los �ltimos mensajes del tema
 if($que == 2) {
 	require_once 'eforo_funciones/codigo.php' ;
 	$con = $conectar->query("select tema from eforo_mensajes where id='{$_GET['tema']}'") ;
@@ -208,7 +208,7 @@ if($que == 2) {
 			$autor_nick = "<a href=\"$u[0]forousuarios$u[1]$u[2]u$u[4]{$datos['id_usuario']}$u[5]\" target=\"_blank\" class=\"eforo_enlace\">$autor_nick</a>" ;
 		}
 		else {
-			$autor_nick = '<i>An�nim@</i>' ;
+			$autor_nick = '<i>Anónim@</i>' ;
 		}
 		$datos['tema'] = !$datos['tema'] ? 'RE: '.$titulo_tema : $datos['tema'] ;
 		if($conf['permitir_caretos'] && $datos['o_caretos']) $datos['mensaje'] = caretos($datos['mensaje']) ;

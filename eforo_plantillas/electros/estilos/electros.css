@@ -1,9 +1,8 @@
-@charset 'windows-1252' ;
 /*
 eForo >> Plantillas de estilo
-Tema: electros.net
-Autor: Electros <electros@electros.net>
-Creado el: Viernes 13 de Agosto del 2004
+Tema: electros.dev
+Autor: Electros.dev 
+Creado el: Viernes 10 de Abril del 2020
 */
 
 /* General */
@@ -16,7 +15,7 @@ font-size: 8pt ;
 color: #000000 ;
 }
 
-/* Títulos */
+/* TÃ­tulos */
 .eforo_titulo_1 {
 color: #ffffff ;
 font-size: 8pt ;
@@ -93,7 +92,10 @@ text-align: left ;
 width: 100px ;
 border: #000 1px solid ;
 }
-
+/* Iconos */
+.eforo_logout {
+color: #ff0000!important;
+}
 /* Formularios */
 .eforo_formulario {
 border: #000000 1px solid ;

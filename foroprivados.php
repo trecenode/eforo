@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -48,7 +48,7 @@ if(isset($_POST['enviar'])) {
 			aviso('Mensaje enviado','El mensaje ha sido enviado a <b>'.$_POST['p_destinatario'].'</b>') ;
 		}
 		else {
-			aviso('Error','La bandeja de <b>'.$_POST['p_destinatario'].'</b> est� llena. No se pudo enviar el mensaje.') ;
+			aviso('Error','La bandeja de <b>'.$_POST['p_destinatario'].'</b> está llena. No se pudo enviar el mensaje.') ;
 		}
 		mysqli_free_result($con2) ;
 	}

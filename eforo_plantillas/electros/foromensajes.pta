@@ -6,7 +6,7 @@ function borrar(que) {
 	else {
 		que = 'el mensaje?' ;
 	}
-	if(confirm('¿Deseas borrar '+que)) {
+	if(confirm('Â¿Deseas borrar '+que)) {
 		return true ;
 	}
 	else {
@@ -45,7 +45,7 @@ Tema: <b>{mensaje.tema}</b>
 {mensaje.firma.contenido}
 [/blq firma]
 [blq editado]
-<br /><br /><b>Editado por última vez:</b> {mensaje.editado.fecha}
+<br /><br /><b>Editado por ï¿½ltima vez:</b> {mensaje.editado.fecha}
 [/blq editado]
 [blq adjunto]
 <br /><br /><fieldset><legend>Archivo adjunto</legend><a href="{mensaje.adjunto.url}" class="eforo_enlace">{mensaje.adjunto.archivo}</a></fieldset>
@@ -57,11 +57,11 @@ Tema: <b>{mensaje.tema}</b>
 <td class="eforo_tabla_mensaje_{mensaje.estilo_num}">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td><input type="button" value="Citar Mensaje" onclick="location = '{mensaje.url_citar}'" class="eforo_formulario" /></td>
+<td><input type="button" value="Citar Mensaje" onclick="location = '{mensaje.url_citar}'" class="btn eforo_formulario" /></td>
 <td>
 <div style="text-align: right">
-<input type="button" value="Editar" onclick="location = '{mensaje.url_editar}'" class="eforo_formulario" />
-<input type="button" value="Borrar" onclick="if(borrar('{mensaje.que}')) location = '{mensaje.url_borrar}'" class="eforo_formulario" />
+<input type="button" value="Editar" onclick="location = '{mensaje.url_editar}'" class="btn eforo_formulario" />
+<input type="button" value="Borrar" onclick="if(borrar('{mensaje.que}')) location = '{mensaje.url_borrar}'" class="btn eforo_formulario" />
 </div>
 </td>
 </tr>
@@ -90,7 +90,7 @@ function comprobar(a) {
 		enviado++ ;
 	}
 	else {
-		alert('El mensaje se está enviando por favor espera.') ;
+		alert('El mensaje se estÃ¡ enviando por favor espera.') ;
 		return false ;
 	}
 }
@@ -101,13 +101,13 @@ function comprobar(a) {
 <input type="hidden" name="m_firma" value="1" />
 <table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
 <tr>
-<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Respuesta rápida</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Respuesta rÃ¡pida</div></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><textarea name="m_mensaje" cols="50" rows="10" class="eforo_formulario"></textarea></td>
+<td class="eforo_tabla_defecto"><textarea name="m_mensaje" cols="50" rows="10" class="form-control eforo_formulario"></textarea></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><div style="text-align: center"><input type="submit" name="enviar" value="Enviar Mensaje" class="eforo_formulario" /></div></td>
+<td class="eforo_tabla_defecto"><div style="text-align: center"><input type="submit" name="enviar" value="Enviar Mensaje" class="btn eforo_formulario" /></div></td>
 </tr>
 </table>
 </form>

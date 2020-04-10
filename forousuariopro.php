@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus usuarios convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -58,7 +58,7 @@ switch($_GET['que']) {
 					}
 				}
 				else {
-					aviso('Contrase�a incorrecta','La contrase�a es incorrecta. Haz click <a href="javascript:history.back()" class="eforo_enlace">aqu�</a> para regresar.') ;
+					aviso('Contraseña incorrecta','La Contraseña es incorrecta. Haz click <a href="javascript:history.back()" class="eforo_enlace">aqu�</a> para regresar.') ;
 				}
 			}
 			else {
@@ -88,7 +88,7 @@ switch($_GET['que']) {
 				$extensiones = array('gif','jpg','png') ;
 				preg_match('/\.(\w+)$/i',$_FILES['u_archivo']['name'],$a) ;
 				if(!in_array($a[1],$extensiones)) {
-					aviso('Error','<p>La extensi�n '.$a[1].' no est� permitida.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+					aviso('Error','<p>La extensi�n '.$a[1].' no está permitida.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
 				}
 				# --> Se comprueba el tama�o del archivo
 				$tam_actual = round($_FILES['u_archivo']['size'] / 1024) ;
@@ -161,7 +161,7 @@ switch($_GET['que']) {
 				$aviso_titulo = 'Bienvenid@ '.$nick ;
 				$aviso_mensaje =
 				"<p>Ya eres miembro de este foro, ahora podr�s tener tu propio perfil de usuario, escribir mensajes con tu nick, editar y borrar tus mensajes
-				y muchas cosas m�s. Espero que te la pases bien por aqu� y que participes mucho.
+				y muchas cosas más. Espero que te la pases bien por aqu� y que participes mucho.
 				<p>Webmaster
 				<p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">� Ir al foro</a>
 				" ;
@@ -172,8 +172,8 @@ switch($_GET['que']) {
 	case 'contrasena' :
 		# * Tiempo en el que se inhabilitar� la recuperaci�n de datos una vez que �stos se han enviado
 		$tiempo_contrasena = 1800 ; # <-- Por defecto 30 minutos (1800 segundos)
-		// * Generador de contrase�as
-		$longitud = 8 ; # <-- N�mero de caract�res de la contrase�a
+		// * Generador de Contraseñas
+		$longitud = 8 ; # <-- número de caract�res de la Contraseña
 		$caracteres = 'abcdefghijklmnopqrstuvwxyz0123456789' ;
 		$contrasena = substr(str_shuffle($caracteres),0,$longitud - 1) ;
 		$_POST['u_email'] = email(quitar($_POST['u_email'],1)) ;
@@ -195,19 +195,19 @@ text-decoration: none
 </style>
 <body>
 <p>Estos son tus datos de registro:
-<p>Nick: <b>$datos[2]</b><br>Contrase�a: <b>$contrasena</b>
-<p>Debido a que la contrase�a se guarda encriptada no se pudo recuperar, por eso se te ha generado una nueva,
+<p>Nick: <b>$datos[2]</b><br>Contraseña: <b>$contrasena</b>
+<p>Debido a que la Contraseña se guarda encriptada no se pudo recuperar, por eso se te ha generado una nueva,
 puedes cambiarla en cualquier momento en tu perfil. Para entrar al foro haz clic en la siguiente direcci�n:
 <a href=\"{$conf['foro_url']}$u[0]foro$u[1]$u[5]\" target=\"_blank\">{$conf['foro_url']}/$u[0]foro$u[1]$u[5]</a>.
 </body>
 " ;
-				mail($_POST['u_email'],"{$conf['foro_titulo']} � Recuperaci�n de contrase�a",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html") ;
+				mail($_POST['u_email'],"{$conf['foro_titulo']} � Recuperaci�n de Contraseña",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html") ;
 				$contrasena = md5(md5($contrasena)) ;
 				$conectar->query("update $tabla_usuarios set contrasena='$contrasena',fecha_rec_contrasena=$fecha where id='$datos[0]'") ;
 				aviso('Datos enviados',"<p>Los datos han sido enviados al email indicado.</p><p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a></p>") ;
 			}
 			else {
-				aviso('Error','<p>S�lo puedes solicitar tus datos cada 30 minutos.</p><p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a></p>') ;
+				aviso('Error','<p>Sólo puedes solicitar tus datos cada 30 minutos.</p><p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a></p>') ;
 			}
 		}
 		else {

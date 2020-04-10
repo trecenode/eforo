@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus usuarios convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -21,7 +21,7 @@ the Free Software Foundation; either version 2 of the License, or
 
 require 'foroconfig.php';
 
-// Marcar los subforos como le�dos
+// Marcar los subforos como leídos
 if(!empty($_GET['leidos'])) {
 	$conectar->query("DELETE FROM `eforo_recientes` WHERE `id_usuario`='{$c_id}'");
 }
@@ -76,7 +76,7 @@ while($cat = $buscar->fetch_assoc()) {
 					: '<i>Eliminad@</i>';
 			}
 			else {
-				$autor = '<i>An�nim@</i>';
+				$autor = '<i>Anónim@</i>';
 			}
 			$ult_mensaje = $autor." <a href=\"{$u[0]}foromensajes{$u[1]}{$u[2]}foro{$u[4]}{$foros['id']}{$u[3]}tema{$u[4]}{$ult['id_tema']}{$u[5]}#{$ult['id']}\" class=\"eforo_enlace\">�</a><br />".fecha($ult['fecha']);
 		}

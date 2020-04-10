@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus visitantes convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -74,7 +74,7 @@ while($datos = mysql_fetch_array($con)) {
 <td class="eforo_tabla_defecto"><form method="post" action="rangos.php?rango=<?=$datos['rango']?>"><?=$datos['rango']?></td>
 <td class="eforo_tabla_defecto"><input type="text" name="r_minimo" size="5" maxlength="5" value="<?=$datos['minimo']?>" class="eforo_formulario"<?=$bloquear?> /></td>
 <td class="eforo_tabla_defecto"><input type="text" name="r_descripcion" size="25" maxlength="100" value="<?=$datos['descripcion']?>" class="eforo_formulario" /> <input type="submit" name="modificar" value="Modificar" class="eforo_formulario" /></td>
-<td class="eforo_tabla_defecto"></form><? if(!$bloquear) { ?><div style="text-align: center"><a href="javascript:if(confirm('�Deseas borrar este rango?')) location = 'rangos.php?borrar=<?=$datos['rango']?>'" class="eforo_enlace">Borrar</a></div><? } else { ?>&nbsp;<? } ?></td>
+<td class="eforo_tabla_defecto"></form><? if(!$bloquear) { ?><div style="text-align: center"><a href="javascript:if(confirm('¿Deseas borrar este rango?')) location = 'rangos.php?borrar=<?=$datos['rango']?>'" class="eforo_enlace">Borrar</a></div><? } else { ?>&nbsp;<? } ?></td>
 </tr>
 <?
 }
@@ -103,23 +103,23 @@ function ayuda() {
 		a++ ;
 	}
 	else {
-		document.getElementById('ayuda_enlace').value = 'Ver m�s >>' ;
+		document.getElementById('ayuda_enlace').value = 'Ver más >>' ;
 		document.getElementById('ayuda_texto').style.display = 'none' ;
 		a-- ;
 	}
 }
 </script>
-<input type="button" id="ayuda_enlace" value="Ver m�s >>" onclick="ayuda()" class="eforo_formulario">
+<input type="button" id="ayuda_enlace" value="Ver más >>" onclick="ayuda()" class="eforo_formulario">
 <div id="ayuda_texto" style="display: none">
 <br />
 <b>� Qu� son los rangos ?</b><br />
 Los rangos permiten que tus usuarios puedan adquirir ciertos niveles ya sea al llegar a un determinado
-n�mero de mensajes � al ser designados manualmente. Los rangos te permiten crear restricciones en cada
-subforo, por ejemplo que s�lo usuarios con nivel 100 puedan tener acceso a un subforo, entre otras m�s.<br /><br />
+número de mensajes � al ser designados manualmente. Los rangos te permiten crear restricciones en cada
+subforo, por ejemplo que Sólo usuarios con nivel 100 puedan tener acceso a un subforo, entre otras más.<br /><br />
 <b>� Como se agrega un rango ?</b><br />
-Debes escribir un n�mero de rango entre 1 y 999 y un n�mero m�nimo de mensajes para alcanzar este rango. Si deseas crear
-rangos fijos debes poner un m�nimo de cero, pero estos s�lo podr�n ser asignados manualmente. Los rangos normales tambi�n
-pueden asignarse como rangos fijos y funcionar tambi�n como rangos en base al n�mero de mensajes para los dem�s usuarios.<br /><br />
+Debes escribir un número de rango entre 1 y 999 y un número m�nimo de mensajes para alcanzar este rango. Si deseas crear
+rangos fijos debes poner un m�nimo de cero, pero estos Sólo podr�n ser asignados manualmente. Los rangos normales tambi�n
+pueden asignarse como rangos fijos y funcionar tambi�n como rangos en base al número de mensajes para los demás usuarios.<br /><br />
 <b>Aviso:</b> El nivel m�nimo de mensajes siempre debe estar en forma proporcional al rango definido, por ejemplo lo siguiente
 no es v�lido:<br /><br />
 <b>10 - 125 - Intermedio<br />
@@ -127,13 +127,13 @@ no es v�lido:<br /><br />
 30 - 150 - Experto</b><br /><br />
 Si te fijas en este caso al llegar a 175 mensajes, el usuario pasar�a del rango 30 al rango 20 con lo que ser�a un error.<br /><br />
 <b>� El rango 500 o 999 hace moderador o administrador a un usuario ?</b><br />
-No, el rango 500 y 999 son s�lo descriptivos y se asignan autom�ticamente al usuario que es nombrado moderador o administrador.
+No, el rango 500 y 999 son Sólo descriptivos y se asignan autom�ticamente al usuario que es nombrado moderador o administrador.
 Para asignar moderadores y administradores debes hacerlo desde la opci�n <b>Usuarios</b>.<br /><br />
 <b>� C�mo se comportan los rangos ?</b><br />
 -1 - Usuarios que han sido expulsados - Pueden leer mensajes.<br />
 0 - Usuarios no registrados - Pueden leer, escribir nuevos temas y responder mensajes.<br />
 1 al 999 - Usuarios registrados - Pueden leer, escribir nuevos temas, responder mensajes, editar y borrar sus propios mensajes.<br />
-Este es el permiso m�ximo que pueden tener los usuarios que tengan esos rangos, pero tambi�n depende del permiso que hayas
+Este es el permiso máximo que pueden tener los usuarios que tengan esos rangos, pero tambi�n depende del permiso que hayas
 elegido por subforo.
 </div>
 </td>

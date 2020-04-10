@@ -8,7 +8,7 @@
 *************************************************
 
 eForo - Comunidad de foros para que tus usuarios convivan y se sientan parte de tu web
-Copyright � 2003-2006 Daniel Osorio "Electros"
+Copyright © 2003-2006 Daniel Osorio "Electros"
 
 This file is part of eForo.
 
@@ -27,7 +27,7 @@ $ePiel->cargar(array(
 )) ;
 require 'foromenu.php' ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de moderaci�n � Mover',
+'titulo' => $conf['foro_titulo'].' � Panel de moderación � Mover',
 'estilo' => $conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -46,13 +46,13 @@ if(!empty($_POST['id_foro']) && preg_match('^[0-9]+$',$_POST['id_foro'])) {
 	foreach($_POST as $a => $b) {
 		if(preg_match('^id_tema[0-9]+$',$a)) {
 			$temas_sel = true ;
-			# * Se obtiene el n�mero de mensajes (el tema junto con las respuestas)
+			# * Se obtiene el número de mensajes (el tema junto con las respuestas)
 			$con = $conectar->query("select num_respuestas from eforo_mensajes where id='$b'") ;
 			$num_mensajes = mysqli_result($con,0,0) + 1 ;
 			mysqli_free_result($con) ;
 			# * Se restan los temas y mensajes del subforo anterior
 			$conectar->query("update eforo_foros set num_temas=num_temas-1,num_mensajes=num_mensajes-$num_mensajes where id='{$_GET['foro']}'") ;
-			# * Se suma el n�mero de temas y mensajes del nuevo subforo
+			# * Se suma el número de temas y mensajes del nuevo subforo
 			$conectar->query("update eforo_foros set num_temas=num_temas+1,num_mensajes=num_mensajes+$num_mensajes where id='{$_POST['id_foro']}'") ;
 			$conectar->query("update eforo_mensajes set id_foro='{$_POST['id_foro']}' where id_tema='$b'") ;
 		}
