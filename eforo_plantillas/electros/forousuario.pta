@@ -171,40 +171,44 @@ function comprobar(a) {
 	</div>
 </div>
 <div class="form-group">
-	<b>Firma:</b><br />
+	<label for="u_firma"><b>Firma:</b></label>
 	<textarea name="u_firma" cols="30" rows="5" class="eforo_formulario form-control">{modo_perfil.u_firma}</textarea>
 </div>
-<b>Zona horaria GMT:</b>
-<input type="text" name="u_gmt" maxlength="2" size="3" value="{modo_perfil.u_gmt}" class="eforo_formulario form-control" />
-<select name="u_gmt_lista" onchange="u_gmt.value = value" class="eforo_formulario form-control">
-<option value="-12">(GMT-12) Eniwetok, Kwajalein
-<option value="-11">(GMT-11) Midway, Samoa
-<option value="-10">(GMT-10) Hawaii
-<option value="-9">(GMT-9) Alaska
-<option value="-8">(GMT-8) Tijuana, Pacific Time (USA)
-<option value="-7">(GMT-7) Arizona, Mountain Time (USA)
-<option value="-6">(GMT-6) Mexico (D.F.), Central Time (USA)
-<option value="-5">(GMT-5) New York, Eastern Time (USA)
-<option value="-4">(GMT-4) Caracas, Atlantic Time (Canada)
-<option value="-3">(GMT-3) Brasilia, Buenos Aires
-<option value="-2">(GMT-2) Mid-Atlantic
-<option value="-1">(GMT-1) Azores, Cabo Verde
-<option value="0" selected="selected">(GMT 0) Dublin, Lisboa, Londres
-<option value="1">(GMT+1) Amsterdam, Madrid, Paris
-<option value="2">(GMT+2) Atenas, Estambul, Israel
-<option value="3">(GMT+3) Bagdad, Kuwait, Riyad, Moscu
-<option value="4">(GMT+4) Abu Dhabi, Baku, Tbilisi
-<option value="5">(GMT+5) Islamabad, Karachi
-<option value="6">(GMT+6) Almaty, Dhaka, Colombo
-<option value="7">(GMT+7) Bangkok, Hanoi, Yakarta
-<option value="8">(GMT+8) Beijing, Hong Kong, Singapur
-<option value="9">(GMT+9) Tokyo, Seul
-<option value="10">(GMT+10) Melbourne, Sydney
-<option value="11">(GMT+11) Solomon, Nueva Caledonia
-<option value="12">(GMT+12) Auckland, Wellington, Fiji
-</select>
-<b>Avatar:</b>
-<input type="file" name="u_archivo" class="eforo_formulario form-control-file" />
+<div class="form-group">
+	<label for="u_gmt"><b>Zona horaria GMT:</b></label>
+	<input type="text" name="u_gmt" maxlength="2" size="3" value="{modo_perfil.u_gmt}" class="eforo_formulario form-control" />
+	<select name="u_gmt_lista" onchange="u_gmt.value = value" class="eforo_formulario form-control">
+	<option value="-12">(GMT-12) Eniwetok, Kwajalein
+	<option value="-11">(GMT-11) Midway, Samoa
+	<option value="-10">(GMT-10) Hawaii
+	<option value="-9">(GMT-9) Alaska
+	<option value="-8">(GMT-8) Tijuana, Pacific Time (USA)
+	<option value="-7">(GMT-7) Arizona, Mountain Time (USA)
+	<option value="-6">(GMT-6) Mexico (D.F.), Central Time (USA)
+	<option value="-5">(GMT-5) New York, Eastern Time (USA)
+	<option value="-4">(GMT-4) Caracas, Atlantic Time (Canada)
+	<option value="-3">(GMT-3) Brasilia, Buenos Aires
+	<option value="-2">(GMT-2) Mid-Atlantic
+	<option value="-1">(GMT-1) Azores, Cabo Verde
+	<option value="0" selected="selected">(GMT 0) Dublin, Lisboa, Londres
+	<option value="1">(GMT+1) Amsterdam, Madrid, Paris
+	<option value="2">(GMT+2) Atenas, Estambul, Israel
+	<option value="3">(GMT+3) Bagdad, Kuwait, Riyad, Moscu
+	<option value="4">(GMT+4) Abu Dhabi, Baku, Tbilisi
+	<option value="5">(GMT+5) Islamabad, Karachi
+	<option value="6">(GMT+6) Almaty, Dhaka, Colombo
+	<option value="7">(GMT+7) Bangkok, Hanoi, Yakarta
+	<option value="8">(GMT+8) Beijing, Hong Kong, Singapur
+	<option value="9">(GMT+9) Tokyo, Seul
+	<option value="10">(GMT+10) Melbourne, Sydney
+	<option value="11">(GMT+11) Solomon, Nueva Caledonia
+	<option value="12">(GMT+12) Auckland, Wellington, Fiji
+	</select>
+</div>
+<div class="form-group">
+	<label for="u_archivo"><b>Avatar:</b></label>
+	<input type="file" name="u_archivo" class="eforo_formulario form-control-file" />
+</div>
 [blq mostrar_avatar]
 <b>Avatar actual:</b><br />
 <img src="eforo_imagenes/avatares/{modo_perfil.mostrar_avatar.id}.{modo_perfil.mostrar_avatar.ext}" alt="{modo_perfil.mostrar_avatar.alt}" class="img-fluid rounded-circle" /><br />

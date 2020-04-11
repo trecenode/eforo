@@ -86,8 +86,8 @@ function revisar(a) {
 <td colspan="2" class="eforo_tabla_titulo"><div align="center" class="eforo_titulo_1">{form_titulo}</div></td>
 </tr>
 <tr>
-<td valign="top" class="eforo_tabla_defecto"><b>T�tulo:</b><br>T�tulo del mensaje.</td>
-<td valign="top" class="eforo_tabla_defecto"><input type="text" name="m_tema" size="75" value="{form_tema}" maxlength="60" class="eforo_formulario" /></td>
+<td valign="top" class="eforo_tabla_defecto"><b>Título:</b><br>Título del mensaje.</td>
+<td valign="top" class="eforo_tabla_defecto"><input type="text" name="m_tema" size="75" value="{form_tema}" maxlength="60" class="eforo_formulario form-control" /></td>
 </tr>
 <tr>
 <td valign="top" class="eforo_tabla_defecto"><b>Mensaje:</b><br>Contenido del mensaje.</td>
@@ -131,7 +131,7 @@ function citar() {
 onload = citar ;
 </script>
 [/blq citar]
-<textarea name="m_mensaje" cols="75" rows="25" class="eforo_formulario">{form_mensaje}</textarea>
+<textarea name="m_mensaje" cols="75" rows="25" class="eforo_formulario form-control">{form_mensaje}</textarea>
 </td>
 </tr>
 [blq adjunto]
@@ -161,7 +161,20 @@ onload = citar ;
 <tr>
 <td class="eforo_tabla_defecto">&nbsp;</td>
 <td class="eforo_tabla_defecto">
-<div align="center"><input type="button" onclick="vista_previa()" value="Vista Previa" class="eforo_formulario" /> <input type="submit" name="enviar" value="Enviar Mensaje" class="eforo_formulario" /></div>
+
+<div class="container-fluid">
+<div class="row">
+
+	<div class="col-12 col-md-6">
+		<input type="button" onclick="vista_previa()" value="Vista Previa" class="eforo_formulario form-control" />
+	</div>
+	<div class="col-12 col-md-6">
+		<input type="submit" name="enviar" value="Enviar Mensaje" class="eforo_formulario form-control" />
+	</div>
+
+</div>
+</div>
+
 </td>
 </tr>
 </table>
