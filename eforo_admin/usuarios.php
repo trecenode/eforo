@@ -17,16 +17,12 @@ de la GNU General Public License publicados por la Free Software Foundation; des
 versión 2 de la licencia, o (si lo deseas) cualquiera más reciente.
 */
 
-require '../foroconfig.php' ;
-require '../eforo_funciones/sesion.php' ;
-require '../eforo_funciones/aviso.php' ;
-require '../eforo_funciones/epaginas.php' ;
 $ePiel->cargar(array(
 'cabecera' => '../'.$conf['plantilla'].'cabecera.pta',
 'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administraci�n � Foros',
+'titulo' => $conf['foro_titulo'].' � Panel de administración � Foros',
 'estilo' => '../'.$conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;

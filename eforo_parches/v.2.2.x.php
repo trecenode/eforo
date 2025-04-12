@@ -16,8 +16,8 @@ margin-right: 250px
 if(!isset($_POST['enviar'])) {
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
-<p align="center"><b>Actualizaci�n de v.2.2.x a v3.0</b>
-<p><span style="color: #aa0000"><b>Advertencia:</b></span> Se recomienda tener un respaldo reciente de la base de datos antes de comenzar con la actualizaci�n ya que algunos de los cambios efectuados no tendr�n forma de revertirse.
+<p align="center"><b>Actualización de v.2.2.x a v3.0</b>
+<p><span style="color: #aa0000"><b>Advertencia:</b></span> Se recomienda tener un respaldo reciente de la base de datos antes de comenzar con la Actualización ya que algunos de los cambios efectuados no tendr�n forma de revertirse.
 <p><b>� Compatibilidad con sistema "Registro de usuarios"</b>
 <p>Si usaste alguna vez eForo en conjunto con el sistema "Registro de usuarios", deber�s indicar el nombre de la tabla en donde se almacenan tus usuarios, de otra forma d�jalo como está.
 <p><b>Tabla de usuarios:</b><br>
@@ -30,7 +30,7 @@ esto observa si tus Contraseñas se componen de 32 caract�res entre ellos letr
 8b87d55d6m32m2919811dib9slamn3ka.
 <p><b>Encriptar contrasenas en md5():</b><br>
 <input type="radio" name="contrasenas_md5" value="0" id="a" checked><label for="a">No</label> <input type="radio" name="contrasenas_md5" value="1" id="b"><label for="b">S�</label>
-<p>Por �ltimo debes escribir el nick del administrador del foro, una vez finalizada la actualizaci�n podr�s designar a más de un administrador.
+<p>Por �ltimo debes escribir el nick del administrador del foro, una vez finalizada la Actualización podr�s designar a más de un administrador.
 <p><b>Nick del administrador:</b><br>
 <input type="text" name="administrador"><br><br>
 <center><input type="submit" name="enviar" value="Actualizar"></center>
@@ -233,7 +233,7 @@ $conectar->query("update eforo_config set administrador='$datos[id]'") ;
 mysqli_free_result($con) ;
 ?>
 <p align="center"><b>Actualización de la base de datos completada</b>
-<p><b>Importante:</b> No te olvides de entrar al panel de control que se encuentra en el menú desplegable una vez que has iniciado sesi�n, deber�s llenar correctamente todos los campos y as� finalizar la actualizaci�n de eForo.
+<p><b>Importante:</b> No te olvides de entrar al panel de control que se encuentra en el menú desplegable una vez que has iniciado sesi�n, deber�s llenar correctamente todos los campos y as� finalizar la Actualización de eForo.
 <p><b>Notas adicionales:</b> El parche <b>sincronizar.php</b> comprueba si las estadísticas de número de temas y mensajes son correctos, esto es porque en anteriores versiones pudieron haberse corrompido las estad�sticas y estas muestren datos err�neos.
 De cualquier forma el usarlo no afectará ni corromper� la base de datos así que puedes aplicarlo con toda confianza.
 <p>Para empezar a usar eForo da click en el siguiente botón.

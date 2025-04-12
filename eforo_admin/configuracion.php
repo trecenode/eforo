@@ -18,19 +18,17 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 
-require '../foroconfig.php' ;
-require '../eforo_funciones/sesion.php' ;
 $ePiel->cargar(array(
 'cabecera' => '../'.$conf['plantilla'].'cabecera.pta',
 'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administraci�n � Foros',
+'titulo' => $conf['foro_titulo'].' � Panel de administración � Foros',
 'estilo' => '../'.$conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
 if(!$es_administrador) exit("<script type=\"text/javascript\">top.location='../$u[0]foro$u[1]$u[5]'</script>") ;
-// --> Configuraci�n
+// --> Configuración
 if(isset($_POST['enviar'])) {
 	require '../eforo_funciones/aviso.php' ;
 	$conectar->query("update eforo_config set
@@ -54,17 +52,17 @@ if(isset($_POST['enviar'])) {
 	adjuntotamano='{$_POST['c_adjuntotamano']}',
 	adjuntoext='{$_POST['c_adjuntoext']}',
 	adjuntonombre='{$_POST['c_adjuntonombre']}'") ;
-	aviso('Configuraci�n guardada','La configuraci�n ha sido guardada. Para regresar haz click <a href="configuracion.php" class="eforo_enlace">aqu�</a>.','','../') ;
+	aviso('Configuración guardada','La Configuración ha sido guardada. Para regresar haz click <a href="configuracion.php" class="eforo_enlace">aqu�</a>.','','../') ;
 }
 else {
 ?>
 <form name="configuracion" method="post" action="configuracion.php">
 <table width="100%" border="0" cellpadding="3" cellspacing="1" class="tabla_principal">
 <tr>
-<td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Configuraci�n</div></td>
+<td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Configuración</div></td>
 </tr>
 <tr>
-<td colspan="2" class="eforo_tabla_defecto"><div style="text-align: center"><input type="submit" name="enviar" value="Guardar Configuraci�n" class="eforo_formulario"></div></td>
+<td colspan="2" class="eforo_tabla_defecto"><div style="text-align: center"><input type="submit" name="enviar" value="Guardar Configuración" class="eforo_formulario"></div></td>
 </tr>
 <tr>
 <td colspan="2" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">General</div></td>
@@ -196,7 +194,7 @@ mysqli_free_result($con) ;
 <tr>
 <td class="eforo_tabla_defecto"><b>Tama�o del archivo:</b><br>Tama�o del archivo adjunto en KB. El valor máximo permitido por
 el servidor es de <b><?php echo @ini_get('upload_max_filesize') ? str_replace('M','',ini_get('upload_max_filesize')) * 1024 : 'un valor desconocido, aunque por lo general es de 2048'?> KB</b>. Este Sólo podr� ser modificado
-desde el archivo de configuraci�n de PHP php.ini.</td>
+desde el archivo de Configuración de PHP php.ini.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_adjuntotamano" value="<?php echo $conf['adjunto_tamano']?>" maxlength="5" class="eforo_formulario"></td>
 </tr>
 <tr>
@@ -208,7 +206,7 @@ desde el archivo de configuraci�n de PHP php.ini.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_adjuntonombre" value="<?php echo $conf['adjunto_nombre']?>" maxlength="2" class="eforo_formulario"></td>
 </tr>
 <tr>
-<td colspan="2" class="eforo_tabla_defecto"><div style="text-align: center"><input type="submit" name="enviar" value="Guardar Configuraci�n" class="eforo_formulario"></div></td>
+<td colspan="2" class="eforo_tabla_defecto"><div style="text-align: center"><input type="submit" name="enviar" value="Guardar Configuración" class="eforo_formulario"></div></td>
 </tr>
 </table>
 </form>

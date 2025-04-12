@@ -81,7 +81,7 @@
 <td valign="top">{perfil.pais}</td>
 </tr>
 <tr>
-<td valign="top"><b>Descripci�n:</b></td>
+<td valign="top"><b>Descripción:</b></td>
 <td valign="top">{perfil.descripcion}</td>
 </tr>
 <tr>

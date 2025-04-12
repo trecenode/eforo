@@ -184,7 +184,7 @@ $ePiel->variables(array(
 'm_importante_s' => $form_imp ? ' checked="checked"' : '',
 'm_notificacion_s' => $form_not ? ' checked="checked"' : ''
 )) ;
-# --> Deshabilitar las casillas si no están permitidas en la configuraci�n o si no se van a utilizar
+# --> Deshabilitar las casillas si no están permitidas en la Configuración o si no se van a utilizar
 $ePiel->variables(array(
 'm_caretos_e' => !$conf['permitir_caretos'] ? ' disabled="disabled"' : '',
 'm_codigo_e' => !$conf['permitir_codigo'] ? ' disabled="disabled"' : '',

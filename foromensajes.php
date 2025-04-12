@@ -122,12 +122,12 @@ while($datos = mysqli_fetch_assoc($con)) {
 	mysqli_free_result($con2) ;
 	# Se agrega el t�tulo del tema por defecto si la respuesta no tiene
 	if(!$datos['tema']) $datos['tema'] = 'RE: '.$titulo_tema ;
-	# Se aplican las funciones especiales seg�n la configuraci�n del foro y si el autor lo desea
+	# Se aplican las funciones especiales seg�n la Configuración del foro y si el autor lo desea
 	# --> código especial
 	if($conf['permitir_codigo'] && $datos['o_codigo']) $datos['mensaje'] = codigo($datos['mensaje']) ;
 	# --> Caretos
 	if($conf['permitir_caretos'] && $datos['o_caretos']) $datos['mensaje'] = caretos($datos['mensaje']) ;
-	# --> Censurar palabras (Sólo modificable a trav�s de la configuraci�n del foro)
+	# --> Censurar palabras (Sólo modificable a trav�s de la Configuración del foro)
 	if($conf['censurar_palabras']) {
 		$datos['tema'] = censurar($datos['tema']) ;
 		$datos['mensaje'] = censurar($datos['mensaje']) ;

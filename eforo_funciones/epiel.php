@@ -1,7 +1,7 @@
 <?php
 /*
 *************************************************
-*** ePiel v1.0
+*** ePiel v2.0
 *** Creado por: Electros en 2004-2006
 *** Sitio web: https://electros.dev
 *** Licencia: GNU General Public License

@@ -125,7 +125,7 @@ function comprobar(a) {
 		return false ;
 	}
 	if(a.u_descripcion.value.length > 255) {
-		alert('La descripci�n supera los 255 caract�res.') ;
+		alert('La Descripción supera los 255 caract�res.') ;
 		return false ;
 	}
 }

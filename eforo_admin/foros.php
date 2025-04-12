@@ -18,25 +18,15 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 
-require '../foroconfig.php' ;
-require '../eforo_funciones/sesion.php' ;
-require '../eforo_funciones/aviso.php' ;
-$ePiel->cargar(array(
-'cabecera' => '../'.$conf['plantilla'].'cabecera.pta',
-'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
-)) ;
-$ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administraci�n � Foros',
-'estilo' => '../'.$conf['estilo']
-)) ;
+
 $ePiel->mostrar('cabecera') ;
 if(!$es_administrador) exit("<script type=\"text/javascript\">top.location='../$u[0]foro$u[1]$u[5]'</script>") ;
 if(isset($_POST['agregar'])) {
 	switch($_POST['agregar']) {
 		case 1 :
-			# * Agregar categor�a
+			# * Agregar Categoría
 			$conectar->query("insert into eforo_categorias (categoria) values ('{$_POST['categoria']}')") ;
-			aviso('Categor�a agregada','La categor�a <b>'.$_POST['categoria'].'</b> ha sido agregada.','','../') ;
+			aviso('Categoría agregada','La Categoría <b>'.$_POST['categoria'].'</b> ha sido agregada.','','../') ;
 			break ;
 		case 2 :
 			# * Agregar foro
@@ -47,14 +37,14 @@ if(isset($_POST['agregar'])) {
 if(!empty($_GET['ordenar'])) {
 	switch($_GET['ordenar']) {
 		case 1 :
-			# * Cambiar categor�a de orden 
+			# * Cambiar Categoría de orden 
 			!$_GET['cambiar'] ? $conectar->query("update eforo_categorias set orden=orden+15 where id='{$_GET['id']}'") : $conectar->query("update eforo_categorias set orden=orden-15 where id='{$_GET['id']}'") ;
 			$con = $conectar->query("select id from eforo_categorias order by orden asc") ;
 			for($a = 10 ; $datos = mysqli_fetch_row($con) ; $a += 10) {
 				$conectar->query("update eforo_categorias set orden='$a' where id='$datos[0]'") ;
 			}
 			mysqli_free_result($con) ;
-			aviso('Categor�a movida','La categor�a ha sido cambiada de orden.','','../') ;
+			aviso('Categoría movida','La Categoría ha sido cambiada de orden.','','../') ;
 			break ;
 		case 2 :
 			# * Cambiar foro de orden 
@@ -70,14 +60,14 @@ if(!empty($_GET['ordenar'])) {
 if(!empty($_GET['borrar'])) {
 	switch($_GET['borrar']) {
 		case 1 :
-			# * Borrar categor�a
+			# * Borrar Categoría
 			$con = $conectar->query("select count(id) from eforo_foros where id_categoria='{$_GET['id']}'") ;
 			if(!mysqli_result($con,0,0)) {
 				$conectar->query("delete from eforo_categorias where id='{$_GET['id']}'") ;
-				aviso('Categor�a borrada','La categor�a ha sido borrada.','','../') ;
+				aviso('Categoría borrada','La Categoría ha sido borrada.','','../') ;
 			}
 			else {
-				aviso('Error','Debes eliminar todos los foros de esta categor�a.','','../') ;
+				aviso('Error','Debes eliminar todos los foros de esta Categoría.','','../') ;
 			}
 			break ;
 		case 2 :
@@ -87,7 +77,7 @@ if(!empty($_GET['borrar'])) {
 			aviso('Foro borrado','El foro y todos sus mensajes han sido borrados.','','../') ;
 	}
 }
-# * Editar t�tulo y descripci�n de categor�as y foros
+# * Editar t�tulo y Descripción de Categorías y foros
 if(isset($_POST['editar'])) {
 	foreach($_POST as $nombre => $valor) {
 		switch(true) {
@@ -108,7 +98,7 @@ if(isset($_POST['editar'])) {
 if(!empty($_GET['mover'])) {
 	list($id_categoria,$id_foro) = explode('_',$_GET['mover']) ;
 	$conectar->query("update eforo_foros set id_categoria='$id_categoria' where id='$id_foro'") ;
-	aviso('Foro movido','El foro ha sido movido a la categor�a seleccionada.','','../') ;
+	aviso('Foro movido','El foro ha sido movido a la Categoría seleccionada.','','../') ;
 }
 ?>
 <table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
@@ -116,16 +106,16 @@ if(!empty($_GET['mover'])) {
 <td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Agregar</div></td>
 </tr>
 <tr>
-<td width="50%" class="eforo_tabla_subtitulo"><div class="eforo_titulo_2">Categor�a</div></td>
+<td width="50%" class="eforo_tabla_subtitulo"><div class="eforo_titulo_2">Categoría</div></td>
 <td width="50%" class="eforo_tabla_subtitulo"><div class="eforo_titulo_2">Foro</div></td>
 </tr>
 <tr>
 <td valign="top" class="eforo_tabla_defecto">
 <form method="post" action="foros.php" style="display: inline">
 <input type="hidden" name="agregar" value="1" />
-<b>Categor�a:</b><br />
+<b>Categoría:</b><br />
 <input type="text" name="categoria" maxlength="100" size="30" class="eforo_formulario" /><br /><br />
-<input type="submit" value="Agregar Categor�a" class="eforo_formulario" />
+<input type="submit" value="Agregar Categoría" class="eforo_formulario" />
 </form>
 </td>
 <td valign="top" class="eforo_tabla_defecto">
@@ -133,7 +123,7 @@ if(!empty($_GET['mover'])) {
 <input type="hidden" name="agregar" value="2" />
 <b>Foro:</b><br />
 <input type="text" name="foro" maxlength="100" size="30" class="eforo_formulario" /><br />
-<b>Categor�a:</b><br />
+<b>Categoría:</b><br />
 <select name="categoria" class="eforo_formulario">
 <?php
 $con = $conectar->query("select id,categoria from eforo_categorias order by orden asc") ;
@@ -143,7 +133,7 @@ while($datos = mysqli_fetch_row($con)) {
 mysqli_free_result($con) ;
 ?>
 </select><br />
-<b>Descripci�n:</b><br />
+<b>Descripción:</b><br />
 <textarea name="descripcion" cols="30" rows="5" class="eforo_formulario"></textarea><br /><br />
 <input type="submit" value="Agregar Foro" class="eforo_formulario" />
 </form>
@@ -155,7 +145,7 @@ mysqli_free_result($con) ;
 <table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
 <tr>
 <td width="20%" class="eforo_tabla_titulo"><div class="eforo_titulo_1" align="center">Orden</div></td>
-<td width="65%" class="eforo_tabla_titulo"><div class="eforo_titulo_1" align="center">Categor�a/Subforo</div></td>
+<td width="65%" class="eforo_tabla_titulo"><div class="eforo_titulo_1" align="center">Categoría/Subforo</div></td>
 <td width="15%" class="eforo_tabla_titulo">&nbsp;</td>
 </tr>
 <tr>
@@ -179,7 +169,7 @@ foreach($categorias as $categoria_id => $categoria_nom) {
 </center>
 </td>
 <td class="eforo_tabla_titulo"><input type="text" name="cat_<?php echo $categoria_id?>" value="<?php echo $categoria_nom?>" size="30" maxlength="100" class="eforo_formulario"></td>
-<td class="eforo_tabla_titulo"><center><input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar la categor�a?')) location = 'foros.php?id=<?php echo $categoria_id?>&borrar=1'" class="eforo_formulario"></center></td>
+<td class="eforo_tabla_titulo"><center><input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar la Categoría?')) location = 'foros.php?id=<?php echo $categoria_id?>&borrar=1'" class="eforo_formulario"></center></td>
 </tr>
 <?php
 	$con = $conectar->query("select * from eforo_foros where id_categoria='$categoria_id' order by orden asc") ;

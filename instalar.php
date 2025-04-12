@@ -97,7 +97,7 @@ else {
 $actualDate = date_create();
 $fecha =  "NOW()"; //date_timestamp_get($actualDate);
 
-$admin_contrasena = md5(md5($_POST['contrasena'])) ;
+$admin_contrasena = password_hash($_POST['pass'], 1);
 switch($_POST['instalacion']) {
 	case 1 :
 		$tabla_usuarios = 'eforo_usuarios' ;
@@ -282,7 +282,7 @@ create table eforo_usuarios (
 id mediumint(8) unsigned not null auto_increment,
 fecha_registrado datetime not null,
 nick varchar(20) not null,
-contrasena varchar(32) not null,
+contrasena varchar(255) not null,
 email varchar(50) not null default '',
 pais varchar(20) not null default '',
 edad tinyint(2) unsigned not null default '18',

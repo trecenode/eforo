@@ -202,7 +202,7 @@ puedes cambiarla en cualquier momento en tu perfil. Para entrar al foro haz clic
 </body>
 " ;
 				mail($_POST['u_email'],"{$conf['foro_titulo']} � Recuperaci�n de Contraseña",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html") ;
-				$contrasena = md5(md5($contrasena)) ;
+				$contrasena = password_hash($contrasena, 1);
 				$conectar->query("update $tabla_usuarios set contrasena='$contrasena',fecha_rec_contrasena=$fecha where id='$datos[0]'") ;
 				aviso('Datos enviados',"<p>Los datos han sido enviados al email indicado.</p><p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a></p>") ;
 			}

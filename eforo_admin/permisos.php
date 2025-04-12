@@ -18,14 +18,12 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 
-require '../foroconfig.php' ;
-require '../eforo_funciones/sesion.php' ;
 $ePiel->cargar(array(
 'cabecera' => '../'.$conf['plantilla'].'cabecera.pta',
 'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administraci�n � Foros',
+'titulo' => $conf['foro_titulo'].' � Panel de administración � Foros',
 'estilo' => '../'.$conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;

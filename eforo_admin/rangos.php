@@ -18,15 +18,12 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 
-require '../foroconfig.php' ;
-require '../eforo_funciones/sesion.php' ;
-require '../eforo_funciones/aviso.php' ;
 $ePiel->cargar(array(
 'cabecera' => '../'.$conf['plantilla'].'cabecera.pta',
 'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administraci�n � Men�',
+'titulo' => $conf['foro_titulo'].' � Panel de administración � Menú',
 'estilo' => '../'.$conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -59,7 +56,7 @@ switch(true) {
 <tr>
 <td width="15%" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Rango</div></td>
 <td width="15%" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">M�nimo</div></td>
-<td width="50%" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Descripci�n</div></td>
+<td width="50%" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Descripción</div></td>
 <td width="20%" class="eforo_tabla_subtitulo">&nbsp;</td>
 </tr>
 <?php

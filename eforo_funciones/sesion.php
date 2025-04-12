@@ -40,7 +40,7 @@ if(!$es_moderador) {
 		mysqli_free_result($con) ;
 	}
 }
-# * Si el usuario es un administrador se le otorgar�n privilegios de administraci�n
+# * Si el usuario es un administrador se le otorgar�n privilegios de administración
 $es_administrador = false ;
 foreach($conf['admin_id'] as $id_admin) {
 	if($id_admin == $c_id) {
