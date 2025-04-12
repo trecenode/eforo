@@ -22,6 +22,10 @@ class ePaginas {
 	public $consulta;
 	public $total_pag;
 	public $total_res;
+	public array $u = [];
+	public array $e = [];
+	public $p;
+	public $m;
 
 	public function __construct($a,$b) {
 		require 'config.php' ;
@@ -64,7 +68,7 @@ class ePaginas {
 	function paginar() {
 		$paginas = array() ;
 		$datos_url = $this->datos_url() ;
-		# Si se está despu�s de la primera Página se muestra la flecha de retroceder y el enlace a la primera Página
+		# Si se está después de la primera Página se muestra la flecha de retroceder y el enlace a la primera Página
 		$pag_anterior = $_GET[$this->p] - 1 ;
 		if($pag_anterior >= 1) {
 			$paginas[] = $this->e[0].$_SERVER['PHP_SELF'].$this->u[0].$datos_url.$this->p.$this->u[2].'1'.$this->u[3].$this->e[1].'Primera'.$this->e[2] ;

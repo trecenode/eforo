@@ -7,7 +7,7 @@
 *** Licencia: GNU General Public License
 *************************************************
 
-ePiel - Sistema de plantillas para separar la programaci�n del dise�o
+ePiel - Sistema de plantillas para separar la programación del diseño
 Copyright © 2006 Daniel Osorio "Electros"
 
 This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,21 @@ the Free Software Foundation; either version 2 of the License, or
 */
 
 class ePiel {
+	/**
+	 * @var array Stores the loaded templates
+	 */
+	private array $plantillas = [];
+
+	/**
+	 * @var array Stores the variables for templates
+	 */
+	private array $variables = [];
+
+	/**
+	 * @var array Stores the block variables
+	 */
+	private array $variables_bloque = [];
+
 	# * Cargamos las plantillas deseadas y las almacenamos
 	function cargar($plantillas) {
 		foreach($plantillas as $plantilla_nom => $plantilla_arc) {
@@ -34,7 +49,7 @@ class ePiel {
 	}
 	# * Almacenamos las variables en bloques
 	function variables_bloque($bloques,$variables = array()) {
-		# Si $bloques es el bloque principal se le agregan las variables junto con una nueva iteraci�n
+		# Si $bloques es el bloque principal se le agregan las variables junto con una nueva iteración
 		if(!strpos($bloques,'.')) {
 			$this->variables_bloque[$bloques][] = $variables ;
 		}
@@ -56,7 +71,7 @@ class ePiel {
 	# * Construimos la variable $this->variables_bloque (para uso exclusivo en mostrar())
 	# La variable queda como sigue: $this->variables_bloque['bloque1'][$i_bloque1]['bloque2'][$i_bloque2]...['variable']
 	function pre_variable($bloques,$variable = '') {
-		# Eliminamos el �ltimo punto agregado
+		# Eliminamos el último punto agregado
 		$bloques = rtrim($bloques,'.') ;
 		$bloques = explode('.',$bloques) ;
 		$total = count($bloques) - 1 ;

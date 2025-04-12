@@ -95,7 +95,7 @@ else {
 	$buscar = $conectar->query("SELECT * FROM `{$tabla_usuarios}` WHERE `id`='{$idUsuario}'");
 	if($buscar->num_rows) {
 		$datos = $buscar->fetch_assoc();
-		$datos['descripcion'] = nl2br($datos['descripcion']); // Consultar para usar Markdown!
+		$datos['descripcion'] = $datos['descripcion'] !== null ? nl2br($datos['descripcion']) : '';
 		if($datos['rango_fijo']) {
 			$usuario_rango = $rangos[$datos['rango']][1];
 		}

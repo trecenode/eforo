@@ -65,7 +65,7 @@ Puedes aplicar esta Función con toda confianza y sin riesgos de corromper tu in
 </td>
 </tr>
 </table>
-<?
+<?php
 }
 $ePiel->variable('tiempo_carga',round(tiempo_carga() - $tiempo,4)) ;
 $ePiel->mostrar('piedepagina') ;

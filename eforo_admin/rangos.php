@@ -62,21 +62,21 @@ switch(true) {
 <td width="50%" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Descripci�n</div></td>
 <td width="20%" class="eforo_tabla_subtitulo">&nbsp;</td>
 </tr>
-<?
+<?php
 $con = $conectar->query("select * from eforo_rangos order by rango asc") ;
-while($datos = mysql_fetch_array($con)) {
+while($datos = $con->fetch_array()) {
 	$bloquear = false ;
 	if($datos['rango'] == -1 || $datos['rango'] == 0 || $datos['rango'] == 1 || $datos['rango'] == 500 || $datos['rango'] == 999) {
 		$bloquear = ' disabled="disabled"' ;
 	}
 ?>
 <tr>
-<td class="eforo_tabla_defecto"><form method="post" action="rangos.php?rango=<?=$datos['rango']?>"><?=$datos['rango']?></td>
-<td class="eforo_tabla_defecto"><input type="text" name="r_minimo" size="5" maxlength="5" value="<?=$datos['minimo']?>" class="eforo_formulario"<?=$bloquear?> /></td>
-<td class="eforo_tabla_defecto"><input type="text" name="r_descripcion" size="25" maxlength="100" value="<?=$datos['descripcion']?>" class="eforo_formulario" /> <input type="submit" name="modificar" value="Modificar" class="eforo_formulario" /></td>
-<td class="eforo_tabla_defecto"></form><? if(!$bloquear) { ?><div style="text-align: center"><a href="javascript:if(confirm('¿Deseas borrar este rango?')) location = 'rangos.php?borrar=<?=$datos['rango']?>'" class="eforo_enlace">Borrar</a></div><? } else { ?>&nbsp;<? } ?></td>
+<td class="eforo_tabla_defecto"><form method="post" action="rangos.php?rango=<?php echo $datos['rango']?>"><?php echo $datos['rango']?></td>
+<td class="eforo_tabla_defecto"><input type="text" name="r_minimo" size="5" maxlength="5" value="<?php echo $datos['minimo']?>" class="eforo_formulario"<?php echo $bloquear?> /></td>
+<td class="eforo_tabla_defecto"><input type="text" name="r_descripcion" size="25" maxlength="100" value="<?php echo $datos['descripcion']?>" class="eforo_formulario" /> <input type="submit" name="modificar" value="Modificar" class="eforo_formulario" /></td>
+<td class="eforo_tabla_defecto"></form><?php if(!$bloquear) { ?><div style="text-align: center"><a href="javascript:if(confirm('¿Deseas borrar este rango?')) location = 'rangos.php?borrar=<?php echo $datos['rango']?>'" class="eforo_enlace">Borrar</a></div><?php } else { ?>&nbsp;<?php } ?></td>
 </tr>
-<?
+<?php
 }
 mysqli_free_result($con)
 ?>
@@ -139,7 +139,7 @@ elegido por subforo.
 </td>
 </tr>
 </table>
-<?
+<?php
 $ePiel->variable('tiempo_carga',round(tiempo_carga() - $tiempo,4)) ;
 $ePiel->mostrar('piedepagina') ;
 ?>

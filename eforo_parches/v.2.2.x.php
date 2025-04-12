@@ -12,10 +12,10 @@ margin-left: 250px ;
 margin-right: 250px
 }
 </style>
-<?
+<?php
 if(!isset($_POST['enviar'])) {
 ?>
-<form method="post" action="<?=$_SERVER['PHP_SELF']?>">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
 <p align="center"><b>Actualizaci�n de v.2.2.x a v3.0</b>
 <p><span style="color: #aa0000"><b>Advertencia:</b></span> Se recomienda tener un respaldo reciente de la base de datos antes de comenzar con la actualizaci�n ya que algunos de los cambios efectuados no tendr�n forma de revertirse.
 <p><b>� Compatibilidad con sistema "Registro de usuarios"</b>
@@ -35,7 +35,7 @@ esto observa si tus Contraseñas se componen de 32 caract�res entre ellos letr
 <input type="text" name="administrador"><br><br>
 <center><input type="submit" name="enviar" value="Actualizar"></center>
 </form>
-<?
+<?php
 }
 else {
 // * Cambiar los nick de usuario por su respectiva ID
@@ -232,13 +232,13 @@ $datos = mysql_fetch_array($con) ;
 $conectar->query("update eforo_config set administrador='$datos[id]'") ;
 mysqli_free_result($con) ;
 ?>
-<p align="center"><b>Actualizaci�n de la base de datos completada</b>
-<p><b>Importante:</b> No te olvides de entrar al panel de control que se encuentra en el men� desplegable una vez que has iniciado sesi�n, deber�s llenar correctamente todos los campos y as� finalizar la actualizaci�n de eForo.
-<p><b>Notas adicionales:</b> El parche <b>sincronizar.php</b> comprueba si las estad�sticas de número de temas y mensajes son correctos, esto es porque en anteriores versiones pudieron haberse corrompido las estad�sticas y estas muestren datos err�neos.
-De cualquier forma el usarlo no afectar� ni corromper� la base de datos as� que puedes aplicarlo con toda confianza.
-<p>Para empezar a usar eForo da click en el siguiente bot�n.
+<p align="center"><b>Actualización de la base de datos completada</b>
+<p><b>Importante:</b> No te olvides de entrar al panel de control que se encuentra en el menú desplegable una vez que has iniciado sesi�n, deber�s llenar correctamente todos los campos y as� finalizar la actualizaci�n de eForo.
+<p><b>Notas adicionales:</b> El parche <b>sincronizar.php</b> comprueba si las estadísticas de número de temas y mensajes son correctos, esto es porque en anteriores versiones pudieron haberse corrompido las estad�sticas y estas muestren datos err�neos.
+De cualquier forma el usarlo no afectará ni corromper� la base de datos así que puedes aplicarlo con toda confianza.
+<p>Para empezar a usar eForo da click en el siguiente botón.
 <p>
 <center><input type="button" value="Ir al foro" onclick="location='../foro.php'"></center>
-<?
+<?php
 }
 ?>

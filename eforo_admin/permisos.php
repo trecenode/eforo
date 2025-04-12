@@ -65,17 +65,17 @@ mysqli_free_result($con) ;
 <td class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Importante</div></td>
 <td class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Adjuntar</div></td>
 </tr>
-<?
+<?php
 # * Se muestran los foros de cada categoria
 $con = $conectar->query("select id,categoria from eforo_categorias order by orden asc") ;
 while($datos = mysqli_fetch_row($con)) {
 ?>
 <tr>
-<td class="eforo_tabla_subtitulo" colspan="7"><div class="eforo_titulo_1"><?=$datos[1]?></div></td>
+<td class="eforo_tabla_subtitulo" colspan="7"><div class="eforo_titulo_1"><?php echo $datos[1]?></div></td>
 </tr>
-<?
+<?php
 	$con2 = $conectar->query("select * from eforo_foros where id_categoria='$datos[0]' order by orden asc") ;
-	while($datos2 = mysql_fetch_array($con2)) {
+	while($datos2 = $con2->fetch_array()) {
 		# --> Leer
 		$rangos_leer = false ;
 		foreach($rangos as $rango => $descripcion) {
@@ -132,18 +132,18 @@ while($datos = mysqli_fetch_row($con)) {
 		}
 ?>
 <tr>
-<td class="eforo_tabla_defecto" colspan="7"><b><?=$datos2['foro']?></b></td>
+<td class="eforo_tabla_defecto" colspan="7"><b><?php echo $datos2['foro']?></b></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><select name="p_leer_<?=$datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?=$rangos_leer?></select></td>
-<td class="eforo_tabla_defecto"><select name="p_nuevo_<?=$datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?=$rangos_nuevo?></select></td>
-<td class="eforo_tabla_defecto"><select name="p_responder_<?=$datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?=$rangos_responder?></select></td>
-<td class="eforo_tabla_defecto"><select name="p_editar_<?=$datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?=$rangos_editar?></select></td>
-<td class="eforo_tabla_defecto"><select name="p_borrar_<?=$datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?=$rangos_borrar?></select></td>
-<td class="eforo_tabla_defecto"><select name="p_importante_<?=$datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?=$rangos_importante?></select></td>
-<td class="eforo_tabla_defecto"><select name="p_adjuntar_<?=$datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?=$rangos_adjuntar?></select></td>
+<td class="eforo_tabla_defecto"><select name="p_leer_<?php echo $datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?php echo $rangos_leer?></select></td>
+<td class="eforo_tabla_defecto"><select name="p_nuevo_<?php echo $datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?php echo $rangos_nuevo?></select></td>
+<td class="eforo_tabla_defecto"><select name="p_responder_<?php echo $datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?php echo $rangos_responder?></select></td>
+<td class="eforo_tabla_defecto"><select name="p_editar_<?php echo $datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?php echo $rangos_editar?></select></td>
+<td class="eforo_tabla_defecto"><select name="p_borrar_<?php echo $datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?php echo $rangos_borrar?></select></td>
+<td class="eforo_tabla_defecto"><select name="p_importante_<?php echo $datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?php echo $rangos_importante?></select></td>
+<td class="eforo_tabla_defecto"><select name="p_adjuntar_<?php echo $datos2['id']?>" class="eforo_formulario" style="font-size: 7pt"><?php echo $rangos_adjuntar?></select></td>
 </tr>
-<?
+<?php
 	}
 	mysqli_free_result($con2) ;
 }
@@ -154,7 +154,7 @@ mysqli_free_result($con) ;
 </tr>
 </table>
 </form>
-<?
+<?php
 $ePiel->variable('tiempo_carga',round(tiempo_carga() - $tiempo,4)) ;
 $ePiel->mostrar('piedepagina') ;
 ?>

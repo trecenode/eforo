@@ -34,20 +34,20 @@ margin: 100px ;
 </head>
 <body>
 <h3>eForo v3.1 - Actualizaci�n desde la versión v3.0</h3>
-<?
+<?php
 require '../config.php' ;
 if(!isset($_POST['enviar'])) {
 ?>
 <div style="border: #000000 1px solid ; background-color: #cddff0 ; padding: 5px">
 Comprobando configuraci�n de <b>config.php</b>...<br /><br />
-<?
+<?php
 if($conectar) echo 'El archivo <b>config.php</b> está configurado correctamente.' ;
 ?>
 </div>
 <p>Completa los siguientes datos:</p>
 <form method="post" action="v3.0.php">
 <b>URL donde está instalado eForo (ej. http://www.pagina.com/carpeta/):</b><br />
-<input type="text" size="50" name="foro_url" value="http://<?=$_SERVER['HTTP_HOST'].str_replace('eforo_parches/v3.0.php','',$_SERVER['PHP_SELF'])?>" /><br />
+<input type="text" size="50" name="foro_url" value="http://<?php echo $_SERVER['HTTP_HOST'].str_replace('eforo_parches/v3.0.php','',$_SERVER['PHP_SELF'])?>" /><br />
 <b>Tabla de usuarios:</b><br />
 <input type="text" size="20" name="tabla_usuarios" value="eforo_usuarios" /><br />
 Modifica este campo Sólo si estás usando eForo integrado con el sistema de usuarios de <b>www.electros.net</b> (eUsuarios v1.0, Registro de usuarios v1.2 � cualquier versión reciente).<br /><br />
@@ -58,7 +58,7 @@ Si todo está correcto procedemos con la actualizaci�n.<br /><br />
 <input type="submit" name="enviar" value="Actualizar" />
 </form>
 </p>
-<?
+<?php
 }
 else {
 $tabla_usuarios = &$_POST['tabla_usuarios'] ;
@@ -230,7 +230,7 @@ if(!$error) {
 ?>
 <p>Listo, la actualizaci�n se ha finalizado con �xito.</p>
 <input type="button" onclick="location = '../foro.php'" value="Finalizar" />
-<?
+<?php
 }
 else {
 ?>
@@ -238,14 +238,14 @@ else {
 preocupes, estas modificaciones varian dependiendo de la versión de eForo y por tanto pueden o no mostrar un error, sin
 embargo el funcionamiento de eForo no es afectado. Si es un error distinto y eForo no está funcionando, restaura la base de datos e
 intenta de nuevo. Cualquier error cons�ltanos en nuestro foro en <a href="http://www.electros.net">http://www.electros.net</a>.</p>
-<?
+<?php
 }
 ?>
 <p>Si has elegido actualizar el eForo utilizando la compatibilidad con el sistema de usuarios, recuerda cambiar el nombre de la
 variable <b>$tabla_usuarios</b> por el nombre de la tabla donde se guardan tus usuarios, para esto abre el archivo
 <b>foroconfig.php</b> con un editor de texto puro como el Bloc de notas de Windows (notepad.exe).</p>
 <input type="button" onclick="location = '../foro.php'" value="Finalizar" />
-<?
+<?php
 }
 ?>
 </body>

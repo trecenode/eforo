@@ -82,7 +82,7 @@ function comprobar(a) {
 <b>Confirmar contraseña:</b><br />
 <input type="password" size="25" name="contrasena_c" /><br />
 <b>URL donde está instalado eForo (ej. https://www.tuweb.com/eforo/):</b><br />
-<input type="text" size="50" name="foro_url" value="http://<?=$_SERVER['HTTP_HOST'].str_replace('instalar.php','',$_SERVER['PHP_SELF'])?>" /><br />
+<input type="text" size="50" name="foro_url" value="http://<?php echo $_SERVER['HTTP_HOST'].str_replace('instalar.php','',$_SERVER['PHP_SELF'])?>" /><br />
 <b>Tipo de instalación:</b><br />
 <input type="radio" id="instalacion1" name="instalacion" value="1" onclick="tabla_usuarios.disabled = true ; tabla_usuarios.value = 'eforo_usuarios'" checked="checked" /><label for="instalacion1">Instalación típica</label><br />
 <input type="radio" id="instalacion2" name="instalacion" value="2" onclick="tabla_usuarios.disabled = false ; tabla_usuarios.value = ''" /><label for="instalacion2">Compatible con script de sistema de usuarios de www.electros.net</label><br />

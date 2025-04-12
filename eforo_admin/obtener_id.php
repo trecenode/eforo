@@ -43,7 +43,7 @@ else {
 <form method="post" action="obtener_id.php" style="display: inline">
 <b>Obtener el ID de este nick:</b> <input type="text" name="nick" size="10" class="eforo_formulario" />
 </form>
-<?
+<?php
 }
 ?>
 </body>

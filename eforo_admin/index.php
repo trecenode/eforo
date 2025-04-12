@@ -1,7 +1,7 @@
 <?php
 /*
 *************************************************
-*** eForo v3.1
+*** eForo v4.1
 *** Creado por: Electros en 2004-2006
 *** Sitio web: https://electros.dev
 *** Licencia: GNU General Public License
@@ -22,7 +22,7 @@ the Free Software Foundation; either version 2 of the License, or
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>eForo v3.0 � Panel de administraci�n</title>
+<title>eForo 4.1 - Panel de administración</title>
 </head>
 <frameset cols="20%,80%" frameborder="0" framespacing="0">
 <frame name="menu" src="menu.php" scrolling="no" />

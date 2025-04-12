@@ -135,7 +135,7 @@ if(!empty($_GET['mover'])) {
 <input type="text" name="foro" maxlength="100" size="30" class="eforo_formulario" /><br />
 <b>Categor�a:</b><br />
 <select name="categoria" class="eforo_formulario">
-<?
+<?php
 $con = $conectar->query("select id,categoria from eforo_categorias order by orden asc") ;
 while($datos = mysqli_fetch_row($con)) {
 	echo "<option value=\"$datos[0]\">$datos[1]</option>\n" ;
@@ -161,7 +161,7 @@ mysqli_free_result($con) ;
 <tr>
 <td colspan="3" class="eforo_tabla_defecto"><center><input type="submit" value="Guardar Modificaciones" class="eforo_formulario"></center></td>
 </tr>
-<?
+<?php
 # * Almacena el id y el nombre de las categorias en un array
 $con = $conectar->query('select id,categoria from eforo_categorias order by orden asc') ;
 while($datos = mysqli_fetch_row($con)) {
@@ -174,26 +174,26 @@ foreach($categorias as $categoria_id => $categoria_nom) {
 </td>
 <td class="eforo_tabla_titulo">
 <center>
-<input type="button" value="Bajar" onclick="location='foros.php?id=<?=$categoria_id?>&ordenar=1&cambiar=0'" class="eforo_formulario">
-<input type="button" value="Subir" onclick="location='foros.php?id=<?=$categoria_id?>&ordenar=1&cambiar=1'" class="eforo_formulario">
+<input type="button" value="Bajar" onclick="location='foros.php?id=<?php echo $categoria_id?>&ordenar=1&cambiar=0'" class="eforo_formulario">
+<input type="button" value="Subir" onclick="location='foros.php?id=<?php echo $categoria_id?>&ordenar=1&cambiar=1'" class="eforo_formulario">
 </center>
 </td>
-<td class="eforo_tabla_titulo"><input type="text" name="cat_<?=$categoria_id?>" value="<?=$categoria_nom?>" size="30" maxlength="100" class="eforo_formulario"></td>
-<td class="eforo_tabla_titulo"><center><input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar la categor�a?')) location = 'foros.php?id=<?=$categoria_id?>&borrar=1'" class="eforo_formulario"></center></td>
+<td class="eforo_tabla_titulo"><input type="text" name="cat_<?php echo $categoria_id?>" value="<?php echo $categoria_nom?>" size="30" maxlength="100" class="eforo_formulario"></td>
+<td class="eforo_tabla_titulo"><center><input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar la categor�a?')) location = 'foros.php?id=<?php echo $categoria_id?>&borrar=1'" class="eforo_formulario"></center></td>
 </tr>
-<?
+<?php
 	$con = $conectar->query("select * from eforo_foros where id_categoria='$categoria_id' order by orden asc") ;
 	while($datos = mysqli_fetch_assoc($con)) {
 ?>
 <tr>
 <td class="eforo_tabla_defecto">
 <center>
-<input type="button" value="Bajar" onclick="location='foros.php?id=<?=$datos['id']?>&c=<?=$categoria_id?>&ordenar=2&cambiar=0'" class="eforo_formulario">
-<input type="button" value="Subir" onclick="location='foros.php?id=<?=$datos['id']?>&c=<?=$categoria_id?>&ordenar=2&cambiar=1'" class="eforo_formulario">
+<input type="button" value="Bajar" onclick="location='foros.php?id=<?php echo $datos['id']?>&c=<?php echo $categoria_id?>&ordenar=2&cambiar=0'" class="eforo_formulario">
+<input type="button" value="Subir" onclick="location='foros.php?id=<?php echo $datos['id']?>&c=<?php echo $categoria_id?>&ordenar=2&cambiar=1'" class="eforo_formulario">
 <br><br>
 <select onchange="if(value) location = 'foros.php?mover='+options[selectedIndex].value" class="eforo_formulario">
 <option>Mover a ...</option>
-<?
+<?php
 		foreach($categorias as $a => $b) {
 			echo "<option value=\"{$a}_{$datos['id']}\">$b</option>\n" ;
 		}
@@ -202,13 +202,13 @@ foreach($categorias as $categoria_id => $categoria_nom) {
 </center>
 </td>
 <td class="eforo_tabla_defecto">
-<input type="text" name="foro_<?=$datos['id']?>" size="30" maxlength="100" value="<?=$datos['foro']?>" class="eforo_formulario">
+<input type="text" name="foro_<?php echo $datos['id']?>" size="30" maxlength="100" value="<?php echo $datos['foro']?>" class="eforo_formulario">
 <br><br>
-<textarea name="des_<?=$datos['id']?>" cols="30" rows="3" class="eforo_formulario"><?=$datos['descripcion']?></textarea>
+<textarea name="des_<?php echo $datos['id']?>" cols="30" rows="3" class="eforo_formulario"><?php echo $datos['descripcion']?></textarea>
 </td>
-<td class="eforo_tabla_defecto"><center><input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar el foro y todos sus mensajes?')) location='foros.php?id=<?=$datos['id']?>&borrar=2'" class="eforo_formulario"></center></td>
+<td class="eforo_tabla_defecto"><center><input type="button" value="Borrar" onclick="if(confirm('¿Deseas borrar el foro y todos sus mensajes?')) location='foros.php?id=<?php echo $datos['id']?>&borrar=2'" class="eforo_formulario"></center></td>
 </tr>
-<?
+<?php
 	}
 	mysqli_free_result($con) ;
 }
@@ -218,7 +218,7 @@ foreach($categorias as $categoria_id => $categoria_nom) {
 </tr>
 </table>
 </form>
-<?
+<?php
 $ePiel->variable('tiempo_carga',round(tiempo_carga() - $tiempo,4)) ;
 $ePiel->mostrar('piedepagina') ;
 ?>

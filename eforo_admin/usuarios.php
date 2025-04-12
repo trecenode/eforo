@@ -136,7 +136,7 @@ function ocultar_nota() {
 <tr>
 <td colspan="12" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Usuarios</div></td>
 </tr>
-<?
+<?php
 if(empty($_GET['moderador'])) {
 ?>
 <tr>
@@ -145,52 +145,52 @@ if(empty($_GET['moderador'])) {
 <b>Ver usuarios que empiecen por:</b>
 <select name="letra" class="eforo_formulario">
 <option value="">Cualquier caract�r</option>
-<option value="num"<? if($_GET['letra'] == 'num') echo ' selected="selected"' ?>>número</option>
-<option value="a"<? if($_GET['letra'] == 'a') echo ' selected="selected"' ?>>A</option>
-<option value="b"<? if($_GET['letra'] == 'b') echo ' selected="selected"' ?>>B</option>
-<option value="c"<? if($_GET['letra'] == 'c') echo ' selected="selected"' ?>>C</option>
-<option value="d"<? if($_GET['letra'] == 'd') echo ' selected="selected"' ?>>D</option>
-<option value="e"<? if($_GET['letra'] == 'e') echo ' selected="selected"' ?>>E</option>
-<option value="f"<? if($_GET['letra'] == 'f') echo ' selected="selected"' ?>>F</option>
-<option value="g"<? if($_GET['letra'] == 'g') echo ' selected="selected"' ?>>G</option>
-<option value="h"<? if($_GET['letra'] == 'h') echo ' selected="selected"' ?>>H</option>
-<option value="i"<? if($_GET['letra'] == 'i') echo ' selected="selected"' ?>>I</option>
-<option value="j"<? if($_GET['letra'] == 'j') echo ' selected="selected"' ?>>J</option>
-<option value="k"<? if($_GET['letra'] == 'k') echo ' selected="selected"' ?>>K</option>
-<option value="l"<? if($_GET['letra'] == 'l') echo ' selected="selected"' ?>>L</option>
-<option value="m"<? if($_GET['letra'] == 'm') echo ' selected="selected"' ?>>M</option>
-<option value="n"<? if($_GET['letra'] == 'n') echo ' selected="selected"' ?>>N</option>
-<option value="o"<? if($_GET['letra'] == 'o') echo ' selected="selected"' ?>>O</option>
-<option value="p"<? if($_GET['letra'] == 'p') echo ' selected="selected"' ?>>P</option>
-<option value="q"<? if($_GET['letra'] == 'q') echo ' selected="selected"' ?>>Q</option>
-<option value="r"<? if($_GET['letra'] == 'r') echo ' selected="selected"' ?>>R</option>
-<option value="s"<? if($_GET['letra'] == 's') echo ' selected="selected"' ?>>S</option>
-<option value="t"<? if($_GET['letra'] == 't') echo ' selected="selected"' ?>>T</option>
-<option value="u"<? if($_GET['letra'] == 'u') echo ' selected="selected"' ?>>U</option>
-<option value="v"<? if($_GET['letra'] == 'v') echo ' selected="selected"' ?>>V</option>
-<option value="w"<? if($_GET['letra'] == 'w') echo ' selected="selected"' ?>>W</option>
-<option value="x"<? if($_GET['letra'] == 'x') echo ' selected="selected"' ?>>X</option>
-<option value="y"<? if($_GET['letra'] == 'y') echo ' selected="selected"' ?>>Y</option>
-<option value="z"<? if($_GET['letra'] == 'z') echo ' selected="selected"' ?>>Z</option>
+<option value="num"<?php if($_GET['letra'] == 'num') echo ' selected="selected"' ?>>número</option>
+<option value="a"<?php if($_GET['letra'] == 'a') echo ' selected="selected"' ?>>A</option>
+<option value="b"<?php if($_GET['letra'] == 'b') echo ' selected="selected"' ?>>B</option>
+<option value="c"<?php if($_GET['letra'] == 'c') echo ' selected="selected"' ?>>C</option>
+<option value="d"<?php if($_GET['letra'] == 'd') echo ' selected="selected"' ?>>D</option>
+<option value="e"<?php if($_GET['letra'] == 'e') echo ' selected="selected"' ?>>E</option>
+<option value="f"<?php if($_GET['letra'] == 'f') echo ' selected="selected"' ?>>F</option>
+<option value="g"<?php if($_GET['letra'] == 'g') echo ' selected="selected"' ?>>G</option>
+<option value="h"<?php if($_GET['letra'] == 'h') echo ' selected="selected"' ?>>H</option>
+<option value="i"<?php if($_GET['letra'] == 'i') echo ' selected="selected"' ?>>I</option>
+<option value="j"<?php if($_GET['letra'] == 'j') echo ' selected="selected"' ?>>J</option>
+<option value="k"<?php if($_GET['letra'] == 'k') echo ' selected="selected"' ?>>K</option>
+<option value="l"<?php if($_GET['letra'] == 'l') echo ' selected="selected"' ?>>L</option>
+<option value="m"<?php if($_GET['letra'] == 'm') echo ' selected="selected"' ?>>M</option>
+<option value="n"<?php if($_GET['letra'] == 'n') echo ' selected="selected"' ?>>N</option>
+<option value="o"<?php if($_GET['letra'] == 'o') echo ' selected="selected"' ?>>O</option>
+<option value="p"<?php if($_GET['letra'] == 'p') echo ' selected="selected"' ?>>P</option>
+<option value="q"<?php if($_GET['letra'] == 'q') echo ' selected="selected"' ?>>Q</option>
+<option value="r"<?php if($_GET['letra'] == 'r') echo ' selected="selected"' ?>>R</option>
+<option value="s"<?php if($_GET['letra'] == 's') echo ' selected="selected"' ?>>S</option>
+<option value="t"<?php if($_GET['letra'] == 't') echo ' selected="selected"' ?>>T</option>
+<option value="u"<?php if($_GET['letra'] == 'u') echo ' selected="selected"' ?>>U</option>
+<option value="v"<?php if($_GET['letra'] == 'v') echo ' selected="selected"' ?>>V</option>
+<option value="w"<?php if($_GET['letra'] == 'w') echo ' selected="selected"' ?>>W</option>
+<option value="x"<?php if($_GET['letra'] == 'x') echo ' selected="selected"' ?>>X</option>
+<option value="y"<?php if($_GET['letra'] == 'y') echo ' selected="selected"' ?>>Y</option>
+<option value="z"<?php if($_GET['letra'] == 'z') echo ' selected="selected"' ?>>Z</option>
 </select>
 <b>Por:</b>
 <select name="por" class="eforo_formulario">
 <option value="1">más recientes</option>
-<option value="2"<? if(!empty($_GET['por']) && $_GET['por'] == 2) echo ' selected="selected"' ?>>Orden alfab�tico</option>
+<option value="2"<?php if(!empty($_GET['por']) && $_GET['por'] == 2) echo ' selected="selected"' ?>>Orden alfab�tico</option>
 </select>
 <b>En orden:</b>
 <select name="orden" class="eforo_formulario">
 <option value="1">Descendente</option>
-<option value="2"<? if(!empty($_GET['orden']) && $_GET['orden'] == 2) echo ' selected="selected"' ?>>Ascendente</option>
+<option value="2"<?php if(!empty($_GET['orden']) && $_GET['orden'] == 2) echo ' selected="selected"' ?>>Ascendente</option>
 </select>
 <input type="submit" value="Ver" />
 </form>
 <br /><br />
 <b>Asignar rangos:</b>
-<form method="post" action="usuarios.php?<?=$_SERVER['QUERY_STRING']?>">
+<form method="post" action="usuarios.php?<?php echo $_SERVER['QUERY_STRING']?>">
 <select name="rango" onchange="if(value) submit()" class="eforo_formulario">
 <option value="">...</option>
-<?
+<?php
 foreach($rangos as $a => $b) {
 	echo "<option value=\"$a\">$a $b[1]</option>\n" ;
 }
@@ -200,15 +200,15 @@ foreach($rangos as $a => $b) {
 </td>
 </tr>
 <tr>
-<td colspan="12" class="eforo_tabla_defecto"><?=$ePaginas->paginar()?></td>
-<?
+<td colspan="12" class="eforo_tabla_defecto"><?php echo $ePaginas->paginar()?></td>
+<?php
 	$estilo_num = 1 ;
 	for($i = 0 ; $datos = mysqli_fetch_assoc($con) ; $i++) {
 		if($i % $columnas == 0) {
 ?>
 </tr>
 <tr>
-<?
+<?php
 		}
 	if($datos['rango_fijo']) {
 		$usuario_rango = $rangos[$datos['rango']][1] ;
@@ -220,24 +220,24 @@ foreach($rangos as $a => $b) {
 		}
 	}
 ?>
-<td class="eforo_tabla_mensaje_<?=$estilo_num?>"><input type="checkbox" name="id_<?=$datos['id']?>" value="<?=$datos['id']?>" /></td>
-<td class="eforo_tabla_mensaje_<?=$estilo_num?>"><a href="../<?="$u[0]forousuarios$u[1]$u[2]u$u[4]{$datos['id']}$u[5]"?>" target="_blank" onmouseover="mostrar_nota('nota_<?=$datos['id']?>')" onmouseout="ocultar_nota('nota_<?=$datos['id']?>')" class="eforo_enlace"><?=$datos['nick'] ? $datos['nick'] : '&nbsp;'?></a>
-<div id="nota_<?=$datos['id']?>" class="nota">
-ID: <?=$datos['id']?><br />
-Rango: <?=$usuario_rango?><br />
-Email: <?=$datos['email']?><br />
-IP: <?=$datos['ip']?>
+<td class="eforo_tabla_mensaje_<?php echo $estilo_num?>"><input type="checkbox" name="id_<?php echo $datos['id']?>" value="<?php echo $datos['id']?>" /></td>
+<td class="eforo_tabla_mensaje_<?php echo $estilo_num?>"><a href="../<?php echo "$u[0]forousuarios$u[1]$u[2]u$u[4]{$datos['id']}$u[5]"?>" target="_blank" onmouseover="mostrar_nota('nota_<?php echo $datos['id']?>')" onmouseout="ocultar_nota('nota_<?php echo $datos['id']?>')" class="eforo_enlace"><?php echo $datos['nick'] ? $datos['nick'] : '&nbsp;'?></a>
+<div id="nota_<?php echo $datos['id']?>" class="nota">
+ID: <?php echo $datos['id']?><br />
+Rango: <?php echo $usuario_rango?><br />
+Email: <?php echo $datos['email']?><br />
+IP: <?php echo $datos['ip']?>
 </div>
 </td>
-<td class="eforo_tabla_mensaje_<?=$estilo_num?>"><input type="button" value=" M " onclick="location='usuarios.php?moderador=<?=$datos['id']?>'" class="eforo_formulario" /></td>
-<td class="eforo_tabla_mensaje_<?=$estilo_num?>"><input type="button" value=" B " onclick="if(confirm('¿Deseas borrar a este usuario junto con todos sus mensajes?')) location='usuarios.php?borrar=<?=$datos['id']?>'" class="eforo_formulario" /></td>
-<?
+<td class="eforo_tabla_mensaje_<?php echo $estilo_num?>"><input type="button" value=" M " onclick="location='usuarios.php?moderador=<?php echo $datos['id']?>'" class="eforo_formulario" /></td>
+<td class="eforo_tabla_mensaje_<?php echo $estilo_num?>"><input type="button" value=" B " onclick="if(confirm('¿Deseas borrar a este usuario junto con todos sus mensajes?')) location='usuarios.php?borrar=<?php echo $datos['id']?>'" class="eforo_formulario" /></td>
+<?php
 		$estilo_num = $estilo_num == 1 ? 2 : 1 ;
 	}
 ?>
 </tr>
 <tr>
-<td colspan="12" class="eforo_tabla_defecto"><?=$ePaginas->paginar()?></td>
+<td colspan="12" class="eforo_tabla_defecto"><?php echo $ePaginas->paginar()?></td>
 </tr>
 <tr>
 <td colspan="12" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Ayuda</div></td>
@@ -272,7 +272,7 @@ ser� fijo para los usuarios seleccionados). Para que su rango sea normal de nu
 </div>
 </td>
 </tr>
-<?
+<?php
 }
 else {
 # * Función para designar moderadores en el foro
@@ -283,16 +283,16 @@ else {
 <tr>
 <td class="eforo_tabla_defecto">
 <p><a href="usuarios.php" class="eforo_enlace">� Regresar a Usuarios</a></p>
-<?
+<?php
 	$con = $conectar->query("select nick from $tabla_usuarios where id='{$_GET['moderador']}'") ;
 	$datos = mysqli_fetch_row($con) ;
 	$nick_moderador = $datos[0] ;
 	mysqli_free_result($con) ;
 ?>
-<p>Debes seleccionar los subforos en donde desees que <b><?=$nick_moderador?></b> sea moderador.</p>
+<p>Debes seleccionar los subforos en donde desees que <b><?php echo $nick_moderador?></b> sea moderador.</p>
 <form method="post" action="usuarios.php">
-<input type="hidden" name="id_moderador" value="<?=$_GET['moderador']?>" />
-<?
+<input type="hidden" name="id_moderador" value="<?php echo $_GET['moderador']?>" />
+<?php
 	$con = $conectar->query('select id,categoria from eforo_categorias order by orden asc') ;
 	while($datos = mysqli_fetch_row($con)) {
 		echo '<b>'.$datos[1].'</b><br />' ;
@@ -302,8 +302,8 @@ else {
 			$sel = mysqli_result($con3,0,0) ? ' checked="checked"' : '' ;
 			mysqli_free_result($con3) ;
 ?>
-<input type="checkbox" name="foro_<?=$datos2[0]?>" value="<?=$datos2[0]?>"<?=$sel?> /> <?=$datos2[1]?><br />
-<?
+<input type="checkbox" name="foro_<?php echo $datos2[0]?>" value="<?php echo $datos2[0]?>"<?php echo $sel?> /> <?php echo $datos2[1]?><br />
+<?php
 		}
 		mysqli_free_result($con2) ;
 	}
@@ -312,16 +312,16 @@ else {
 <br>
 <center>
 <input type="submit" name="designar" value="Designar Moderador" class="eforo_formulario" />
-<input type="button" value="Quitar Moderador" onclick="if(confirm('¿Deseas quitar los privilegios de moderación a <?=$nick_moderador?>?')) location = 'usuarios.php?quitar=<?=$_GET['moderador']?>'" class="eforo_formulario" />
+<input type="button" value="Quitar Moderador" onclick="if(confirm('¿Deseas quitar los privilegios de moderación a <?php echo $nick_moderador?>?')) location = 'usuarios.php?quitar=<?php echo $_GET['moderador']?>'" class="eforo_formulario" />
 </center>
 </td>
 </tr>
-<?
+<?php
 }
 ?>
 </table>
 </form>
-<?
+<?php
 $ePiel->variable('tiempo_carga',round(tiempo_carga() - $tiempo,4)) ;
 $ePiel->mostrar('piedepagina') ;
 ?>

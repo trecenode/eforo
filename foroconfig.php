@@ -37,27 +37,27 @@ function tiempo_carga() {
 	return $b + $a ;
 }
 $tiempo = tiempo_carga() ;
-# * El reporte de errores mostrar� todo
+# * El reporte de errores mostrar todo
 @error_reporting(E_ALL) ;
-# * Comprimir la Página (si el navegador acepta contenido comprimido y si el servidor tiene la librer�a zlib)
+# * Comprimir la Página (si el navegador acepta contenido comprimido y si el servidor tiene la librería zlib)
 ob_start('ob_gzhandler') ;
 # **************************
-# *** Configuraci�n avanzada
+# *** Configuración avanzada
 # **************************
 # * Nombre de las "cookies"
 $c[0] = 'eforo_id' ; # --> ID del usuario
 $c[1] = 'eforo_nick' ; # --> Nick del usuario
 $c[2] = 'eforo_con' ; # --> Contraseña del usuario
-# * Sintaxis de URL (para integrar eForo como una secci�n de tu web o para uso con mod_rewrite)
+# * Sintaxis de URL (para integrar eForo como una sección de tu web o para uso con mod_rewrite)
 # La URL se forma como se observa en el siguiente ejemplo:
 # $u[0]foromensajes$u[1]$u[2]foro$u[4]10$u[3]tema$u[4]10$u[5]
 # Si $u = array('','.php','?','&','=','') ;
-# Entonces la URL ser�a:
+# Entonces la URL sería:
 # foromensajes.php?foro=10&tema=10
 $u = array('','.php','?','&','=','') ;
 # * Tabla donde se guardan los usuarios
 $tabla_usuarios = 'eforo_usuarios' ;
-# *** Fin configuraci�n avanzada
+# *** Fin configuración avanzada
 # * Pasar el valor de las cookies a variables
 # Para simplificar el código y evitarse muchas molestias.
 $c_id = !empty($_COOKIE[$c[0]]) ? $_COOKIE[$c[0]] : '' ;
@@ -66,7 +66,7 @@ $c_con = !empty($_COOKIE[$c[2]]) ? $_COOKIE[$c[2]] : '' ;
 # * Conectar a base de datos
 require 'config.php' ;
 # * Comprobar datos insertados mediante la URL (ejem. foro.php?foro=1&tema=1)
-# Con esto se evitar�n ataques de SQL Injection y otros parecidos.
+# Con esto se evitarín ataques de SQL Injection y otros parecidos.
 unset($error) ;
 if(!empty($_GET['foro'])) {
 	if(preg_match('/^([0-9]+)$/i',$_GET['foro'])) {
@@ -102,7 +102,7 @@ if(!empty($_GET['mensaje'])) {
 	}
 }
 if(isset($error)) exit('<p><b>Error</b></p><p>'.$error.'</p><script>setTimeout(\'history.back()\',1500)</script>') ;
-# * Cargar configuraci�n del foro (todo se guardará en un array llamado $conf)
+# * Cargar configuración del foro (todo se guardará en un array llamado $conf)
 unset($conf) ;
 $con = $conectar->query('select * from eforo_config limit 1') ;
 $datos = mysqli_fetch_assoc($con) ;
@@ -137,7 +137,7 @@ if($c_id && $c_nick && $c_con) {
 		# Rango actual
 		if($datos['rango_fijo'] == 0) {
 			# Todo usuario registrado tiene rango 1, se aumenta dependiendo de su número
-			# de mensajes � si es designado manualmente
+			# de mensajes  si es designado manualmente
 			$usuario['rango'] = 1 ;
 			$con2 = $conectar->query("select rango,minimo from eforo_rangos where minimo!='0' order by rango asc") ;
 			while($datos2 = mysqli_fetch_row($con2)) {
@@ -162,7 +162,7 @@ else {
 	$usuario['rango'] = 0 ;
 	$usuario['gmt'] = 0 ;
 }
-# * Obtener el nick del usuario a trav�s de su ID
+# * Obtener el nick del usuario a través de su ID
 function usuario($a) {
 	require 'config.php' ;
 	$con = $conectar->query("select nick from {$GLOBALS['tabla_usuarios']} where id='$a'") ;
@@ -171,8 +171,8 @@ function usuario($a) {
 	mysqli_free_result($con) ;
 	return $nick ? $nick : false ;
 }
-# * La fecha que ser� usada en el foro (por defecto se usar� la fecha GMT)
-# Si el usuario eligi� la zona GMT de su País, se sumar� o restar� la diferencia de horas
+# * La fecha que será usada en el foro (por defecto se usará la fecha GMT)
+# Si el usuario eligió la zona GMT de su País, se sumará o restará la diferencia de horas
 # con respecto a la fecha GMT
 $actualDate = date_create();
 $fecha =  "NOW()"; //date_timestamp_get($actualDate);
@@ -202,19 +202,19 @@ function fecha($a) {
 # * Comprobar si la variable $_SERVER['HTTP_REFERER'] está disponible
 if(empty($_SERVER['HTTP_REFERER'])) $_SERVER['HTTP_REFERER'] = "$u[0]foro$u[1]" ;
 # * Se obtienen los usuarios en líneaen el foro
-$tiempo_limite = 600 ; # <-- Tiempo en segundos en el cu�l se considerar� al usuario en l�nea
+$tiempo_limite = 600 ; # <-- Tiempo en segundos en el cul se considerar al usuario en lnea
 $fecha_limite = $fechaTime - $tiempo_limite ;
-# --> Se eliminan los usuarios que superaron el tiempo l�mite
+# --> Se eliminan los usuarios que superaron el tiempo lmite
 $conectar->query("delete from eforo_enlinea where fecha<'$fecha_limite'") ;
 # --> Si es un usuario registrado se guarda su ID
 if($c_id) {
 	$con = $conectar->query("select count(fecha) from eforo_enlinea where id_usuario='$c_id'") ;
 	if(mysqli_result($con,0,0)) {
-		$conectar->query("update eforo_enlinea set fecha='$fecha' where id_usuario='$c_id'") ;
+		$conectar->query("update eforo_enlinea set fecha=NOW() where id_usuario='$c_id'") ;
 	}
 	else {
 		$conectar->query("delete from eforo_enlinea where ip='{$_SERVER['REMOTE_ADDR']}'") ;
-		$conectar->query("insert into eforo_enlinea (fecha,id_usuario) values ('$fecha','$c_id')") ;
+		$conectar->query("insert into eforo_enlinea (fecha,id_usuario) values (NOW(),'$c_id')") ;
 	}
 	mysqli_free_result($con) ;
 }
@@ -222,10 +222,10 @@ if($c_id) {
 else {
 	$con = $conectar->query("select count(fecha) from eforo_enlinea where ip='{$_SERVER['REMOTE_ADDR']}'") ;
 	if(mysqli_result($con,0,0)) {
-		$conectar->query("update eforo_enlinea set fecha='$fecha' where ip='{$_SERVER['REMOTE_ADDR']}'") ;
+		$conectar->query("update eforo_enlinea set fecha=NOW() where ip='{$_SERVER['REMOTE_ADDR']}'") ;
 	}
 	else {
-		$conectar->query("insert into eforo_enlinea (fecha,ip) values ('$fecha','{$_SERVER['REMOTE_ADDR']}')") ;
+		$conectar->query("insert into eforo_enlinea (fecha,ip) values (NOW(),'{$_SERVER['REMOTE_ADDR']}')") ;
 	}
 	mysqli_free_result($con) ;
 }

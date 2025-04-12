@@ -19,10 +19,10 @@ the Free Software Foundation; either version 2 of the License, or
 */
 
 # * código Especial
-# El código especial sirve para formatear un texto, crear enlaces, poner im�genes, sin necesidad de usar HTML,
+# El código especial sirve para formatear un texto, crear enlaces, poner imágenes, sin necesidad de usar HTML,
 # estas etiquetas están representadas por [etiqueta]texto[/etiqueta] y se sustituyen ya sea haciendo un simple
 # str_replace() hasta el uso de funciones más avanzadas como preg_match(), preg_replace() y otras donde el texto
-# contenido entre las etiquetas es pasado por varias funciones, como la aplicaci�n de la Función highlight_string()
+# contenido entre las etiquetas es pasado por varias funciones, como la aplicación de la Función highlight_string()
 # propia de PHP que sirve para colorear código PHP.
 
 # * Sustituye el código especial por su respectivo código HTML
@@ -42,7 +42,7 @@ if($conf['permitir_codigo']) {
 			@ini_set('highlight.comment','#757575') ; # Comentarios
 			@ini_set('highlight.default','#0075cc') ; # Texto por defecto
 			@ini_set('highlight.html','#aa7500') ; # código HTML
-			@ini_set('highlight.keyword','#008000') ; # Caract�res y funciones de PHP
+			@ini_set('highlight.keyword','#008000') ; # Caractéres y funciones de PHP
 			@ini_set('highlight.string','#0000ff') ; # Cadenas de texto
 			$caracteres = array(
 			'&lt;'   => '<',
@@ -71,7 +71,7 @@ if($conf['permitir_codigo']) {
 		foreach($etiquetas as $a => $b) {
 			$texto = str_replace($a,$b,$texto) ;
 		}
-		# --> Reemplaza etiquetas usando tambi�n expresiones regulares
+		# --> Reemplaza etiquetas usando también expresiones regulares
 		$texto = preg_replace('/\[img\](.+)\[\/img\]/i','<img src="$1" border="0" alt="Imagen obtenida de $1" />',$texto) ;
 		$texto = preg_replace('/\[color=(#?[\w]+)\]/','<span style="color: $1">',$texto) ;
 		$texto = str_replace('[/color]','</span>',$texto) ;
@@ -107,7 +107,7 @@ if($conf['permitir_caretos']) {
 		':('   => 'triste.gif'
 		) ;
 		foreach($caretos as $a => $b) {
-			$texto = str_replace($a,'<img src="eforo_imagenes/caretos/'.$b.'" border="0" width="15" height="15" align="top" />',$texto) ;
+			$texto = $texto !== null ? str_replace($a,'<img src="eforo_imagenes/caretos/'.$b.'" border="0" width="15" height="15" align="top" />',$texto) : '';
 		}
 		return $texto ;
 	}

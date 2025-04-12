@@ -31,7 +31,7 @@ $ePiel->variables(array(
 $ePiel->mostrar('cabecera') ;
 if(!$es_administrador) exit("<script type=\"text/javascript\">top.location='../$u[0]foro$u[1]$u[5]'</script>") ;
 ?>
-<p><a href="../<?="$u[0]foro$u[1]$u[5]"?>" target="_top" class="eforo_enlace">� Regresar al foro</a></p>
+<p><a href="../<?php echo "$u[0]foro$u[1]$u[5]"?>" target="_top" class="eforo_enlace">� Regresar al foro</a></p>
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="eforo_tabla_principal">
 <tr>
 <td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Men�</div></td>

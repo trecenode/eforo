@@ -1,3 +1,8 @@
+# Eforo 4.1 - 2025
+Esta versión corrige problemas de php antiguos
+
+[Danilo Ulloa](https://github.com/trecenode)
+
 # Eforo 4.0 - 2020
 La idea es rehacer el eforo creado por Electros.net hace más de 15 años.
 

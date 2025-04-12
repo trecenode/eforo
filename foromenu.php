@@ -44,7 +44,7 @@ if(!empty($idForo)) {
 	]);
 
 	//Limpiar ID Tema
-	$idTema = intval($_GET['tema']);
+	$idTema = isset($_GET['tema']) ? intval($_GET['tema']) : 0;
 
 	if(!empty($idTema)) {
 		if($buscar = $conectar->query("SELECT `tema` FROM `eforo_mensajes` WHERE `id`='{$idTema}'")) {
@@ -75,7 +75,7 @@ else {
 		'url_privados'	=> $url_privados,
 		'url_perfil'	=> $u[0].'forousuario'.$u[1].$u[2].'que'.$u[4].'perfil'.$u[5],
 		'url_leidos'	=> $u[0].'foro'.$u[1].$u[2].'leidos'.$u[4].'1'.$u[5],
-		'url_panel'		=> in_array($c_id, $conf['admin_id']) ? '<option value="eforo_admin/index.php">Panel de control</option>' : ''
+		'url_panel'		=> in_array($c_id, $conf['admin_id']) ? '<a href="eforo_admin/index.php" alt="Panel de control"><i class="fas fa-2x fa-user-cog"></i></a>' : ''
 	]);
 	$p_nuevos = $conectar
 		->query("SELECT COUNT(`id`) AS `num` FROM `eforo_privados` WHERE `leido`='0' AND `id_destinatario`='{$c_id}'")

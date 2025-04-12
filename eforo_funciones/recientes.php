@@ -34,6 +34,6 @@ if($c_id) {
 		mysqli_free_result($con2) ;
 	}
 	mysqli_free_result($con) ;
-	$conectar->query("update $tabla_usuarios set fecha_conectado='$fecha' where id='$c_id'") ;
+	$conectar->query("update $tabla_usuarios set fecha_conectado=NOW() where id='$c_id'") ;
 }
 ?>
