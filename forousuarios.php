@@ -108,7 +108,7 @@ else {
 			}
 		}
 		if($datos['web']) { // Sanitizar enlace web*
-			$datos['web'] = '<a href="'.(!preg_matchi('^http://',$datos['web']) ? 'http://'.$datos['web'] : $datos['web']).'" target="_blank" class="eforo_enlace">'.$datos['web'].'</a>';
+			$datos['web'] = '<a href="'.(!preg_matchi('^https://',$datos['web']) ? 'https://'.$datos['web'] : $datos['web']).'" target="_blank" class="eforo_enlace">'.$datos['web'].'</a>';
 		}
 		if($conf['permitir_firma']) {
 			require 'eforo_funciones/codigo.php';

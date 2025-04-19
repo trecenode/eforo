@@ -44,7 +44,7 @@ if (!in_array($page, $allowed_pages)) {
 }
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title>eForo 4.1 - Panel de administración</title>

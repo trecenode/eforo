@@ -29,7 +29,7 @@ las Contraseñas.
 esto observa si tus Contraseñas se componen de 32 caract�res entre ellos letras y números, por ejemplo:
 8b87d55d6m32m2919811dib9slamn3ka.
 <p><b>Encriptar contrasenas en md5():</b><br>
-<input type="radio" name="contrasenas_md5" value="0" id="a" checked><label for="a">No</label> <input type="radio" name="contrasenas_md5" value="1" id="b"><label for="b">S�</label>
+<input type="radio" name="contrasenas_md5" value="0" id="a" checked><label for="a">No</label> <input type="radio" name="contrasenas_md5" value="1" id="b"><label for="b">Sí</label>
 <p>Por �ltimo debes escribir el nick del administrador del foro, una vez finalizada la Actualización podr�s designar a más de un administrador.
 <p><b>Nick del administrador:</b><br>
 <input type="text" name="administrador"><br><br>

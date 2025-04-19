@@ -27,9 +27,9 @@ the Free Software Foundation; either version 2 of the License, or
 
 # * Sustituye el código especial por su respectivo código HTML
 if($conf['permitir_codigo']) {
-	# Agrega el prefijo http:// a una URL si es necesario
+	# Agrega el prefijo https:// a una URL si es necesario
 	function url($a,$b) {
-		if(!preg_matchi('^http://',$a)) $a = 'http://'.$a ;
+		if(!preg_matchi('^https://',$a)) $a = 'https://'.$a ;
 		return '<a href="'.$a.'" target="_blank" class="eforo_enlace">'.$b.'</a>' ;
 	}
 	function codigo($texto) {

@@ -18,8 +18,8 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>eForo v3.1 - Instalación</title>
@@ -82,7 +82,7 @@ function comprobar(a) {
 <b>Confirmar contraseña:</b><br />
 <input type="password" size="25" name="contrasena_c" /><br />
 <b>URL donde está instalado eForo (ej. https://www.tuweb.com/eforo/):</b><br />
-<input type="text" size="50" name="foro_url" value="http://<?php echo $_SERVER['HTTP_HOST'].str_replace('instalar.php','',$_SERVER['PHP_SELF'])?>" /><br />
+<input type="text" size="50" name="foro_url" value="https://<?php echo $_SERVER['HTTP_HOST'].str_replace('instalar.php','',$_SERVER['PHP_SELF'])?>" /><br />
 <b>Tipo de instalación:</b><br />
 <input type="radio" id="instalacion1" name="instalacion" value="1" onclick="tabla_usuarios.disabled = true ; tabla_usuarios.value = 'eforo_usuarios'" checked="checked" /><label for="instalacion1">Instalación típica</label><br />
 <input type="radio" id="instalacion2" name="instalacion" value="2" onclick="tabla_usuarios.disabled = false ; tabla_usuarios.value = ''" /><label for="instalacion2">Compatible con script de sistema de usuarios de www.electros.net</label><br />

@@ -1,0 +1,95 @@
+<table width="100%" border="0" cellpadding="2" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Moderadores</div></td>
+</tr>
+<tr>
+<td class="eforo_tabla_defecto">Total de moderadores: <b>{moderadores_total}</b><br /><br />
+{moderadores_lista}
+</td>
+</tr>
+</table>
+[blq moderadores_panel]
+<script type="text/javascript">
+function sel_temas(a) {
+	total = document.forms[0].elements.length ;
+	for(i = 0 ; i < total ; i++) {
+		casilla = document.forms[0].elements[i] ;
+		if(casilla.type == 'checkbox') casilla.checked = a.checked ;
+	}
+}
+function mover() {
+	if(document.m_formulario.id_foro.value == '') {
+		alert('Selecciona el subforo a donde deseas mover los temas.') ;
+		return false ;
+	}
+	document.m_formulario.action = '{moderadores_panel.url_mover}' ;
+	document.m_formulario.submit() ;
+}
+</script>
+<form name="m_formulario" method="post" action="{moderadores_panel.url_borrar}" style="display: inline">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<tr>
+<td class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Panel de moderación</div></td>
+</tr>
+<tr>
+<td valign="top" class="eforo_tabla_defecto">
+<select name="id_foro" class="eforo_formulario">
+<option value="">Mover temas al subforo...</option>
+[blq categoria]
+<option value="">---{moderadores_panel.categoria.titulo}---</option>
+[blq subforo]
+<option value="{moderadores_panel.categoria.subforo.id}">{moderadores_panel.categoria.subforo.titulo}</option>
+[/blq subforo]
+[/blq categoria]
+</select>
+<input type="button" value="Mover" onclick="mover()" class="eforo_formulario" />
+<input type="submit" name="temas_borrar" value="Borrar" class="eforo_formulario" />
+<input id="sel_temas_c" type="checkbox" onclick="sel_temas(this)" /><label for="sel_temas_c">Seleccionar todos los temas</label>
+</td>
+</tr>
+</table>
+[/blq moderadores_panel]
+<table width="100%" border="0" cellpadding="2" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Tema</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Autor</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Ultimo</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Vis</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Res</div></td>
+</tr>
+<tr>
+<td colspan="6" class="eforo_tabla_defecto">
+{paginas}
+</td>
+</tr>
+[blq tema]
+<tr>
+<td class="eforo_tabla_mensaje_{tema.estilo_num}"><div align="center"><img src="{tema.ind_imagen}" alt="{tema.ind_mensaje}" width="24" height="24" /></div></td>
+<td class="eforo_tabla_mensaje_{tema.estilo_num}">{tema.moderar}<a href="{tema.url}" class="eforo_enlace">{tema.importante}{tema.titulo}</a></td>
+<td class="eforo_tabla_mensaje_{tema.estilo_num}"><div align="center">{tema.tema_autor}</div></td>
+<td class="eforo_tabla_mensaje_{tema.estilo_num}"><div align="center">{tema.ult_men_autor}</div></td>
+<td class="eforo_tabla_mensaje_{tema.estilo_num}"><div align="center">{tema.num_visitas}</div></td>
+<td class="eforo_tabla_mensaje_{tema.estilo_num}"><div align="center">{tema.num_respuestas}</div></td>
+</tr>
+[/blq tema]
+[blq no_hay_mensajes]
+<tr>
+<td colspan="6" class="eforo_tabla_defecto"><div align="center"><b>No hay mensajes</b></div></td>
+</tr>
+[/blq no_hay_mensajes]
+<tr>
+<td colspan="6" class="eforo_tabla_defecto">
+{paginas}
+</td>
+</tr>
+<tr>
+<td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Tema</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Autor</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Ultimo</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Vis</div></td>
+<td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Res</div></td>
+</tr>
+</table>
+[blq moderadores_panel]
+</form>
+[/blq moderadores_panel]

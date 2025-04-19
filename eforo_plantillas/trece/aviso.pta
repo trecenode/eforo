@@ -1,0 +1,8 @@
+<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center" class="eforo_tabla_principal">
+<tr>
+<td class="eforo_tabla_titulo"><div align="center" class="eforo_titulo_1">{aviso_titulo}</div></td>
+</tr>
+<tr>
+<td class="eforo_tabla_defecto">{aviso_mensaje}</td>
+</tr>
+</table>

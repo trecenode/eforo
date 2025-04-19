@@ -1,0 +1,81 @@
+<table width="100%" border="0" cellpadding="5" cellspacing="1" align="center" class="eforo_tabla_defecto">
+<tr>
+<td>
+<a href="{subforo_indice_url}" class="eforo_enlace">Indice de subforos</a>
+[blq menu_subforo]
+ <i class="fas fa-chevron-right"></i> <a href="{menu_subforo.url}" class="eforo_enlace">{menu_subforo.titulo}</a>
+[blq menu_tema]
+ <i class="fas fa-chevron-right"></i> <a href="{menu_subforo.menu_tema.url}" class="eforo_enlace">{menu_subforo.menu_tema.titulo}</a>
+[/blq menu_tema]
+[/blq menu_subforo]
+</td>
+</tr>
+[blq nuevo_tema]
+<tr>
+<td>
+<a href="{nuevo_tema.nuevo_tema_url}" class="btn eforo_formulario">Nuevo tema</a>
+[blq responder]
+ <a href="{nuevo_tema.responder.responder_url}" class="btn eforo_formulario">Responder</a>
+[/blq responder]
+</td>
+</tr>
+[/blq nuevo_tema]
+<tr>
+<td>
+[blq anonimo]
+<script type="text/javascript">
+function comprobar(a) {
+	a.u_nick.value = a.u_nick.value.replace(/^\s*|\s*$/g,'') ;
+	a.u_contrasena.value = a.u_contrasena.value.replace(/^\s*|\s*$/g,'') ;
+	if(a.u_nick.value.length == 0) {
+		alert('Debes escribir un nick.') ;
+		return false ;
+	}
+	if(a.u_contrasena.value.length == 0) {
+		alert('Debes escribir una contrase�a.') ;
+		return false ;
+	}
+}
+</script>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top">
+<form name="u_formulario" method="post" action="forousuariopro.php?que=entrar" onsubmit="return comprobar(this)" class="form-inline">
+<div class="form-group">
+	<label for="u_nick"><b>Nick:</b></label>
+	<input type="text" name="u_nick" size="10" maxlength="20" class="eforo_formulario form-control" />
+</div>
+<div class="form-group">
+	<label for="u_contrasena"><b>Contraseña:</b></label>
+	<input type="password" name="u_contrasena" size="10" maxlength="10" class="eforo_formulario form-control" />
+</div>
+<input type="submit" name="enviar" value="Entrar" class="btn eforo_formulario" />
+</form>
+</td>
+<td valign="top"><div align="right"><a href="{anonimo.nuevo_usuario_e}" class="eforo_enlace">Nuevo usuario</a> | <a href="{anonimo.recuperar_contrasena_e}" class="eforo_enlace">Perdí mi contraseñaa</a></div></td>
+</tr>
+</table>
+[/blq anonimo]
+[blq usuario]
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>Bienvenid@ <b>{usuario.usuario_nick}</b>
+[blq nuevos_mensajes]
+, <a href="{usuario.nuevos_mensajes.url_privados}" class="eforo_enlace">tienes {usuario.nuevos_mensajes.total} mensaje(s) nuevo(s)</a>
+[/blq nuevos_mensajes]
+</td>
+<td>
+<div class="text-right pr-1">
+<a href="{usuario.url_privados}"><i class="fas fa-2x fa-envelope" aria-hidden="true" title="Mensajes Privados"></i></a>
+<a href="{usuario.url_perfil}"><i class="fas fa-2x fa-user-circle" aria-hidden="true" title="Perfil"></i></a>
+<a href="{usuario.url_leidos}"><i class="fas fa-2x fa-book-open" aria-hidden="true" title="Marcar subforos como leídos"></i></a>
+{usuario.url_panel} 
+<a href="forousuariopro.php?que=salir"> <i class="fas fa-2x fa-sign-out-alt eforo_logout" title="Salir del Foro"></i></a>
+</div>
+</td>
+</tr>
+</table>
+[/blq usuario]
+</td>
+</tr>
+</table>

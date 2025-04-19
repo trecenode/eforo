@@ -18,8 +18,8 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>eForo v3.1 - Actualización desde la versión v3.0</title>
@@ -46,8 +46,8 @@ if($conectar) echo 'El archivo <b>config.php</b> está configurado correctamente
 </div>
 <p>Completa los siguientes datos:</p>
 <form method="post" action="v3.0.php">
-<b>URL donde está instalado eForo (ej. http://www.pagina.com/carpeta/):</b><br />
-<input type="text" size="50" name="foro_url" value="http://<?php echo $_SERVER['HTTP_HOST'].str_replace('eforo_parches/v3.0.php','',$_SERVER['PHP_SELF'])?>" /><br />
+<b>URL donde está instalado eForo (ej. https://www.pagina.com/carpeta/):</b><br />
+<input type="text" size="50" name="foro_url" value="https://<?php echo $_SERVER['HTTP_HOST'].str_replace('eforo_parches/v3.0.php','',$_SERVER['PHP_SELF'])?>" /><br />
 <b>Tabla de usuarios:</b><br />
 <input type="text" size="20" name="tabla_usuarios" value="eforo_usuarios" /><br />
 Modifica este campo Sólo si estás usando eForo integrado con el sistema de usuarios de <b>www.electros.net</b> (eUsuarios v1.0, Registro de usuarios v1.2 � cualquier versión reciente).<br /><br />
@@ -237,7 +237,7 @@ else {
 <p>Hubo un error durante la Actualización. Si el error es parecido a este "alter table nombre_tabla drop index nombre_indice" no te
 preocupes, estas modificaciones varian dependiendo de la versión de eForo y por tanto pueden o no mostrar un error, sin
 embargo el funcionamiento de eForo no es afectado. Si es un error distinto y eForo no está funcionando, restaura la base de datos e
-intenta de nuevo. Cualquier error cons�ltanos en nuestro foro en <a href="http://www.electros.net">http://www.electros.net</a>.</p>
+intenta de nuevo. Cualquier error cons�ltanos en nuestro foro en <a href="https://www.electros.net">https://www.electros.net</a>.</p>
 <?php
 }
 ?>
