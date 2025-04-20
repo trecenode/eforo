@@ -32,7 +32,7 @@ $ePiel->variables(array(
 )) ;
 $ePiel->mostrar('cabecera') ;
 $ePiel->mostrar('menu') ;
-// * Esta Página se comportar� dependiendo de lo que se haya elegido (registrar, entrar, editar y salir)
+// * Esta Página se comportará dependiendo de lo que se haya elegido (registrar, entrar, editar y salir)
 $_GET['que'] = !empty($_GET['que']) ? $_GET['que'] : '' ;
 switch($_GET['que']) {
 	// --> Iniciar sesión como usuario registrado
@@ -46,7 +46,7 @@ switch($_GET['que']) {
 	case 'registrar' :
 		$ePiel->variables_bloque('modo_nuevo_usuario') ;
 	break ;
-	// --> Recuperar los datos del usuario en caso de extrav�o
+	// --> Recuperar los datos del usuario en caso de extravío
 	case 'contrasena' :
 		$ePiel->variables_bloque('modo_rec_contrasena') ;
 	break ;

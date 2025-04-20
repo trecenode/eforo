@@ -24,7 +24,7 @@ Una vez que has descomprimido los archivos en tu disco duro, deberás modificar 
 
 Por un descuido durante la actualización puede llegar a pasar que se corrompa información o se pierda, por lo tanto recomiendo ampliamente realizar un respaldo de tu base de datos antes de realizar cualquier actualización.
 
-### ¿Utilizas algún sistema de usuarios de www.electros.net?
+### ¿Utilizas algún sistema de usuarios de www.electros.dev?
 
 Si utilizas algún script como eUsuarios v1.0, Registro de usuarios v1.2, o cualquier versión reciente y ya tienes un gran número de usuarios registrados, puede que desees unir eForo a tu sistema de usuarios, para hacer esto modifica el archivo foroconfig.php y en la variable **$tabla_usuarios** indica el nombre de la tabla donde se almacenan tus usuarios que comúnmente es usuarios. Con esto todos los usuarios registrados de tu web estarán registrados automáticamente en el foro.
 

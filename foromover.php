@@ -27,7 +27,7 @@ $ePiel->cargar(array(
 )) ;
 require 'foromenu.php' ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de moderación � Mover',
+'titulo' => $conf['foro_titulo'].' · Panel de moderación · Mover',
 'estilo' => $conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;

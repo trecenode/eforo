@@ -29,7 +29,7 @@ function comprobar(a) {
 <input type="password" name="u_contrasena" size="10" maxlength="10" class="eforo_formulario" />
 <input type="submit" name="enviar" value="Entrar" class="eforo_formulario" />
 </td></form>
-<td valign="top"><div align="right"><a href="{modo_iniciar_sesion.url_nuevo_usuario}" class="eforo_enlace">Nuevo usuario</a> | <a href="{modo_iniciar_sesion.url_rec_contrasena}" class="eforo_enlace">Perd� mi contraseña</a></div></td>
+<td valign="top"><div align="right"><a href="{modo_iniciar_sesion.url_nuevo_usuario}" class="eforo_enlace">Nuevo usuario</a> | <a href="{modo_iniciar_sesion.url_rec_contrasena}" class="eforo_enlace">Perdí mi contraseña</a></div></td>
 </tr>
 </table>
 [/blq modo_iniciar_sesion]
@@ -59,9 +59,9 @@ function comprobar(a) {
 </script>
 <p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>
 <p><b>Nuev@ usuari@</b>
-<p>Como usuari@ registrad@ podr�s tener tu propio perfil, escribir mensajes con tu nick,
-editar y borrar tus mensajes y muchas cosas m�s. La contraseña se guarda encriptada as� que en caso de
-extrav�o se te enviar� una nueva al email indicado.
+<p>Como usuari@ registrad@ podrás tener tu propio perfil, escribir mensajes con tu nick,
+editar y borrar tus mensajes y muchas cosas más. La contraseña se guarda encriptada así que en caso de
+extravío se te enviará una nueva al email indicado.
 <form method="post" action="forousuariopro.php?que=registrar" onsubmit="return comprobar(this)">
 <b>Nick:</b><br />
 <input type="text" name="u_nick" maxlength="20" class="eforo_formulario" /><br />

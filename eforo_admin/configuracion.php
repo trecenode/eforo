@@ -74,7 +74,7 @@ function abrir(url,largo,alto,titulo) {
 <td width="50%" class="eforo_tabla_defecto"><input type="text" name="c_administrador" value="<?php echo implode(',',$conf['admin_id'])?>" maxlength="20" class="eforo_formulario"></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>Email:</b><br>Este email se usar� como firma en algunas funciones del foro.</td>
+<td class="eforo_tabla_defecto"><b>Email:</b><br>Este email se usará como firma en algunas funciones del foro.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_administrador_email" value="<?php echo $conf['admin_email']?>" maxlength="100" class="eforo_formulario"></td>
 </tr>
 <tr>
@@ -179,7 +179,7 @@ mysqli_free_result($con) ;
 <td colspan="2" class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Mensajes privados</div></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>máximo de mensajes privados:</b><br>Es el número máximo de mensajes privados que cada usuario podr� recibir.</td>
+<td class="eforo_tabla_defecto"><b>máximo de mensajes privados:</b><br>Es el número máximo de mensajes privados que cada usuario podrá recibir.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_privados" value="<?php echo $conf['max_privados']?>" maxlength="3" class="eforo_formulario"></td>
 </tr>
 <tr>
@@ -202,12 +202,12 @@ mysqli_free_result($con) ;
 </tr>
 <tr>
 <td class="eforo_tabla_defecto"><b>Tamaño del archivo:</b><br>Tamaño del archivo adjunto en KB. El valor máximo permitido por
-el servidor es de <b><?php echo @ini_get('upload_max_filesize') ? str_replace('M','',ini_get('upload_max_filesize')) * 1024 : 'un valor desconocido, aunque por lo general es de 2048'?> KB</b>. Este Sólo podr� ser modificado
+el servidor es de <b><?php echo @ini_get('upload_max_filesize') ? str_replace('M','',ini_get('upload_max_filesize')) * 1024 : 'un valor desconocido, aunque por lo general es de 2048'?> KB</b>. Este Sólo podrá ser modificado
 desde el archivo de Configuración de PHP php.ini.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_adjuntotamano" value="<?php echo $conf['adjunto_tamano']?>" maxlength="5" class="eforo_formulario"></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>Extensiones:</b><br>Extensiones permitidas (escr�belas en min�sculas y separadas por saltos de l�nea).</td>
+<td class="eforo_tabla_defecto"><b>Extensiones:</b><br>Extensiones permitidas (escríbelas en minúsculas y separadas por saltos de línea).</td>
 <td class="eforo_tabla_defecto"><textarea name="c_adjuntoext" cols="25" rows="5" class="eforo_formulario"><?php echo $conf['adjunto_ext']?></textarea></td>
 </tr>
 <tr>

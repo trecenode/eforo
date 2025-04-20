@@ -2,7 +2,7 @@
 /*
 *************************************************
 *** eForo v4.0
-*** Creado por: Electros <electros@electros.net>
+*** Creado por: Electros <electros@electros.dev>
 *** Sitio web: https://electros.dev
 *** Licencia: GNU General Public License
 *************************************************
@@ -140,7 +140,7 @@ if(empty($_GET['moderador'])) {
 <form method="get" action="index.php?page=usuarios" style="display: inline">
 <b>Ver usuarios que empiecen por:</b>
 <select name="letra" class="eforo_formulario">
-<option value="">Cualquier caract�r</option>
+<option value="">Cualquier caracter</option>
 <option value="num"<?php if($_GET['letra'] == 'num') echo ' selected="selected"' ?>>número</option>
 <option value="a"<?php if($_GET['letra'] == 'a') echo ' selected="selected"' ?>>A</option>
 <option value="b"<?php if($_GET['letra'] == 'b') echo ' selected="selected"' ?>>B</option>
@@ -172,7 +172,7 @@ if(empty($_GET['moderador'])) {
 <b>Por:</b>
 <select name="por" class="eforo_formulario">
 <option value="1">más recientes</option>
-<option value="2"<?php if(!empty($_GET['por']) && $_GET['por'] == 2) echo ' selected="selected"' ?>>Orden alfab�tico</option>
+<option value="2"<?php if(!empty($_GET['por']) && $_GET['por'] == 2) echo ' selected="selected"' ?>>Orden alfabético</option>
 </select>
 <b>En orden:</b>
 <select name="orden" class="eforo_formulario">
@@ -257,14 +257,14 @@ function ayuda() {
 </script>
 <input type="button" id="ayuda_enlace" value="Ver más >>" onclick="ayuda()" class="eforo_formulario" />
 <div id="ayuda_texto" style="display: none">
-<p><b>�Como se designan moderadores?</b><br />
-Para designar a un moderador haz clic en el bot�n M y luego selecciona los subforos en donde tendr�
+<p><b>¿Como se designan moderadores?</b><br />
+Para designar a un moderador haz clic en el botón M y luego selecciona los subforos en donde tendrá
 privilegios de moderación. Para quitar estos privilegios a un usuario que ya es moderador haz click
-en M y despu�s en la opción Quitar Moderador.</p>
-<p><b>�Como se asignan rangos fijos?</b><br />
+en M y después en la opción Quitar Moderador.</p>
+<p><b>¿Como se asignan rangos fijos?</b><br />
 Para asignar un rango fijo selecciona las casillas al lado de cada usuario y luego selecciona de la
-lista el rango deseado. Este rango no variar� con el número de mensajes (si es un rango normal Sólo
-ser� fijo para los usuarios seleccionados). Para que su rango sea normal de nuevo haz click en Asignar por defecto.</p>
+lista el rango deseado. Este rango no variará con el número de mensajes (si es un rango normal Sólo
+será fijo para los usuarios seleccionados). Para que su rango sea normal de nuevo haz click en Asignar por defecto.</p>
 </div>
 </td>
 </tr>

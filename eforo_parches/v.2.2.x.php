@@ -1,6 +1,6 @@
 <?php
 // *** Convertir de v.2.2.x a v3.0
-// Este parche actualizar� la base de datos de tu antiguo foro para que sea compatible con la nueva versión.
+// Este parche actualizará la base de datos de tu antiguo foro para que sea compatible con la nueva versión.
 include '../config.php' ;
 ?>
 <style type="text/css">
@@ -17,20 +17,20 @@ if(!isset($_POST['enviar'])) {
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
 <p align="center"><b>Actualización de v.2.2.x a v3.0</b>
-<p><span style="color: #aa0000"><b>Advertencia:</b></span> Se recomienda tener un respaldo reciente de la base de datos antes de comenzar con la Actualización ya que algunos de los cambios efectuados no tendr�n forma de revertirse.
-<p><b>� Compatibilidad con sistema "Registro de usuarios"</b>
-<p>Si usaste alguna vez eForo en conjunto con el sistema "Registro de usuarios", deber�s indicar el nombre de la tabla en donde se almacenan tus usuarios, de otra forma d�jalo como está.
+<p><span style="color: #aa0000"><b>Advertencia:</b></span> Se recomienda tener un respaldo reciente de la base de datos antes de comenzar con la Actualización ya que algunos de los cambios efectuados no tendrán forma de revertirse.
+<p><b>¿ Compatibilidad con sistema "Registro de usuarios"</b>
+<p>Si usaste alguna vez eForo en conjunto con el sistema "Registro de usuarios", deberás indicar el nombre de la tabla en donde se almacenan tus usuarios, de otra forma déjalo como está.
 <p><b>Tabla de usuarios:</b><br>
 <input type="text" name="tabla_usuarios" value="eforo_usuarios"><br>
-<p><b>� Encriptación de Contraseñas con md5()</b>
-<p>Esta versión de eForo utiliza el sistema de usuarios con Contraseñas encriptadas en md5(), as� que deber�s indicar si deseas que el parche encripte
+<p><b>¿ Encriptación de Contraseñas con md5()</b>
+<p>Esta versión de eForo utiliza el sistema de usuarios con Contraseñas encriptadas en md5(), así que deberás indicar si deseas que el parche encripte
 las Contraseñas.
-<p>Si las Contraseñas ya están encriptadas se crear� una nueva encriptaci�n la cu�l ser� irreversible, para evitar
+<p>Si las Contraseñas ya están encriptadas se creará una nueva encriptación la cuál será irreversible, para evitar
 esto observa si tus Contraseñas se componen de 32 caractéres entre ellos letras y números, por ejemplo:
 8b87d55d6m32m2919811dib9slamn3ka.
 <p><b>Encriptar contrasenas en md5():</b><br>
 <input type="radio" name="contrasenas_md5" value="0" id="a" checked><label for="a">No</label> <input type="radio" name="contrasenas_md5" value="1" id="b"><label for="b">Sí</label>
-<p>Por último debes escribir el nick del administrador del foro, una vez finalizada la Actualización podr�s designar a más de un administrador.
+<p>Por último debes escribir el nick del administrador del foro, una vez finalizada la Actualización podrás designar a más de un administrador.
 <p><b>Nick del administrador:</b><br>
 <input type="text" name="administrador"><br><br>
 <center><input type="submit" name="enviar" value="Actualizar"></center>
@@ -233,9 +233,9 @@ $conectar->query("update eforo_config set administrador='$datos[id]'") ;
 mysqli_free_result($con) ;
 ?>
 <p align="center"><b>Actualización de la base de datos completada</b>
-<p><b>Importante:</b> No te olvides de entrar al panel de control que se encuentra en el menú desplegable una vez que has iniciado sesión, deber�s llenar correctamente todos los campos y as� finalizar la Actualización de eForo.
+<p><b>Importante:</b> No te olvides de entrar al panel de control que se encuentra en el menú desplegable una vez que has iniciado sesión, deber�s llenar correctamente todos los campos y así finalizar la Actualización de eForo.
 <p><b>Notas adicionales:</b> El parche <b>sincronizar.php</b> comprueba si las estadísticas de número de temas y mensajes son correctos, esto es porque en anteriores versiones pudieron haberse corrompido las estad�sticas y estas muestren datos err�neos.
-De cualquier forma el usarlo no afectará ni corromper� la base de datos así que puedes aplicarlo con toda confianza.
+De cualquier forma el usarlo no afectará ni corromperá la base de datos así que puedes aplicarlo con toda confianza.
 <p>Para empezar a usar eForo da click en el siguiente botón.
 <p>
 <center><input type="button" value="Ir al foro" onclick="location='../foro.php'"></center>

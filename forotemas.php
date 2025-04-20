@@ -93,7 +93,7 @@ if($moderar) {
 		mysqli_free_result($con) ;
 	}
 }
-# Se muestran los nuevos temas o reci�n respondidos del subforo seleccionado
+# Se muestran los nuevos temas o recién respondidos del subforo seleccionado
 $ePaginas = new ePaginas("select * from eforo_mensajes where id=id_tema and id_foro='{$_GET['foro']}' order by o_importante desc, fecha_ultimo desc",$conf['max_temas']) ;
 $ePaginas->u = array($u[2],$u[3],$u[4],$u[5]) ;
 $ePaginas->e = array('<a href="','" class="eforo_enlace">','</a>') ;

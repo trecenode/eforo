@@ -2,7 +2,7 @@
 /*
 *************************************************
 *** eForo v3.0
-*** Creado por: Electros <electros@electros.net>
+*** Creado por: Electros
 *** Sitio web: https://electros.dev
 *** Licencia: GNU General Public License
 *************************************************
@@ -44,7 +44,7 @@ switch(true) {
 		$permiso = 'p_editar' ;
 		break ;
 	default :
-		aviso('Error','No se ha escrito ning�n mensaje.',1) ;
+		aviso('Error','No se ha escrito ningún mensaje.',1) ;
 }
 # * Comprobar si el tema está cerrado
 if($que != 1) {
@@ -103,7 +103,7 @@ if(isset($_POST['enviar'])) {
 			$conectar->query("update eforo_mensajes set id_tema='$id_ultimo' where id='$id_ultimo'") ;
 			$conectar->query("update eforo_foros set num_temas=num_temas+1,num_mensajes=num_mensajes+1 where id='{$_GET['foro']}'") ;
 			if($c_id) $conectar->query("update $tabla_usuarios set mensajes=mensajes+1 where id='$c_id'") ;
-			aviso('Confirmaci�n',"<p>Tu mensaje ha sido publicado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]$id_ultimo$u[5]\" class=\"eforo_enlace\">� Ir al mensaje</a>\n<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
+			aviso('Confirmación',"<p>Tu mensaje ha sido publicado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]$id_ultimo$u[5]\" class=\"eforo_enlace\">� Ir al mensaje</a>\n<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 			break ;
 		# --> Responder al tema
 		case 2 :
@@ -118,7 +118,7 @@ if(isset($_POST['enviar'])) {
 			$con = $conectar->query("select count(id) from eforo_mensajes where id_tema='{$_GET['tema']}'") ;
 			$ult_pagina = ceil(mysqli_result($con,0,0) / $conf['max_mensajes']) ;
 			mysqli_free_result($con) ;
-			aviso('Confirmaci�n',"<p>Tu mensaje ha sido publicado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]$ult_pagina$u[5]#$id_ultimo\" class=\"eforo_enlace\">� Ir al mensaje</a>\n<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
+			aviso('Confirmación',"<p>Tu mensaje ha sido publicado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]$ult_pagina$u[5]#$id_ultimo\" class=\"eforo_enlace\">� Ir al mensaje</a>\n<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 			break ;
 		# --> Editar el mensaje
 		case 3 :
@@ -133,11 +133,11 @@ if(isset($_POST['enviar'])) {
 			$_POST['m_mensaje'] = quitar($_POST['m_mensaje'],1) ;
 			$id_ultimo = $_GET['mensaje'] ;
 			$conectar->query("update eforo_mensajes set tema='{$_POST['m_tema']}',mensaje='{$_POST['m_mensaje']}',o_caretos='{$_POST['m_caretos']}',o_codigo='{$_POST['m_codigo']}',o_firma='{$_POST['m_firma']}',o_importante='{$_POST['m_importante']}',o_notificacion='{$_POST['m_notificacion']}',fecha_editado='$fecha' where id='{$_GET['mensaje']}'") ;
-			aviso('Confirmaci�n',"Tu mensaje ha sido editado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]{$_GET['pag']}$u[5]#{$_GET['mensaje']}\" class=\"eforo_enlace\">� Ir al mensaje</a><p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
+			aviso('Confirmación',"Tu mensaje ha sido editado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]{$_GET['pag']}$u[5]#{$_GET['mensaje']}\" class=\"eforo_enlace\">� Ir al mensaje</a><p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 	}
 	if($_POST['m_notificacion']) $conectar->query("update eforo_mensajes set o_notificacion_email='1' where id='$id_ultimo'") ;
 	if(!empty($_FILES['m_archivo'])) $conectar->query("update eforo_adjuntos set id_mensaje='$id_ultimo' where id='$id_adjunto'") ;
-	# * Notificaci�n por email
+	# * Notificación por email
 	if($conf['notificacion_email'] && $que == 2) {
 		$con = $conectar->query("select id_usuario,tema,o_notificacion_email from eforo_mensajes where id='{$_GET['tema']}'") ;
 		$datos = mysqli_fetch_assoc($con) ;
@@ -155,12 +155,12 @@ a { color: #000000 ; font-weight: bold ; text-decoration: none }
 <p>Han respondido a tu mensaje <b>{$datos['tema']}</b>
 <p>Puedes visitarlo en la siguiente dirección:
 <p><a href=\"{$conf['foro_url']}$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[5]#$id_ultimo\" target=\"_blank\">{$conf['foro_url']}$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[5]#$id_ultimo</a>
-<p>No recibir�s más notificaciones hasta que visites tu mensaje. Para desactivar esta opción edita
+<p>No recibirás más notificaciones hasta que visites tu mensaje. Para desactivar esta opción edita
 tu mensaje y desactiva la casilla <b>Notificar por email cuando haya respuestas</b>.
 </body>
 " ;
 				if(!@mail($datos2[1],"Saludos $datos2[0] han respondido a tu mensaje",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html")) {
-					aviso('Error','No se pudo enviar la notificación. El servidor está mal configurado o no soporta env�os de email a trav�s de SMTP.') ;
+					aviso('Error','No se pudo enviar la notificación. El servidor está mal configurado o no soporta envíos de email a través de SMTP.') ;
 				}
 				# --> Se desactivan la notificaciones hasta que el usuario revise su mensaje
 				$conectar->query("update eforo_mensajes set o_notificacion_email='0' where id='{$_GET['tema']}'") ;

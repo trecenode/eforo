@@ -50,9 +50,9 @@ if($conectar) echo 'El archivo <b>config.php</b> está configurado correctamente
 <input type="text" size="50" name="foro_url" value="https://<?php echo $_SERVER['HTTP_HOST'].str_replace('eforo_parches/v3.0.php','',$_SERVER['PHP_SELF'])?>" /><br />
 <b>Tabla de usuarios:</b><br />
 <input type="text" size="20" name="tabla_usuarios" value="eforo_usuarios" /><br />
-Modifica este campo Sólo si estás usando eForo integrado con el sistema de usuarios de <b>www.electros.net</b> (eUsuarios v1.0, Registro de usuarios v1.2 � cualquier versión reciente).<br /><br />
+Modifica este campo Sólo si estás usando eForo integrado con el sistema de usuarios de <b>www.electros.dev</b> (eUsuarios v1.0, Registro de usuarios v1.2 � cualquier versión reciente).<br /><br />
 <b>Aviso:</b> Siempre has un respaldo de tu base de datos antes de aplicar cualquier Actualización, ya que cualquier
-error ser� irreversible, no me hago responsable por p�rdida de datos y/o malfuncionamiento del foro en caso de no
+error será irreversible, no me hago responsable por pérdida de datos y/o malfuncionamiento del foro en caso de no
 seguir correctamente las instrucciones.
 Si todo está correcto procedemos con la Actualización.<br /><br />
 <input type="submit" name="enviar" value="Actualizar" />
@@ -237,7 +237,7 @@ else {
 <p>Hubo un error durante la Actualización. Si el error es parecido a este "alter table nombre_tabla drop index nombre_indice" no te
 preocupes, estas modificaciones varian dependiendo de la versión de eForo y por tanto pueden o no mostrar un error, sin
 embargo el funcionamiento de eForo no es afectado. Si es un error distinto y eForo no está funcionando, restaura la base de datos e
-intenta de nuevo. Cualquier error cons�ltanos en nuestro foro en <a href="https://www.electros.net">https://www.electros.net</a>.</p>
+intenta de nuevo. Cualquier error consúltanos en nuestro foro en <a href="https://www.electros.dev">https://www.electros.dev</a>.</p>
 <?php
 }
 ?>

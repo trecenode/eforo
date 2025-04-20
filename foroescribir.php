@@ -55,7 +55,7 @@ switch(true) {
 		$form_titulo = 'Editar el mensaje' ;
 		break ;
 	default :
-		aviso('Error','No se ha escrito ning�n mensaje.',1) ;
+		aviso('Error','No se ha escrito ningún mensaje.',1) ;
 }
 # * Comprobar permiso de usuario si el usuario no es administrador o moderador
 if(!$es_moderador) permiso($permiso) ;
@@ -157,7 +157,7 @@ $adjuntar = false ;
 $con = $conectar->query("select p_adjuntar from eforo_foros where id='{$_GET['foro']}'") ;
 if($usuario['rango'] >= mysqli_result($con,0,0) || $es_moderador) {
 	$adjuntar = true ;
-	$adjuntar_titulo = '<b>Adjuntar archivo (M�x. '.$conf['adjunto_tamano'].' KB):</b><br />Anexar un archivo a tu mensaje.' ;
+	$adjuntar_titulo = '<b>Adjuntar archivo (Max. '.$conf['adjunto_tamano'].' KB):</b><br />Anexar un archivo a tu mensaje.' ;
 	$adjuntar_contenido = '<input type="file" name="m_archivo" size="50" class="eforo_formulario" />' ;
 	# --> Comprobar si ya hay un archivo adjunto (Sólo al editar el mensaje)
 	if($que == 3) {

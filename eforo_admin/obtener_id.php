@@ -23,7 +23,7 @@ $ePiel->cargar(array(
 'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administración � Obtener ID de un nick',
+'titulo' => $conf['foro_titulo'].' · Panel de administración · Obtener ID de un nick',
 'estilo' => '../'.$conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;

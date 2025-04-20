@@ -77,7 +77,7 @@ if(!empty($_GET['borrar'])) {
 			aviso('Foro borrado','El foro y todos sus mensajes han sido borrados.','','../') ;
 	}
 }
-# * Editar t�tulo y Descripción de Categorías y foros
+# * Editar título y Descripción de Categorías y foros
 if(isset($_POST['editar'])) {
 	foreach($_POST as $nombre => $valor) {
 		switch(true) {

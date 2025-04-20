@@ -37,7 +37,7 @@ if(!$es_usuario) aviso('Error','Sólo los usuarios registrados pueden borrar men
 if(!$es_moderador) permiso('p_borrar') ;
 # * Mensajes a borrar desde el panel de moderadores
 if(isset($_POST['temas_borrar'])) {
-	if(!$es_moderador) aviso('Error','<p>T� no puedes borrar temas.',1) ;
+	if(!$es_moderador) aviso('Error','<p>Tú no puedes borrar temas.',1) ;
 	$temas_sel = false ;
 	foreach($_POST as $a => $b) {
 		if(preg_match('^id_tema[0-9]+$',$a)) {
@@ -74,7 +74,7 @@ else {
 			# --> Se comprueba si el tema pertenece al usuario
 			$con = $conectar->query("select id_usuario from eforo_mensajes where id='{$_GET['tema']}'") ;
 			$datos = mysqli_fetch_row($con) ;
-			if($datos[0] != $c_id && !$es_moderador) aviso('Error','<p>T� no puedes borrar este tema.',1) ;
+			if($datos[0] != $c_id && !$es_moderador) aviso('Error','<p>Tú no puedes borrar este tema.',1) ;
 			mysqli_free_result($con) ;
 			$con = $conectar->query("select id,id_usuario from eforo_mensajes where id_tema='{$_GET['tema']}' order by id asc") ;
 			while($datos = mysqli_fetch_row($con)) {

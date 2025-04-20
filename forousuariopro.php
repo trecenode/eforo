@@ -98,7 +98,7 @@ switch($_GET['que']) {
 				# --> Se comprueba el tamaño de la imagen en pixeles
 				move_uploaded_file($_FILES['u_archivo']['tmp_name'],'eforo_imagenes/avatares/defecto.'.$a[1]) ;
 				if(!list($largo,$ancho) = getimagesize('eforo_imagenes/avatares/defecto.'.$a[1])) {
-					aviso('Error','La imagen no es v�lida.',1) ;
+					aviso('Error','La imagen no es válida.',1) ;
 				}
 				if($largo > $conf['avatar_largo'] || $ancho > $conf['avatar_ancho']) {
 					unlink('eforo_imagenes/avatares/defecto.'.$a[1]) ;
@@ -160,7 +160,7 @@ switch($_GET['que']) {
 				$conectar->query("insert into $tabla_usuarios (fecha_registrado,nick,contrasena,email,sexo,ip,rango,fecha_conectado) values ($fecha,'$nick','$contrasena','$email','$sexo','{$_SERVER['REMOTE_ADDR']}','1',$fecha)") ;
 				$aviso_titulo = 'Bienvenid@ '.$nick ;
 				$aviso_mensaje =
-				"<p>Ya eres miembro de este foro, ahora podr�s tener tu propio perfil de usuario, escribir mensajes con tu nick, editar y borrar tus mensajes
+				"<p>Ya eres miembro de este foro, ahora podrás tener tu propio perfil de usuario, escribir mensajes con tu nick, editar y borrar tus mensajes
 				y muchas cosas más. Espero que te la pases bien por aquí y que participes mucho.
 				<p>Webmaster
 				<p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">� Ir al foro</a>
@@ -170,7 +170,7 @@ switch($_GET['que']) {
 		}
 		break ;
 	case 'contrasena' :
-		# * Tiempo en el que se inhabilitar� la recuperaci�n de datos una vez que �stos se han enviado
+		# * Tiempo en el que se inhabilitará la recuperación de datos una vez que éstos se han enviado
 		$tiempo_contrasena = 1800 ; # <-- Por defecto 30 minutos (1800 segundos)
 		// * Generador de Contraseñas
 		$longitud = 8 ; # <-- número de caractéres de la Contraseña
@@ -201,7 +201,7 @@ puedes cambiarla en cualquier momento en tu perfil. Para entrar al foro haz clic
 <a href=\"{$conf['foro_url']}$u[0]foro$u[1]$u[5]\" target=\"_blank\">{$conf['foro_url']}/$u[0]foro$u[1]$u[5]</a>.
 </body>
 " ;
-				mail($_POST['u_email'],"{$conf['foro_titulo']} � Recuperaci�n de Contraseña",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html") ;
+				mail($_POST['u_email'],"{$conf['foro_titulo']} · Recuperación de Contraseña",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html") ;
 				$contrasena = password_hash($contrasena, 1);
 				$conectar->query("update $tabla_usuarios set contrasena='$contrasena',fecha_rec_contrasena=$fecha where id='$datos[0]'") ;
 				aviso('Datos enviados',"<p>Los datos han sido enviados al email indicado.</p><p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a></p>") ;

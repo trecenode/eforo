@@ -28,7 +28,7 @@ $ePiel->cargar(array(
 )) ;
 require 'foromenu.php' ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � '.$titulo_subforo.' � '.$titulo_tema,
+'titulo' => $conf['foro_titulo'].' · '.$titulo_subforo.' · '.$titulo_tema,
 'estilo' => $conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -64,7 +64,7 @@ $ePaginas->u = array($u[2],$u[3],$u[4],$u[5]) ;
 $ePaginas->e = array('<a href="','" class="eforo_enlace">','</a>') ;
 $con = $ePaginas->consultar() ;
 # * Se suma una visita al tema seleccionado y se elimina del recordatorio
-# Sólo se sumar�n visitas si se está viendo la última Página
+# Sólo se sumarán visitas si se está viendo la última Página
 if($ePaginas->total_pag == $_GET['pag']) {
 	$conectar->query("update eforo_mensajes set num_visitas=num_visitas+1 where id='{$_GET['tema']}'") ;
 	# Se considera visto el tema y se elimina del recordatorio
@@ -77,8 +77,8 @@ while($datos = mysqli_fetch_assoc($con)) {
 	$que = $datos['id'] == $datos['id_tema'] ? 1 : 2 ;
 	# Si es el tema inicial se comprueban las notificaciones por email
 	if($que == 1) {
-		# * Notificaci�n por email cuando haya respuestas
-		# Si el autor ya recibi� una notificación y no ha visitado su tema, se desactivan, as� que volverán
+		# * Notificación por email cuando haya respuestas
+		# Si el autor ya recibió una notificación y no ha visitado su tema, se desactivan, así que volverán
 		# a ser activadas hasta que visite su tema.
 		if($conf['notificacion_email'] && $datos['id_usuario'] == $c_id && $datos['o_notificacion'] && !$datos['o_notificacion_email']) {
 			$conectar->query("update eforo_mensajes set o_notificacion_email='1' where id='{$_GET['tema']}'") ;
@@ -120,14 +120,14 @@ while($datos = mysqli_fetch_assoc($con)) {
 		$autor_estado = '' ;
 	}
 	mysqli_free_result($con2) ;
-	# Se agrega el t�tulo del tema por defecto si la respuesta no tiene
+	# Se agrega el título del tema por defecto si la respuesta no tiene
 	if(!$datos['tema']) $datos['tema'] = 'RE: '.$titulo_tema ;
-	# Se aplican las funciones especiales seg�n la Configuración del foro y si el autor lo desea
+	# Se aplican las funciones especiales segun la Configuración del foro y si el autor lo desea
 	# --> código especial
 	if($conf['permitir_codigo'] && $datos['o_codigo']) $datos['mensaje'] = codigo($datos['mensaje']) ;
 	# --> Caretos
 	if($conf['permitir_caretos'] && $datos['o_caretos']) $datos['mensaje'] = caretos($datos['mensaje']) ;
-	# --> Censurar palabras (Sólo modificable a trav�s de la Configuración del foro)
+	# --> Censurar palabras (Sólo modificable a través de la Configuración del foro)
 	if($conf['censurar_palabras']) {
 		$datos['tema'] = censurar($datos['tema']) ;
 		$datos['mensaje'] = censurar($datos['mensaje']) ;
@@ -147,7 +147,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 	'url_borrar' => "$u[0]foroborrar$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]mensaje$u[4]{$datos['id']}$u[3]pag$u[4]{$_GET['pag']}$u[5]",
 	'url_citar' => "$u[0]foroescribir$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]citar$u[4]{$datos['id']}$u[5]"
 	)) ;
-	# --> Sólo se muestran los datos del autor si este existe en la base de datos de otra forma Sólo se mostrar� "Anónimo" o "Eliminad@"
+	# --> Sólo se muestran los datos del autor si este existe en la base de datos de otra forma Sólo se mostrará "Anónimo" o "Eliminad@"
 	if($autor_existe) {
 		$ePiel->variables_bloque('mensaje.usuario',array(
 		'autor_rango' => $autor_rango,
@@ -175,7 +175,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 		}
 		mysqli_free_result($con2) ;
 	}
-	# --> Si el mensaje ha sido editado se muestra la fecha de la última vez que se edit�
+	# --> Si el mensaje ha sido editado se muestra la fecha de la última vez que se editó
 	if($datos['fecha_editado'] > $datos['fecha']) {
 		$ePiel->variables_bloque('mensaje.editado',array(
 		'fecha' => fecha($datos['fecha_editado'])

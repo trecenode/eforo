@@ -23,7 +23,7 @@ $ePiel->cargar(array(
 'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administración � Sincronizar',
+'titulo' => $conf['foro_titulo'].' · Panel de administración · Sincronizar',
 'estilo' => '../'.$conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -41,7 +41,7 @@ if(!empty($_GET['sincronizar'])) {
 		$conectar->query("update eforo_foros set num_temas='$total_temas',num_mensajes='$total_mensajes' where id='$datos[0]'") ;
 	}
 	mysqli_free_result($con) ;
-	aviso('Sincronizaci�n finalizada','Se sincronizaron correctamente los mensajes.','','../') ;
+	aviso('Sincronización finalizada','Se sincronizaron correctamente los mensajes.','','../') ;
 }
 else {
 ?>
@@ -51,14 +51,14 @@ else {
 </tr>
 <tr>
 <td class="eforo_tabla_defecto">
-<p>Esta sencilla pero �til Función permite recontar el número de temas y mensajes en cada subforo, estas estad�sticas pudieran estar
+<p>Esta sencilla pero útil Función permite recontar el número de temas y mensajes en cada subforo, estas estadísticas pudieran estar
 mal por las siguientes razones:</p>
 <ul>
 <li>Errores en versiones anteriores de eForo</li>
-<li>Informaci�n perdida al momento de hacer respaldos</li>
-<li>Modificaciones no contabilizadas debido a manipulaci�n directa de la base de datos</li>
+<li>Información perdida al momento de hacer respaldos</li>
+<li>Modificaciones no contabilizadas debido a manipulación directa de la base de datos</li>
 </ul>
-Puedes aplicar esta Función con toda confianza y sin riesgos de corromper tu informaci�n.<br /><br />
+Puedes aplicar esta Función con toda confianza y sin riesgos de corromper tu información.<br /><br />
 <div style="text-align: center"><input type="button" value="Sincronizar" onclick="location = 'sincronizador.php?sincronizar=1'" class="eforo_formulario" /></div>
 </td>
 </tr>

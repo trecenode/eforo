@@ -85,7 +85,7 @@ function comprobar(a) {
 <input type="text" size="50" name="foro_url" value="https://<?php echo $_SERVER['HTTP_HOST'].str_replace('instalar.php','',$_SERVER['PHP_SELF'])?>" /><br />
 <b>Tipo de instalación:</b><br />
 <input type="radio" id="instalacion1" name="instalacion" value="1" onclick="tabla_usuarios.disabled = true ; tabla_usuarios.value = 'eforo_usuarios'" checked="checked" /><label for="instalacion1">Instalación típica</label><br />
-<input type="radio" id="instalacion2" name="instalacion" value="2" onclick="tabla_usuarios.disabled = false ; tabla_usuarios.value = ''" /><label for="instalacion2">Compatible con script de sistema de usuarios de www.electros.net</label><br />
+<input type="radio" id="instalacion2" name="instalacion" value="2" onclick="tabla_usuarios.disabled = false ; tabla_usuarios.value = ''" /><label for="instalacion2">Compatible con script de sistema de usuarios de www.electros.dev</label><br />
 <b>Tabla de usuarios:</b><br />
 <input type="text" size="20" name="tabla_usuarios" value="eforo_usuarios" disabled="disabled" />
 </fieldset><br /><br />
@@ -138,7 +138,7 @@ la gente como para los buscadores, así permitirás que el uso de eForo
 crezca y más personas puedan utilizar eForo.
 
 Si tienes un foro phpBB, vBulletin o similar y deseas transferir
-tus mensajes a eForo, escríbenos en nuestro foro en electros.net/foro.
+tus mensajes a eForo, escríbenos en nuestro foro en electros.dev/foro.
 
 Agradezco tu interés en usar eForo v3.1, espero que te sea de utilidad
 y que lo disfrutes.
