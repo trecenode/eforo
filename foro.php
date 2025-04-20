@@ -20,6 +20,7 @@ the Free Software Foundation; either version 2 of the License, or
 */
 
 require 'foroconfig.php';
+require 'eforo_funciones/global_vars.php';
 
 // Marcar los subforos como leídos
 if(!empty($_GET['leidos'])) {
@@ -28,21 +29,20 @@ if(!empty($_GET['leidos'])) {
 
 require 'eforo_funciones/recientes.php';
 
+// Load common templates and variables
+load_common_templates();
+set_common_vars();
+set_menu_vars();
+set_user_vars();
+
+// Load specific templates
 $ePiel->cargar([
-	'cabecera'		=> $conf['plantilla'].'cabecera.pta',
-	'foro'			=> $conf['plantilla'].'foro.pta',
-	'piedepagina'	=> $conf['plantilla'].'piedepagina.pta'
+	'foro' => $conf['plantilla'].'foro.pta'
 ]);
-
 require 'foromenu.php';
-
-$ePiel->variables([
-	'titulo' => $conf['foro_titulo'],
-	'estilo' => $conf['estilo']
-]);
-
-$ePiel->mostrar('cabecera') ;
-$ePiel->mostrar('menu') ;
+// Display templates in correct order
+$ePiel->mostrar('cabecera');
+$ePiel->mostrar('menu');
 
 // Mostrar todos los subforos (sección principal)
 $buscar = $conectar->query("SELECT `id`,`categoria` FROM `eforo_categorias` ORDER BY `orden` ASC");
@@ -78,7 +78,7 @@ while($cat = $buscar->fetch_assoc()) {
 			else {
 				$autor = '<i>Anónim@</i>';
 			}
-			$ult_mensaje = $autor." <a href=\"{$u[0]}foromensajes{$u[1]}{$u[2]}foro{$u[4]}{$foros['id']}{$u[3]}tema{$u[4]}{$ult['id_tema']}{$u[5]}#{$ult['id']}\" class=\"eforo_enlace\">�</a><br />".fecha($ult['fecha']);
+			$ult_mensaje = $autor." <a href=\"{$u[0]}foromensajes{$u[1]}{$u[2]}foro{$u[4]}{$foros['id']}{$u[3]}tema{$u[4]}{$ult['id_tema']}{$u[5]}#{$ult['id']}\" class=\"eforo_enlace\"></a><br />".fecha($ult['fecha']);
 		}
 		else {
 			$ult_mensaje = '<b>No hay mensajes</b>';
@@ -95,8 +95,8 @@ while($cat = $buscar->fetch_assoc()) {
 			'num_temas'		=> $foros['num_temas'],
 			'num_mensajes'	=> $foros['num_mensajes'],
 			'estilo_num'	=> $estilo_num
-		]) ;
-		$estilo_num = $estilo_num == 1 ? 2 : 1 ;
+		]);
+		$estilo_num = $estilo_num == 1 ? 2 : 1;
 	}
 	$buscar2->free();
 }
@@ -110,16 +110,12 @@ $total_usuarios = $conectar
 $buscar = $conectar->query("SELECT `id`,`nick` FROM `{$tabla_usuarios}` ORDER BY `id` DESC LIMIT 1");
 $datos = $buscar->fetch_assoc();
 $ePiel->variables([
-	'usuarios_total'		=> $total_en_linea[0] + $total_en_linea[1],
-	'usuarios_registrados'	=> $total_en_linea[1],
-	'usuarios_anonimos'		=> $total_en_linea[0],
-	'usuarios_reg_en_linea'	=> $reg_en_linea,
 	'usuarios_reg_total'	=> $total_usuarios,
 	'usuarios_reg_ultimo'	=> "<a href=\"{$u[0]}forousuarios{$u[1]}{$u[2]}u{$u[4]}{$datos['id']}{$u[5]}\" class=\"eforo_enlace\">{$datos['nick']}</a>",
 	'usuarios_lista'		=> $u[0].'forousuarios'.$u[1]
 ]);
 $buscar->free();
 
-$ePiel->mostrar('foro') ;
+$ePiel->mostrar('foro');
 $ePiel->variable('tiempo_carga', round(tiempo_carga() - $tiempo, 4));
 $ePiel->mostrar('piedepagina');

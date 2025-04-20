@@ -228,7 +228,7 @@ foreach($codigo as $valor) {
 }
 if(!$error) {
 ?>
-<p>Listo, la Actualización se ha finalizado con �xito.</p>
+<p>Listo, la Actualización se ha finalizado con éxito.</p>
 <input type="button" onclick="location = '../foro.php'" value="Finalizar" />
 <?php
 }

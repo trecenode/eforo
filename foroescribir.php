@@ -78,7 +78,7 @@ if(empty($_GET['vistaprevia'])) {
 	else {
 		$con = $conectar->query("select * from eforo_mensajes where id='{$_GET['mensaje']}'") ;
 		$datos = mysqli_fetch_assoc($con) ;
-		if($datos['id_usuario'] != $c_id && !$es_moderador) aviso('Error','<p>Tu no puedes editar este mensaje.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+		if($datos['id_usuario'] != $c_id && !$es_moderador) aviso('Error','<p>Tu no puedes editar este mensaje.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 		$form_tema = $datos['tema'] ;
 		$form_mensaje = $datos['mensaje'] ;
 		$form_caretos = $datos['o_caretos'] ;
@@ -192,7 +192,7 @@ $ePiel->variables(array(
 'm_importante_e' => $usuario['rango'] < $p_importante && !$es_moderador ? ' disabled="disabled"' : '',
 'm_notificacion_e' => $que == 2 || ($que == 3 && $_GET['tema'] != $_GET['mensaje']) || !$conf['notificacion_email'] || !$es_usuario ? ' disabled="disabled"' : '',
 )) ;
-# * Si el formulario está en modo responder se muestran los �ltimos mensajes del tema
+# * Si el formulario está en modo responder se muestran los últimos mensajes del tema
 if($que == 2) {
 	require_once 'eforo_funciones/codigo.php' ;
 	$con = $conectar->query("select tema from eforo_mensajes where id='{$_GET['tema']}'") ;

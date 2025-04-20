@@ -27,9 +27,9 @@ function mover() {
 }
 </script>
 <form name="m_formulario" method="post" action="{moderadores_panel.url_borrar}" style="display: inline">
-<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>
-<td class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Panel de moderación</div></td>
+<td class="eforo_tabla_subtitulo"><div class="eforo_titulo_1">Panel de moderaciÃ³n</div></td>
 </tr>
 <tr>
 <td valign="top" class="eforo_tabla_defecto">

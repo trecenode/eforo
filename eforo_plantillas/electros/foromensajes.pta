@@ -45,7 +45,7 @@ Tema: <b>{mensaje.tema}</b>
 {mensaje.firma.contenido}
 [/blq firma]
 [blq editado]
-<br /><br /><b>Editado por �ltima vez:</b> {mensaje.editado.fecha}
+<br /><br /><b>Editado por última vez:</b> {mensaje.editado.fecha}
 [/blq editado]
 [blq adjunto]
 <br /><br /><fieldset><legend>Archivo adjunto</legend><a href="{mensaje.adjunto.url}" class="eforo_enlace">{mensaje.adjunto.archivo}</a></fieldset>
@@ -99,7 +99,7 @@ function comprobar(a) {
 <input type="hidden" name="m_caretos" value="1" />
 <input type="hidden" name="m_codigo" value="1" />
 <input type="hidden" name="m_firma" value="1" />
-<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>
 <td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Respuesta rápida</div></td>
 </tr>

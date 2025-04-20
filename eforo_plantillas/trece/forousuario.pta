@@ -44,7 +44,7 @@ function comprobar(a) {
 		return false ;
 		}
 	if(a.u_contrasena.value.length < 8) {
-		alert('La contraseña debe contener por lo m�nimo 8 caract�res.') ;
+		alert('La contraseña debe contener por lo mínimo 8 caractéres.') ;
 		return false ;
 	}
 	if(a.u_contrasena.value != a.u_contrasena_c.value) {
@@ -52,12 +52,12 @@ function comprobar(a) {
 		return false ;
 	} 
 	if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})$/.test(a.u_email.value)) {
-		alert('Debes escribir un email v�lido.') ;
+		alert('Debes escribir un email válido.') ;
 		return false ;
 	}
 }
 </script>
-<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>
+<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>
 <p><b>Nuev@ usuari@</b>
 <p>Como usuari@ registrad@ podr�s tener tu propio perfil, escribir mensajes con tu nick,
 editar y borrar tus mensajes y muchas cosas m�s. La contraseña se guarda encriptada as� que en caso de
@@ -88,7 +88,7 @@ function comprobar(a) {
 	}
 }
 </script>
-<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>
+<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>
 <p><b>Recuperar contraseña</b>
 <p>Para recuperar tus datos debes escribir el email
 con el que te registraste. Debido a que la contraseña se guarda encriptada no hay forma de recuperarla por lo que se te enviara una
@@ -100,7 +100,7 @@ nueva, más tarde puedes cambiarla desde tu perfil.
 </form>
 [/blq modo_rec_contrasena]
 [blq modo_perfil]
-<p><a href="{modo_perfil.url_regresar}" class="eforo_enlace">� Regresar</a></p>
+<p><a href="{modo_perfil.url_regresar}" class="eforo_enlace">← Regresar</a></p>
 <p><b>Editar perfil</b></p>
 <p>En esta sección puedes editar tu perfil, el avatar no debe pesar más de <b>{modo_perfil.avatar_tamano} KB</b> y debe medir entre
 <b>{modo_perfil.avatar_largo}</b> x <b>{modo_perfil.avatar_ancho}</b> pixeles.</p>
@@ -112,7 +112,7 @@ function comprobar(a) {
 	}
 	if(a.u_contrasena.value != '') {
 		if(a.u_contrasena.value.length < 8) {
-			alert('La contraseña debe contener por lo m�nimo 8 caract�res.') ;
+			alert('La contraseña debe contener por lo mínimo 8 caractéres.') ;
 			return false ;
 		}
 		if(a.u_contrasena.value != a.u_contrasena_c.value) {
@@ -121,11 +121,11 @@ function comprobar(a) {
 		}
 	}
 	if(!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})$/.test(a.u_email.value)) {
-		alert('Debes poner un email v�lido.') ;
+		alert('Debes poner un email válido.') ;
 		return false ;
 	}
 	if(a.u_descripcion.value.length > 255) {
-		alert('La Descripción supera los 255 caract�res.') ;
+		alert('La Descripción supera los 255 caractéres.') ;
 		return false ;
 	}
 }

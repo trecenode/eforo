@@ -101,7 +101,7 @@ if(!empty($_GET['mover'])) {
 	aviso('Foro movido','El foro ha sido movido a la Categoría seleccionada.','','../') ;
 }
 ?>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>
 <td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Agregar</div></td>
 </tr>
@@ -142,7 +142,7 @@ mysqli_free_result($con) ;
 </table><br />
 <form method="post" action="foros.php">
 <input type="hidden" name="editar" value="1">
-<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>
 <td width="20%" class="eforo_tabla_titulo"><div class="eforo_titulo_1" align="center">Orden</div></td>
 <td width="65%" class="eforo_tabla_titulo"><div class="eforo_titulo_1" align="center">Categoría/Subforo</div></td>

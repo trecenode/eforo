@@ -45,7 +45,7 @@ if(!empty($_GET['sincronizar'])) {
 }
 else {
 ?>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>
 <td class="eforo_tabla_titulo"><div class="eforo_titulo_1">Sincronizador</div></td>
 </tr>

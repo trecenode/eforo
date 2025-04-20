@@ -39,7 +39,7 @@ if(!empty($_POST['id_foro']) && preg_match('^[0-9]+$',$_POST['id_foro'])) {
 	}
 	$con = $conectar->query("select count(id) from eforo_foros where id='{$_POST['id_foro']}'") ;
 	if(!mysqli_result($con,0,0)) {
-		aviso('Error','<p>El subforo seleccionado no existe.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+		aviso('Error','<p>El subforo seleccionado no existe.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 	}
 	mysqli_free_result($con) ;
 	$temas_sel = false ;
@@ -58,9 +58,9 @@ if(!empty($_POST['id_foro']) && preg_match('^[0-9]+$',$_POST['id_foro'])) {
 		}
 	}
 	if(!$temas_sel) {
-		aviso('Error','<p>Debes seleccionar al menos un tema.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+		aviso('Error','<p>Debes seleccionar al menos un tema.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 	}
-	aviso('Temas movidos',"<p>Los temas han sido movidos al subforo indicado.<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_POST['id_foro']}$u[5]\" class=\"eforo_enlace\">� Ir a este subforo</a><p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">� Regresar</a>") ;
+	aviso('Temas movidos',"<p>Los temas han sido movidos al subforo indicado.<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_POST['id_foro']}$u[5]\" class=\"eforo_enlace\">� Ir a este subforo</a><p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar</a>") ;
 }
 else {
 	aviso('Error','No se han indicado temas para mover.',1) ;

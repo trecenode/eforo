@@ -34,7 +34,7 @@ $ePiel->variables(array(
 )) ;
 $ePiel->mostrar('cabecera') ;
 $ePiel->mostrar('menu') ;
-if(!$c_id) aviso('Error','Necesitas iniciar sesi�n para poder revisar tus mensajes privados. Intenta iniciar sesi�n desde el men�.',1) ;
+if(!$c_id) aviso('Error','Necesitas iniciar sesión para poder revisar tus mensajes privados. Intenta iniciar sesión desde el menú.',1) ;
 if(isset($_POST['enviar'])) {
 	require 'eforo_funciones/quitar.php' ;
 	$_POST['p_destinatario'] = quitar($_POST['p_destinatario'],1) ;

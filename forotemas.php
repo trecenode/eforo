@@ -29,7 +29,7 @@ $ePiel->cargar(array(
 )) ;
 require 'foromenu.php' ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � '.$titulo_subforo,
+'titulo' => $conf['foro_titulo'].' · '.$titulo_subforo,
 'estilo' => $conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -39,7 +39,7 @@ echo $menu ;
 $con = $conectar->query("select p_leer from eforo_foros where id='{$_GET['foro']}' limit 1") ;
 $datos = mysqli_fetch_assoc($con) ;
 if($usuario['rango'] < $datos['p_leer']) {
-	aviso('Nivel m�nimo insuficiente','<p>No tienes suficiente nivel para entrar a este subforo. Intenta iniciar sesi�n desde el men�.</p><p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a></p>',1) ;
+	aviso('Nivel mínimo insuficiente','<p>No tienes suficiente nivel para entrar a este subforo. Intenta iniciar sesión desde el menú.</p><p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a></p>',1) ;
 }
 # **********************************************
 # *** Mostrar los temas del subforo seleccionado
@@ -126,7 +126,7 @@ if(mysqli_num_rows($con)) {
 			$tema_autor = '<i>Anónim@</i>' ;
 		}
 		$tema_autor .= '<br />'.fecha($datos['fecha']) ;
-		# Se obtiene el nombre del autor del �ltimo mensaje
+		# Se obtiene el nombre del autor del último mensaje
 		if($datos['num_respuestas']) {
 			$con2 = $conectar->query("select id_usuario from eforo_mensajes where id_tema='{$datos['id']}' order by id desc limit 1") ;
 			$datos2 = mysqli_fetch_row($con2) ;

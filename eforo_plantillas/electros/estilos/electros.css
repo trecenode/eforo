@@ -43,6 +43,7 @@ font-weight: bold ;
 /* Cuerpo del foro */
 
 .eforo_tabla_principal {
+max-width: 1200px;
 }
 .eforo_tabla_titulo {
 border-left: #90a6d2 ; border-top: #90a6d2 ; border-right: #596782 ; border-bottom: #596782 ;
@@ -76,6 +77,7 @@ background-color: #caebff ;
 padding: 3px ;
 }
 .eforo_tabla_defecto {
+max-width: 1200px;
 border-left: #daedff ; border-top: #daedff ; border-right: #b0c0ce ; border-bottom: #b0c0ce ;
 border-width: 2px ;
 border-style: solid ;

@@ -28,8 +28,9 @@ class ePaginas {
 	public $m;
 
 	public function __construct($a,$b) {
-		require 'config.php' ;
-		$this->consulta = $a ;
+		$config_path = dirname(dirname(__FILE__)) . '/config.php';
+		require $config_path;
+		$this->consulta = $a;
 		# Obtener el total de resultados
 		$con = $conectar->query(preg_replace('/select ([a-zA-Z0-9\_\-]]+) from/i','select count(*) from',$this->consulta)) ;
 		$this->total_res = mysqli_result($con,0,0) ;
@@ -47,14 +48,14 @@ class ePaginas {
 	}
 	# Procesar la consulta SQL
 	function consultar() {
-		require 'config.php' ;
-		$this->variables() ; # <-- Comprobar variables
-		if(empty($_GET[$this->p]) || !preg_match('^[0-9]+$',$_GET[$this->p])) $_GET[$this->p] = 1 ;
-		elseif($this->total_pag > 0 && $_GET[$this->p] > $this->total_pag) $_GET[$this->p] = $this->total_pag ;
-		$desde = ($_GET[$this->p] - 1) * $this->resultados ;
+		$config_path = dirname(dirname(__FILE__)) . '/config.php';
+		require $config_path;
+		$this->variables(); # <-- Comprobar variables
+		if(empty($_GET[$this->p]) || !preg_match('^[0-9]+$',$_GET[$this->p])) $_GET[$this->p] = 1;
+		elseif($this->total_pag > 0 && $_GET[$this->p] > $this->total_pag) $_GET[$this->p] = $this->total_pag;
+		$desde = ($_GET[$this->p] - 1) * $this->resultados;
 
-		
-		return $conectar->query($this->consulta." limit $desde,$this->resultados") ;
+		return $conectar->query($this->consulta." limit $desde,$this->resultados");
 	}
 	# Obtener los datos de la URL
 	function datos_url() {
@@ -84,7 +85,7 @@ class ePaginas {
 			$paginas[] = ($a != $_GET[$this->p]) ? $this->e[0].$_SERVER['PHP_SELF'].$this->u[0].$datos_url.$this->p.$this->u[2].$a.$this->u[3].$this->e[1].$a.$this->e[2] : $a ;
 		}
 		# Si se está antes de la última Página se muestra la flecha de avanzar y el enlace a la última Página
-		$pag_siguiente = $_GET[$this->p] + 1 ;
+		$pag_siguiente = $_GET[$this->p] + 1;
 		if($pag_siguiente <= $this->total_pag) {
 			$paginas[] = $this->e[0].$_SERVER['PHP_SELF'].$this->u[0].$datos_url.$this->p.$this->u[2].$pag_siguiente.$this->u[3].$this->e[1].'�'.$this->e[2] ;
 			$paginas[] = $this->e[0].$_SERVER['PHP_SELF'].$this->u[0].$datos_url.$this->p.$this->u[2].$this->total_pag.$this->u[3].$this->e[1].'Ultima'.$this->e[2] ;

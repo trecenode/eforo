@@ -32,7 +32,7 @@ $ePiel->variables(array(
 )) ;
 $ePiel->mostrar('cabecera') ;
 $ePiel->mostrar('menu') ;
-if(!$es_usuario) aviso('Error','Sólo los usuarios registrados pueden borrar mensajes. Intenta iniciar sesi�n desde el men�.',1) ;
+if(!$es_usuario) aviso('Error','Sólo los usuarios registrados pueden borrar mensajes. Intenta iniciar sesión desde el menú.',1) ;
 # * Comprobar permiso de usuario (si es que no es moderador o administrador)
 if(!$es_moderador) permiso('p_borrar') ;
 # * Mensajes a borrar desde el panel de moderadores
@@ -57,8 +57,8 @@ if(isset($_POST['temas_borrar'])) {
 			$conectar->query("update eforo_foros set num_temas=num_temas-1,num_mensajes=num_mensajes-$total_borrados where id='{$_GET['foro']}'") ;
 		}
 	}
-	if(!$temas_sel) aviso('Error','<p>Debes seleccionar al menos un tema.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
-	aviso('Temas borrados',"<p>Los temas y todos sus mensajes han sido borrados.<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a>") ;
+	if(!$temas_sel) aviso('Error','<p>Debes seleccionar al menos un tema.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
+	aviso('Temas borrados',"<p>Los temas y todos sus mensajes han sido borrados.<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 }
 else {
 	# * Comprobar si el mensaje a borrar se trata de un tema o de una respuesta
@@ -89,7 +89,7 @@ else {
 			mysqli_free_result($con) ;
 			$conectar->query("delete from eforo_mensajes where id_tema='{$_GET['tema']}'") ;
 			$conectar->query("update eforo_foros set num_temas=num_temas-1,num_mensajes=num_mensajes-$total_borrados where id='{$_GET['foro']}'") ;
-			aviso('Tema borrado',"<p>El tema y todos sus mensajes han sido borrados.<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a>") ;
+			aviso('Tema borrado',"<p>El tema y todos sus mensajes han sido borrados.<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 			break ;
 		# * Eliminar un mensaje
 		case 2 :
@@ -107,7 +107,7 @@ else {
 			$conectar->query("delete from eforo_mensajes where id='{$_GET['mensaje']}'") ;
 			$conectar->query("update eforo_mensajes set num_respuestas=num_respuestas-1 where id='{$_GET['tema']}'") ;
 			$conectar->query("update eforo_foros set num_mensajes=num_mensajes-1 where id='{$_GET['foro']}'") ;
-			aviso('Mensaje borrado',"<p>El mensaje ha sido borrado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]{$_GET['pag']}$u[5]\" class=\"eforo_enlace\">� Regresar al tema</a><p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a>") ;
+			aviso('Mensaje borrado',"<p>El mensaje ha sido borrado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]{$_GET['pag']}$u[5]\" class=\"eforo_enlace\">← Regresar al tema</a><p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 	}
 }
 $ePiel->variable('tiempo_carga',round(tiempo_carga() - $tiempo,4)) ;

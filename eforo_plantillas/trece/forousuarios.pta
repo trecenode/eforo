@@ -65,7 +65,7 @@
 </tr>
 <tr>
 <td class="eforo_tabla_defecto">
-<p><a href="{perfil.url_usuarios}" class="eforo_enlace">� Regresar a Lista de usuarios</a></p>
+<p><a href="{perfil.url_usuarios}" class="eforo_enlace">← Regresar a Lista de usuarios</a></p>
 <table width="100%" border="0" cellpadding="5" cellspacing="0">
 <tr>
 <td width="30%" valign="top"><b>Sexo:</b></td>
@@ -97,7 +97,7 @@
 <td valign="top">{perfil.total_mensajes}</td>
 </tr>
 <tr>
-<td valign="top"><b>Rango � nivel:</b></td>
+<td valign="top"><b>Rango / nivel:</b></td>
 <td valign="top">{perfil.rango}</td>
 </tr>
 <tr>

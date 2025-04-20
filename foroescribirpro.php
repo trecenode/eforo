@@ -25,7 +25,7 @@ $ePiel->cargar(array(
 'piedepagina' => $conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de moderación � Mover',
+'titulo' => $conf['foro_titulo'].' · Panel de moderación · Mover',
 'estilo' => $conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -57,26 +57,26 @@ if(!$es_moderador) permiso($permiso) ;
 if(isset($_POST['enviar'])) {
 	# Función para adjuntar archivos a los mensajes
 	if(!empty($_FILES['m_archivo'])) {
-		# --> Se comprueba el tama�o del archivo adjunto
+		# --> Se comprueba el tamaño del archivo adjunto
 		$tamano_max = @ini_get('upload_max_filesize') ? str_replace('M','',ini_get('upload_max_filesize')) * 1024 : 2048 ;
 		if($tamano_max < $conf['adjunto_tamano']) $conf['adjunto_tamano'] = $tamano_max ;
 		if(!$_FILES['m_archivo']['size'] || $_FILES['m_archivo']['size'] > ($conf['adjunto_tamano'] * 1024)) {
-			aviso('Error al subir el archivo','<p>El archivo debe ser menor de <b>'.$conf['adjunto_tamano'].' KB</b>.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+			aviso('Error al subir el archivo','<p>El archivo debe ser menor de <b>'.$conf['adjunto_tamano'].' KB</b>.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 		}
-		# --> Se comprueba si la extensi�n está permitida
+		# --> Se comprueba si la extensión está permitida
 		preg_match('/(.+)\.([\w_]+)/i',$_FILES['m_archivo']['name'],$parte) ;
 		$nombre_archivo = $parte[1] ;
 		$extension_archivo = strtolower($parte[2]) ;
 		if(!in_array($extension_archivo,$conf['adjunto_ext'])) {
-			aviso('Error al subir el archivo','<p>La extensi�n <b>'.$extension_archivo.'</b> no está permitida.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+			aviso('Error al subir el archivo','<p>La extensión <b>'.$extension_archivo.'</b> no está permitida.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 		}
-		# --> Se comprueba el número de caract�res en el nombre de archivo
+		# --> Se comprueba el número de caractéres en el nombre de archivo
 		if(strlen($nombre_archivo) > $conf['adjunto_nombre']) {
-			aviso('Error al subir el archivo','<p>El nombre de archivo debe ser menor de <b>'.$conf['adjunto_nombre'].'</b> caract�res.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+			aviso('Error al subir el archivo','<p>El nombre de archivo debe ser menor de <b>'.$conf['adjunto_nombre'].'</b> caractéres.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 		}
 		# --> Se guarda el nombre real del archivo en la base de datos
 		$conectar->query("insert into eforo_adjuntos (archivo) values ('{$_FILES['m_archivo']['name']}')") ;
-		# --> El archivo se guardará con el número del �ltimo registro en la base de datos
+		# --> El archivo se guardará con el número del último registro en la base de datos
 		$id_adjunto = mysql_insert_id() ;
 		move_uploaded_file($_FILES['m_archivo']['tmp_name'],"eforo_adjuntos/$id_adjunto.dat") ;
 	}
@@ -87,7 +87,7 @@ if(isset($_POST['enviar'])) {
 	$_POST['m_notificacion'] = !empty($_POST['m_notificacion']) ? quitar($_POST['m_notificacion']) : 0 ;
 	$_POST['m_importante'] = !empty($_POST['m_importante']) ? quitar($_POST['m_importante']) : 0 ;
 	if($que == 3 && $_GET['tema'] != $_GET['mensaje']) $_POST['m_notificacion'] = 0 ;
-	# * Si el rango del usuario es menor al requerido para marcar temas como importantes entonces se desactiva esta opci�n
+	# * Si el rango del usuario es menor al requerido para marcar temas como importantes entonces se desactiva esta opción
 	$con = $conectar->query("select p_importante from eforo_foros where id='{$_GET['foro']}'") ;
 	if($usuario['rango'] < mysqli_result($con,0,0) && !$es_moderador) $_POST['m_importante'] = 0 ;
 	mysqli_free_result($con) ;
@@ -103,7 +103,7 @@ if(isset($_POST['enviar'])) {
 			$conectar->query("update eforo_mensajes set id_tema='$id_ultimo' where id='$id_ultimo'") ;
 			$conectar->query("update eforo_foros set num_temas=num_temas+1,num_mensajes=num_mensajes+1 where id='{$_GET['foro']}'") ;
 			if($c_id) $conectar->query("update $tabla_usuarios set mensajes=mensajes+1 where id='$c_id'") ;
-			aviso('Confirmaci�n',"<p>Tu mensaje ha sido publicado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]$id_ultimo$u[5]\" class=\"eforo_enlace\">� Ir al mensaje</a>\n<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a>") ;
+			aviso('Confirmaci�n',"<p>Tu mensaje ha sido publicado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]$id_ultimo$u[5]\" class=\"eforo_enlace\">� Ir al mensaje</a>\n<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 			break ;
 		# --> Responder al tema
 		case 2 :
@@ -118,7 +118,7 @@ if(isset($_POST['enviar'])) {
 			$con = $conectar->query("select count(id) from eforo_mensajes where id_tema='{$_GET['tema']}'") ;
 			$ult_pagina = ceil(mysqli_result($con,0,0) / $conf['max_mensajes']) ;
 			mysqli_free_result($con) ;
-			aviso('Confirmaci�n',"<p>Tu mensaje ha sido publicado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]$ult_pagina$u[5]#$id_ultimo\" class=\"eforo_enlace\">� Ir al mensaje</a>\n<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a>") ;
+			aviso('Confirmaci�n',"<p>Tu mensaje ha sido publicado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]$ult_pagina$u[5]#$id_ultimo\" class=\"eforo_enlace\">� Ir al mensaje</a>\n<p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 			break ;
 		# --> Editar el mensaje
 		case 3 :
@@ -133,7 +133,7 @@ if(isset($_POST['enviar'])) {
 			$_POST['m_mensaje'] = quitar($_POST['m_mensaje'],1) ;
 			$id_ultimo = $_GET['mensaje'] ;
 			$conectar->query("update eforo_mensajes set tema='{$_POST['m_tema']}',mensaje='{$_POST['m_mensaje']}',o_caretos='{$_POST['m_caretos']}',o_codigo='{$_POST['m_codigo']}',o_firma='{$_POST['m_firma']}',o_importante='{$_POST['m_importante']}',o_notificacion='{$_POST['m_notificacion']}',fecha_editado='$fecha' where id='{$_GET['mensaje']}'") ;
-			aviso('Confirmaci�n',"Tu mensaje ha sido editado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]{$_GET['pag']}$u[5]#{$_GET['mensaje']}\" class=\"eforo_enlace\">� Ir al mensaje</a><p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}\" class=\"eforo_enlace\">� Regresar al foro</a>") ;
+			aviso('Confirmaci�n',"Tu mensaje ha sido editado.<p><a href=\"$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[3]pag$u[4]{$_GET['pag']}$u[5]#{$_GET['mensaje']}\" class=\"eforo_enlace\">� Ir al mensaje</a><p><a href=\"$u[0]forotemas$u[1]$u[2]foro$u[4]{$_GET['foro']}\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 	}
 	if($_POST['m_notificacion']) $conectar->query("update eforo_mensajes set o_notificacion_email='1' where id='$id_ultimo'") ;
 	if(!empty($_FILES['m_archivo'])) $conectar->query("update eforo_adjuntos set id_mensaje='$id_ultimo' where id='$id_adjunto'") ;
@@ -153,14 +153,14 @@ a { color: #000000 ; font-weight: bold ; text-decoration: none }
 <body>
 <p>Saludos <b>$datos2[0]</b>
 <p>Han respondido a tu mensaje <b>{$datos['tema']}</b>
-<p>Puedes visitarlo en la siguiente direcci�n:
+<p>Puedes visitarlo en la siguiente dirección:
 <p><a href=\"{$conf['foro_url']}$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[5]#$id_ultimo\" target=\"_blank\">{$conf['foro_url']}$u[0]foromensajes$u[1]$u[2]foro$u[4]{$_GET['foro']}$u[3]tema$u[4]{$_GET['tema']}$u[5]#$id_ultimo</a>
-<p>No recibir�s más notificaciones hasta que visites tu mensaje. Para desactivar esta opci�n edita
+<p>No recibir�s más notificaciones hasta que visites tu mensaje. Para desactivar esta opción edita
 tu mensaje y desactiva la casilla <b>Notificar por email cuando haya respuestas</b>.
 </body>
 " ;
 				if(!@mail($datos2[1],"Saludos $datos2[0] han respondido a tu mensaje",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html")) {
-					aviso('Error','No se pudo enviar la notificaci�n. El servidor está mal configurado o no soporta env�os de email a trav�s de SMTP.') ;
+					aviso('Error','No se pudo enviar la notificación. El servidor está mal configurado o no soporta env�os de email a trav�s de SMTP.') ;
 				}
 				# --> Se desactivan la notificaciones hasta que el usuario revise su mensaje
 				$conectar->query("update eforo_mensajes set o_notificacion_email='0' where id='{$_GET['tema']}'") ;

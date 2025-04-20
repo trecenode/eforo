@@ -27,7 +27,7 @@ function quitar($texto,$comprobar = 0,$no_escapar = 0) {
 	if($no_escapar == 0) $texto = mysqli_real_escape_string($GLOBALS["conectar"],$texto) ;
 	if($comprobar == 1 && empty($texto)) {
 		require_once 'aviso.php' ;
-		aviso('Error','<p>Debes llenar los campos correctamente.</p><p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a></p>',1) ;
+		aviso('Error','<p>Debes llenar los campos correctamente.</p><p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a></p>',1) ;
 	}
 	return $texto ;
 }

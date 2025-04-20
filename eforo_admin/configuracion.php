@@ -49,7 +49,6 @@ if(isset($_POST['enviar'])) {
 else {
 ?>
 <form name="configuracion" method="post" action="?page=configuracion">
-<input type="hidden" name="c_plantilla" value="<?php echo $conf['plantilla']; ?>" />
 <table width="100%" border="0" cellpadding="3" cellspacing="1" class="tabla_principal">
 <tr>
 <td colspan="2" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Configuración</div></td>
@@ -95,7 +94,7 @@ function abrir(url,largo,alto,titulo) {
 <td class="eforo_tabla_defecto"><input type="text" name="c_mensajes" value="<?php echo $conf['max_mensajes']?>" maxlength="3" class="eforo_formulario"></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>Ultimos mensajes:</b><br>Al querer responder un tema se ver�n los �ltimos mensajes.</td>
+<td class="eforo_tabla_defecto"><b>Ultimos mensajes:</b><br>Al querer responder un tema se verán los últimos mensajes.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_ultimos" value="<?php echo $conf['max_ultimos']?>" maxlength="3"class="eforo_formulario"></td>
 </tr>
 <tr>
@@ -120,14 +119,14 @@ function abrir(url,largo,alto,titulo) {
 </td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>Censurar palabras:</b><br>Sustituye las palabras censuradas por otras palabras. Puedes definir �stas modificando el archivo <b>eforo_funciones/codigo.php</b>.</td>
+<td class="eforo_tabla_defecto"><b>Censurar palabras:</b><br>Sustituye las palabras censuradas por otras palabras. Puedes definir éstas modificando el archivo <b>eforo_funciones/codigo.php</b>.</td>
 <td class="eforo_tabla_defecto">
 <input type="radio" name="c_censurar" value="0"<?php if(!$conf['censurar_palabras']) echo ' checked' ; ?>>No
 <input type="radio" name="c_censurar" value="1"<?php if($conf['censurar_palabras']) echo ' checked' ; ?>>Sí
 </td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>Notificación por email:</b><br>Permite que un usuario pueda pedir notificaci�n por email cuando
+<td class="eforo_tabla_defecto"><b>Notificación por email:</b><br>Permite que un usuario pueda pedir notificación por email cuando
 haya respuestas a su tema.</td>
 <td class="eforo_tabla_defecto">
 <input type="radio" name="c_notificacion" value="0"<?php if(!$conf['notificacion_email']) echo ' checked' ; ?>>No
@@ -137,6 +136,7 @@ haya respuestas a su tema.</td>
 <tr>
 <td class="eforo_tabla_defecto"><b>Estilo del foro:</b><br>Selecciona el estilo del foro (tipo de letra, colores, formularios).</td>
 <td class="eforo_tabla_defecto">
+<input type="hidden" name="c_plantilla" value="<?php echo $conf['plantilla']; ?>" />
 <select name="c_estilo" class="eforo_formulario">
 <?php
 $con = $conectar->query("select plantilla,estilo from eforo_config limit 1") ;
@@ -211,7 +211,7 @@ desde el archivo de Configuración de PHP php.ini.</td>
 <td class="eforo_tabla_defecto"><textarea name="c_adjuntoext" cols="25" rows="5" class="eforo_formulario"><?php echo $conf['adjunto_ext']?></textarea></td>
 </tr>
 <tr>
-<td class="eforo_tabla_defecto"><b>Longitud del nombre:</b><br>Longitud m�xima de caract�res en el nombre de archivo.</td>
+<td class="eforo_tabla_defecto"><b>Longitud del nombre:</b><br>Longitud máxima de caractéres en el nombre de archivo.</td>
 <td class="eforo_tabla_defecto"><input type="text" name="c_adjuntonombre" value="<?php echo $conf['adjunto_nombre']?>" maxlength="2" class="eforo_formulario"></td>
 </tr>
 <tr>

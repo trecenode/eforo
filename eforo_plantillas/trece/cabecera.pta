@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{titulo}</title>
-<link rel="stylesheet" type="text/css" href="{estilo}" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="eForo - Comunidad de foros">
+    <meta name="theme-color" content="#3a506b">
+    <title>{titulo}</title>
+    <link rel="stylesheet" type="text/css" href="{estilo}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header class="forum-header">
+		<div class="header-content">
+            <a href="{foro_url}/foro.php" class="forum-nav-link"><h1 class="forum-title">{foro_titulo}</h1></a>
+            <nav class="forum-nav">
+                <a href="{foro_url}/foro.php" class="forum-nav-link"><i class="fas fa-home"></i> Inicio</a>
+                <a href="{foro_url}/buscar" class="forum-nav-link"><i class="fas fa-search"></i> Buscar</a>
+                <a href="{foro_url}/forousuarios.php" class="forum-nav-link"><i class="fas fa-users"></i> Usuarios</a>
+            </nav>
+        </div>
+    </header>

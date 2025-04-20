@@ -1,7 +1,7 @@
 <?php
 /*
 *************************************************
-*** eForo v3.0
+*** eForo v4.0
 *** Creado por: Electros <electros@electros.net>
 *** Sitio web: https://electros.dev
 *** Licencia: GNU General Public License
@@ -22,7 +22,7 @@ $ePiel->cargar(array(
 'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administración � Foros',
+'titulo' => $conf['foro_titulo'].' · Panel de administración · Foros',
 'estilo' => '../'.$conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -128,7 +128,7 @@ function ocultar_nota() {
 	b.style.display = 'none' ;
 }
 </script>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>
 <td colspan="12" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Usuarios</div></td>
 </tr>
@@ -137,7 +137,7 @@ if(empty($_GET['moderador'])) {
 ?>
 <tr>
 <td colspan="12" class="eforo_tabla_defecto">
-<form method="get" action="usuarios.php" style="display: inline">
+<form method="get" action="index.php?page=usuarios" style="display: inline">
 <b>Ver usuarios que empiecen por:</b>
 <select name="letra" class="eforo_formulario">
 <option value="">Cualquier caract�r</option>
@@ -183,7 +183,7 @@ if(empty($_GET['moderador'])) {
 </form>
 <br /><br />
 <b>Asignar rangos:</b>
-<form method="post" action="usuarios.php?<?php echo $_SERVER['QUERY_STRING']?>">
+<form method="post" action="index.php?page=usuarios&<?php echo $_SERVER['QUERY_STRING']?>">
 <select name="rango" onchange="if(value) submit()" class="eforo_formulario">
 <option value="">...</option>
 <?php
@@ -225,8 +225,8 @@ Email: <?php echo $datos['email']?><br />
 IP: <?php echo $datos['ip']?>
 </div>
 </td>
-<td class="eforo_tabla_mensaje_<?php echo $estilo_num?>"><input type="button" value=" M " onclick="location='usuarios.php?moderador=<?php echo $datos['id']?>'" class="eforo_formulario" /></td>
-<td class="eforo_tabla_mensaje_<?php echo $estilo_num?>"><input type="button" value=" B " onclick="if(confirm('¿Deseas borrar a este usuario junto con todos sus mensajes?')) location='usuarios.php?borrar=<?php echo $datos['id']?>'" class="eforo_formulario" /></td>
+<td class="eforo_tabla_mensaje_<?php echo $estilo_num?>"><input type="button" value=" Moderador " onclick="location='index.php?page=usuarios&moderador=<?php echo $datos['id']?>'" class="eforo_formulario" /></td>
+<td class="eforo_tabla_mensaje_<?php echo $estilo_num?>"><input type="button" value=" Borrar " onclick="if(confirm('¿Deseas borrar a este usuario junto con todos sus mensajes?')) location='index.php?page=usuarios&borrar=<?php echo $datos['id']?>'" class="eforo_formulario" /></td>
 <?php
 		$estilo_num = $estilo_num == 1 ? 2 : 1 ;
 	}
@@ -260,7 +260,7 @@ function ayuda() {
 <p><b>�Como se designan moderadores?</b><br />
 Para designar a un moderador haz clic en el bot�n M y luego selecciona los subforos en donde tendr�
 privilegios de moderación. Para quitar estos privilegios a un usuario que ya es moderador haz click
-en M y despu�s en la opci�n Quitar Moderador.</p>
+en M y despu�s en la opción Quitar Moderador.</p>
 <p><b>�Como se asignan rangos fijos?</b><br />
 Para asignar un rango fijo selecciona las casillas al lado de cada usuario y luego selecciona de la
 lista el rango deseado. Este rango no variar� con el número de mensajes (si es un rango normal Sólo
@@ -278,7 +278,7 @@ else {
 </tr>
 <tr>
 <td class="eforo_tabla_defecto">
-<p><a href="usuarios.php" class="eforo_enlace">� Regresar a Usuarios</a></p>
+<p><a href="index.php?page=usuarios" class="eforo_enlace">← Regresar a Usuarios</a></p>
 <?php
 	$con = $conectar->query("select nick from $tabla_usuarios where id='{$_GET['moderador']}'") ;
 	$datos = mysqli_fetch_row($con) ;
@@ -286,7 +286,7 @@ else {
 	mysqli_free_result($con) ;
 ?>
 <p>Debes seleccionar los subforos en donde desees que <b><?php echo $nick_moderador?></b> sea moderador.</p>
-<form method="post" action="usuarios.php">
+<form method="post" action="index.php?page=usuarios">
 <input type="hidden" name="id_moderador" value="<?php echo $_GET['moderador']?>" />
 <?php
 	$con = $conectar->query('select id,categoria from eforo_categorias order by orden asc') ;
@@ -308,7 +308,7 @@ else {
 <br>
 <center>
 <input type="submit" name="designar" value="Designar Moderador" class="eforo_formulario" />
-<input type="button" value="Quitar Moderador" onclick="if(confirm('¿Deseas quitar los privilegios de moderación a <?php echo $nick_moderador?>?')) location = 'usuarios.php?quitar=<?php echo $_GET['moderador']?>'" class="eforo_formulario" />
+<input type="button" value="Quitar Moderador" onclick="if(confirm('¿Deseas quitar los privilegios de moderación a <?php echo $nick_moderador?>?')) location = 'index.php?page=usuarios&quitar=<?php echo $_GET['moderador']?>'" class="eforo_formulario" />
 </center>
 </td>
 </tr>

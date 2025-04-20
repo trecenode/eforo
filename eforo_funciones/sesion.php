@@ -30,17 +30,17 @@ if(!empty($_GET['foro'])) {
 	}
 	mysqli_free_result($con) ;
 }
-# * Se comprueba si el usuario tiene el permiso suficiente para realizar una determinada acci�n
+# * Se comprueba si el usuario tiene el permiso suficiente para realizar una determinada acción
 if(!$es_moderador) {
 	function permiso($permiso) {
 		$conectar = &$GLOBALS["conectar"];
 		$con = $conectar->query("select $permiso from eforo_foros where id='{$_GET['foro']}'") ;
 		$datos = mysqli_fetch_assoc($con) ;
-		if($GLOBALS['usuario']['rango'] < $datos[$permiso]) aviso('Nivel m�nimo insuficiente','<p>No tienes suficiente nivel. Intenta iniciar sesi�n desde el men�.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+		if($GLOBALS['usuario']['rango'] < $datos[$permiso]) aviso('Nivel mínimo insuficiente','<p>No tienes suficiente nivel. Intenta iniciar sesión desde el menú.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 		mysqli_free_result($con) ;
 	}
 }
-# * Si el usuario es un administrador se le otorgar�n privilegios de administración
+# * Si el usuario es un administrador se le otorgarán privilegios de administración
 $es_administrador = false ;
 foreach($conf['admin_id'] as $id_admin) {
 	if($id_admin == $c_id) {

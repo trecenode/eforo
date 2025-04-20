@@ -39,7 +39,7 @@ $con = $conectar->query("select p_leer from eforo_foros where id='{$_GET['foro']
 $datos = mysqli_fetch_row($con) ;
 if($usuario['rango'] < $datos[0]) {
 	require 'eforo_funciones/aviso.php' ;
-	aviso('Nivel insuficiente','No tienes suficiente nivel para entrar a este subforo. Intenta iniciar sesi�n desde el men�.',1) ;
+	aviso('Nivel insuficiente','No tienes suficiente nivel para entrar a este subforo. Intenta iniciar sesión desde el menú.',1) ;
 }
 mysqli_free_result($con) ;
 # * Se almacenan todos los rangos en un array
@@ -78,7 +78,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 	# Si es el tema inicial se comprueban las notificaciones por email
 	if($que == 1) {
 		# * Notificaci�n por email cuando haya respuestas
-		# Si el autor ya recibi� una notificaci�n y no ha visitado su tema, se desactivan, as� que volver�n
+		# Si el autor ya recibi� una notificación y no ha visitado su tema, se desactivan, as� que volverán
 		# a ser activadas hasta que visite su tema.
 		if($conf['notificacion_email'] && $datos['id_usuario'] == $c_id && $datos['o_notificacion'] && !$datos['o_notificacion_email']) {
 			$conectar->query("update eforo_mensajes set o_notificacion_email='1' where id='{$_GET['tema']}'") ;
@@ -103,7 +103,7 @@ while($datos = mysqli_fetch_assoc($con)) {
 		}
 		# --> Total de mensajes enviados
 		$autor_mensajes = $datos2['mensajes'] ;
-		# --> Avatar (extensi�n de la imagen)
+		# --> Avatar (extensión de la imagen)
 		$autor_avatar = $datos2['avatar'] ;
 		$autor_avatar_alt = $datos2['nick'] ? 'Avatar de '.$datos2['nick'] : '' ;
 		# --> Estado del autor

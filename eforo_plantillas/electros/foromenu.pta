@@ -13,9 +13,9 @@
 [blq nuevo_tema]
 <tr>
 <td>
-<a href="{nuevo_tema.nuevo_tema_url}" class="btn eforo_formulario">Nuevo tema</a>
+<a href="{nuevo_tema.nuevo_tema_url}" class="eforo_enlace">Nuevo tema</a>
 [blq responder]
- <a href="{nuevo_tema.responder.responder_url}" class="btn eforo_formulario">Responder</a>
+ <a href="{nuevo_tema.responder.responder_url}" class="eforo_enlace">Responder</a>
 [/blq responder]
 </td>
 </tr>
@@ -32,7 +32,7 @@ function comprobar(a) {
 		return false ;
 	}
 	if(a.u_contrasena.value.length == 0) {
-		alert('Debes escribir una contrase�a.') ;
+		alert('Debes escribir una contraseña.') ;
 		return false ;
 	}
 }
@@ -66,11 +66,11 @@ function comprobar(a) {
 </td>
 <td>
 <div class="text-right pr-1">
-<a href="{usuario.url_privados}"><i class="fas fa-2x fa-envelope" aria-hidden="true" title="Mensajes Privados"></i></a>
-<a href="{usuario.url_perfil}"><i class="fas fa-2x fa-user-circle" aria-hidden="true" title="Perfil"></i></a>
-<a href="{usuario.url_leidos}"><i class="fas fa-2x fa-book-open" aria-hidden="true" title="Marcar subforos como leídos"></i></a>
+<a href="{usuario.url_privados}"><i class="fas  fa-envelope" aria-hidden="true" title="Mensajes Privados"></i></a>
+<a href="{usuario.url_perfil}"><i class="fas  fa-user-circle" aria-hidden="true" title="Perfil"></i></a>
+<a href="{usuario.url_leidos}"><i class="fas  fa-book-open" aria-hidden="true" title="Marcar subforos como leídos"></i></a>
 {usuario.url_panel} 
-<a href="forousuariopro.php?que=salir"> <i class="fas fa-2x fa-sign-out-alt eforo_logout" title="Salir del Foro"></i></a>
+<a href="forousuariopro.php?que=salir"> <i class="fas  fa-sign-out-alt eforo_logout" title="Salir del Foro"></i></a>
 </div>
 </td>
 </tr>

@@ -1,8 +1,20 @@
-<br />
-<div style="font-size: 7pt ; text-align: center">
-<a href="https://electros.dev" target="_blank" class="eforo_enlace">eForo 4.1</a> &copy; 2004 - 2025 Bajo licencia GNU General Public License<br />
-Tiempo de carga del servidor: <b>{tiempo_carga}</b> seg
-<br> Plantilla 13 por <a href="https://13node.com">13Node.com</a>
-</div>
+        </main>
+        <footer class="forum-footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p class="footer-text">
+                        <a href="https://electros.dev" target="_blank" class="footer-link">eForo 4.1</a> 
+                        &copy; 2004 - 2025 Bajo licencia GNU General Public License
+                    </p>
+                    <p class="footer-text">
+                        Tiempo de carga del servidor: <span class="footer-highlight">{tiempo_carga}</span> segundos
+                    </p>
+                    <p class="footer-text">
+                        Plantilla Trece por <a href="https://13node.com" class="footer-link">13Node.com</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>

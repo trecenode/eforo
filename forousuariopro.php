@@ -29,12 +29,12 @@ $ePiel->cargar(array(
 'piedepagina' => $conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Usuario',
+'titulo' => $conf['foro_titulo'].' · Usuario',
 'estilo' => $conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
 function email($email) {
-	if(!preg_match('/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})$/',$email)) aviso('Error','Debes escribir un email v�lido. Haz click <a href="javascript:history.back()" class="eforo_enlace">aqu�</a> para regresar.',1) ;
+	if(!preg_match('/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})$/',$email)) aviso('Error','Debes escribir un email válido. Haz click <a href="javascript:history.back()" class="eforo_enlace">aquí</a> para regresar.',1) ;
 	return $email ;
 }
 $_GET['que'] = !empty($_GET['que']) ? $_GET['que'] : '' ;
@@ -58,11 +58,11 @@ switch($_GET['que']) {
 					}
 				}
 				else {
-					aviso('Contraseña incorrecta','La Contraseña es incorrecta. Haz click <a href="javascript:history.back()" class="eforo_enlace">aqu�</a> para regresar.') ;
+					aviso('Contraseña incorrecta','La Contraseña es incorrecta. Haz click <a href="javascript:history.back()" class="eforo_enlace">aquí</a> para regresar.') ;
 				}
 			}
 			else {
-				aviso('Usuario no encontrado','Este usuario no existe en la base de datos. Haz click <a href="javascript:history.back()" class="eforo_enlace">aqu�</a> para regresar.') ;
+				aviso('Usuario no encontrado','Este usuario no existe en la base de datos. Haz click <a href="javascript:history.back()" class="eforo_enlace">aquí</a> para regresar.') ;
 			}
 			mysqli_free_result($con) ;
 		}
@@ -78,31 +78,31 @@ switch($_GET['que']) {
 		header("location: {$conf['foro_url']}$u[0]foro$u[1]$u[5]") ;
 		break ;
 	case 'perfil' :
-		if(!$es_usuario) aviso('Error','Necesitas iniciar sesi�n para poder editar tu perfil. Intenta iniciar sesi�n desde el men�.',1) ;
+		if(!$es_usuario) aviso('Error','Necesitas iniciar sesión para poder editar tu perfil. Intenta iniciar sesión desde el menú.',1) ;
 		$avatar = '' ;
 		$contrasena = '' ;
 		if(isset($_POST['enviar'])) {
 			# * Subir el avatar
 			if($_FILES['u_archivo']['name'] && empty($_POST['borrar'])) {
-				# --> Se revisa que la extensi�n del archivo sea correcta
+				# --> Se revisa que la extensión del archivo sea correcta
 				$extensiones = array('gif','jpg','png') ;
 				preg_match('/\.(\w+)$/i',$_FILES['u_archivo']['name'],$a) ;
 				if(!in_array($a[1],$extensiones)) {
-					aviso('Error','<p>La extensi�n '.$a[1].' no está permitida.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+					aviso('Error','<p>La extensión '.$a[1].' no está permitida.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 				}
-				# --> Se comprueba el tama�o del archivo
+				# --> Se comprueba el tamaño del archivo
 				$tam_actual = round($_FILES['u_archivo']['size'] / 1024) ;
 				if(!$tam_actual || $tam_actual > $conf['avatar_tamano']) {
-					aviso('Error',"<p>El archivo debe ser menor de {$conf['avatar_tamano']} KB.<p><a href=\"javascript:history.back()\" class=\"eforo_enlace\">� Regresar</a>",1) ;
+					aviso('Error',"<p>El archivo debe ser menor de {$conf['avatar_tamano']} KB.<p><a href=\"javascript:history.back()\" class=\"eforo_enlace\">← Regresar</a>",1) ;
 				}
-				# --> Se comprueba el tama�o de la imagen en pixeles
+				# --> Se comprueba el tamaño de la imagen en pixeles
 				move_uploaded_file($_FILES['u_archivo']['tmp_name'],'eforo_imagenes/avatares/defecto.'.$a[1]) ;
 				if(!list($largo,$ancho) = getimagesize('eforo_imagenes/avatares/defecto.'.$a[1])) {
 					aviso('Error','La imagen no es v�lida.',1) ;
 				}
 				if($largo > $conf['avatar_largo'] || $ancho > $conf['avatar_ancho']) {
 					unlink('eforo_imagenes/avatares/defecto.'.$a[1]) ;
-					aviso('Error',"<p>El tama�o de la imagen debe ser menor de {$conf['avatar_largo']} x {$conf['avatar_ancho']} pixeles.<p><a href=\"javascript:history.back()\" class=\"eforo_enlace\">� Regresar</a>",1) ;
+					aviso('Error',"<p>El tamaño de la imagen debe ser menor de {$conf['avatar_largo']} x {$conf['avatar_ancho']} pixeles.<p><a href=\"javascript:history.back()\" class=\"eforo_enlace\">← Regresar</a>",1) ;
 				}
 				# --> Se elimina el avatar anterior
 				$con = $conectar->query("select avatar from $tabla_usuarios where id='$c_id'") ;
@@ -127,7 +127,7 @@ switch($_GET['que']) {
 			$nick = quitar($_POST['u_nick'],1) ;
 			$con = $conectar->query("select count(id) from $tabla_usuarios where nick='$nick' limit 1") ;
 			if(mysqli_result($con,0,0) && $c_nick != $nick) {
-				aviso('Error','<p>El nick <b>'.$nick.'</b> ya existe.<p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a>',1) ;
+				aviso('Error','<p>El nick <b>'.$nick.'</b> ya existe.<p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a>',1) ;
 			}
 			else {
 				setcookie($c[1],$nick,date()+604800) ;
@@ -144,7 +144,7 @@ switch($_GET['que']) {
 			$conectar->query("update $tabla_usuarios set nick='$nick',email='$email',pais='$pais',edad='$edad',sexo='$sexo',descripcion='$descripcion',web='$web',firma='$firma',gmt='$gmt'$avatar$contrasena where id='$c_id'") ;
 		}
 		mysql_close($conectar) ;
-		aviso('Perfil editado',"<p>Tu perfil ha sido editado.<p><a href=\"$u[0]forousuario$u[1]$u[2]que$u[4]perfil$u[5]\" class=\"eforo_enlace\">� Regresar al perfil</a><p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a>") ;
+		aviso('Perfil editado',"<p>Tu perfil ha sido editado.<p><a href=\"$u[0]forousuario$u[1]$u[2]que$u[4]perfil$u[5]\" class=\"eforo_enlace\">← Regresar al perfil</a><p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a>") ;
 		break ;
 	case 'registrar' :
 		if(isset($_POST['enviar'])) {
@@ -153,7 +153,7 @@ switch($_GET['que']) {
 			$sexo = quitar($_POST['u_sexo']) ;
 			$con = $conectar->query("select id from $tabla_usuarios where nick='$nick' or email='$email'") ;
 			if(mysqli_num_rows($con)) {
-				aviso('Error','<p>Este usuario ya existe en la base de datos o ya hay un usuario con este email. Haz click <a href="javascript:history.back()" class="eforo_enlace">aqu�</a> para regresar.') ;
+				aviso('Error','<p>Este usuario ya existe en la base de datos o ya hay un usuario con este email. Haz click <a href="javascript:history.back()" class="eforo_enlace">aquí</a> para regresar.') ;
 			}
 			else {
 				$contrasena = md5(md5(quitar($_POST['u_contrasena'],1))) ;
@@ -161,7 +161,7 @@ switch($_GET['que']) {
 				$aviso_titulo = 'Bienvenid@ '.$nick ;
 				$aviso_mensaje =
 				"<p>Ya eres miembro de este foro, ahora podr�s tener tu propio perfil de usuario, escribir mensajes con tu nick, editar y borrar tus mensajes
-				y muchas cosas más. Espero que te la pases bien por aqu� y que participes mucho.
+				y muchas cosas más. Espero que te la pases bien por aquí y que participes mucho.
 				<p>Webmaster
 				<p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">� Ir al foro</a>
 				" ;
@@ -173,7 +173,7 @@ switch($_GET['que']) {
 		# * Tiempo en el que se inhabilitar� la recuperaci�n de datos una vez que �stos se han enviado
 		$tiempo_contrasena = 1800 ; # <-- Por defecto 30 minutos (1800 segundos)
 		// * Generador de Contraseñas
-		$longitud = 8 ; # <-- número de caract�res de la Contraseña
+		$longitud = 8 ; # <-- número de caractéres de la Contraseña
 		$caracteres = 'abcdefghijklmnopqrstuvwxyz0123456789' ;
 		$contrasena = substr(str_shuffle($caracteres),0,$longitud - 1) ;
 		$_POST['u_email'] = email(quitar($_POST['u_email'],1)) ;
@@ -197,25 +197,25 @@ text-decoration: none
 <p>Estos son tus datos de registro:
 <p>Nick: <b>$datos[2]</b><br>Contraseña: <b>$contrasena</b>
 <p>Debido a que la Contraseña se guarda encriptada no se pudo recuperar, por eso se te ha generado una nueva,
-puedes cambiarla en cualquier momento en tu perfil. Para entrar al foro haz clic en la siguiente direcci�n:
+puedes cambiarla en cualquier momento en tu perfil. Para entrar al foro haz clic en la siguiente dirección:
 <a href=\"{$conf['foro_url']}$u[0]foro$u[1]$u[5]\" target=\"_blank\">{$conf['foro_url']}/$u[0]foro$u[1]$u[5]</a>.
 </body>
 " ;
 				mail($_POST['u_email'],"{$conf['foro_titulo']} � Recuperaci�n de Contraseña",$mensaje,"from: {$conf['admin_email']}\ncontent-type: text/html") ;
 				$contrasena = password_hash($contrasena, 1);
 				$conectar->query("update $tabla_usuarios set contrasena='$contrasena',fecha_rec_contrasena=$fecha where id='$datos[0]'") ;
-				aviso('Datos enviados',"<p>Los datos han sido enviados al email indicado.</p><p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">� Regresar al foro</a></p>") ;
+				aviso('Datos enviados',"<p>Los datos han sido enviados al email indicado.</p><p><a href=\"$u[0]foro$u[1]$u[5]\" class=\"eforo_enlace\">← Regresar al foro</a></p>") ;
 			}
 			else {
-				aviso('Error','<p>Sólo puedes solicitar tus datos cada 30 minutos.</p><p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a></p>') ;
+				aviso('Error','<p>Sólo puedes solicitar tus datos cada 30 minutos.</p><p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a></p>') ;
 			}
 		}
 		else {
-			aviso('Error','<p>Este email no existe en la base de datos.</p><p><a href="javascript:history.back()" class="eforo_enlace">� Regresar</a></p>') ;
+			aviso('Error','<p>Este email no existe en la base de datos.</p><p><a href="javascript:history.back()" class="eforo_enlace">← Regresar</a></p>') ;
 		}
 		mysqli_free_result($con) ;
 	default :
-		aviso('Error','No has seleccionado ninguna opci�n.') ;
+		aviso('Error','No has seleccionado ninguna opción.') ;
 }
 $ePiel->variable('tiempo_carga',round(tiempo_carga() - $tiempo,4)) ;
 $ePiel->mostrar('piedepagina') ;

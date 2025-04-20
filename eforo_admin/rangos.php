@@ -36,20 +36,20 @@ switch(true) {
 		}
 		else {
 			$conectar->query("insert into eforo_rangos (rango,minimo,descripcion) values ('{$_POST['r_rango']}','{$_POST['r_minimo']}','{$_POST['r_descripcion']}')") ;
-			aviso('Rango agregado','El rango <b>'.$_POST['r_rango'].'</b> ha sido agregado con �xito.','','../') ;
+			aviso('Rango agregado','El rango <b>'.$_POST['r_rango'].'</b> ha sido agregado con éxito.','','../') ;
 		}
 		break ;
 	case isset($_POST['modificar']) :
 		$_POST['r_minimo'] = !empty($_POST['r_minimo']) ? $_POST['r_minimo'] : 0 ;
 		$conectar->query("update eforo_rangos set minimo='{$_POST['r_minimo']}',descripcion='{$_POST['r_descripcion']}' where rango='{$_GET['rango']}'") ;
-		aviso('Rango modificado','El rango <b>'.$_GET['rango'].'</b> ha sido modificado con �xito.','','../') ;
+		aviso('Rango modificado','El rango <b>'.$_GET['rango'].'</b> ha sido modificado con éxito.','','../') ;
 		break ;
 	case !empty($_GET['borrar']) :
 		$conectar->query("delete from eforo_rangos where rango='{$_GET['borrar']}'") ;
-		aviso('Rango borrado','El rango <b>'.$_GET['borrar'].'</b> ha sido borrado con �xito.','','../') ;
+		aviso('Rango borrado','El rango <b>'.$_GET['borrar'].'</b> ha sido borrado con éxito.','','../') ;
 }
 ?>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>
 <td colspan="4" class="tabla_titulo"><div class="eforo_titulo_1">Rangos</div></td>
 </tr>
@@ -114,18 +114,18 @@ Los rangos permiten que tus usuarios puedan adquirir ciertos niveles ya sea al l
 número de mensajes � al ser designados manualmente. Los rangos te permiten crear restricciones en cada
 subforo, por ejemplo que Sólo usuarios con nivel 100 puedan tener acceso a un subforo, entre otras más.<br /><br />
 <b>� Como se agrega un rango ?</b><br />
-Debes escribir un número de rango entre 1 y 999 y un número m�nimo de mensajes para alcanzar este rango. Si deseas crear
-rangos fijos debes poner un m�nimo de cero, pero estos Sólo podr�n ser asignados manualmente. Los rangos normales tambi�n
+Debes escribir un número de rango entre 1 y 999 y un número mínimo de mensajes para alcanzar este rango. Si deseas crear
+rangos fijos debes poner un mínimo de cero, pero estos Sólo podr�n ser asignados manualmente. Los rangos normales tambi�n
 pueden asignarse como rangos fijos y funcionar tambi�n como rangos en base al número de mensajes para los demás usuarios.<br /><br />
-<b>Aviso:</b> El nivel m�nimo de mensajes siempre debe estar en forma proporcional al rango definido, por ejemplo lo siguiente
-no es v�lido:<br /><br />
+<b>Aviso:</b> El nivel mínimo de mensajes siempre debe estar en forma proporcional al rango definido, por ejemplo lo siguiente
+no es válido:<br /><br />
 <b>10 - 125 - Intermedio<br />
 <span style="color: #aa0000">20 - 175 - Avanzado</span><br />
 30 - 150 - Experto</b><br /><br />
 Si te fijas en este caso al llegar a 175 mensajes, el usuario pasar�a del rango 30 al rango 20 con lo que ser�a un error.<br /><br />
 <b>� El rango 500 o 999 hace moderador o administrador a un usuario ?</b><br />
 No, el rango 500 y 999 son Sólo descriptivos y se asignan autom�ticamente al usuario que es nombrado moderador o administrador.
-Para asignar moderadores y administradores debes hacerlo desde la opci�n <b>Usuarios</b>.<br /><br />
+Para asignar moderadores y administradores debes hacerlo desde la opción <b>Usuarios</b>.<br /><br />
 <b>� C�mo se comportan los rangos ?</b><br />
 -1 - Usuarios que han sido expulsados - Pueden leer mensajes.<br />
 0 - Usuarios no registrados - Pueden leer, escribir nuevos temas y responder mensajes.<br />

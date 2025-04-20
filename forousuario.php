@@ -35,7 +35,7 @@ $ePiel->mostrar('menu') ;
 // * Esta Página se comportar� dependiendo de lo que se haya elegido (registrar, entrar, editar y salir)
 $_GET['que'] = !empty($_GET['que']) ? $_GET['que'] : '' ;
 switch($_GET['que']) {
-	// --> Iniciar sesi�n como usuario registrado
+	// --> Iniciar sesión como usuario registrado
 	case 'entrar' :
 		$ePiel->variables_bloque('modo_iniciar_sesion',array(
 		'url_nuevo_usuario' => "$u[0]forousuario$u[1]$u[2]que$u[4]registrar$u[5]",

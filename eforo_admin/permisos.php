@@ -23,7 +23,7 @@ $ePiel->cargar(array(
 'piedepagina' => '../'.$conf['plantilla'].'piedepagina.pta'
 )) ;
 $ePiel->variables(array(
-'titulo' => $conf['foro_titulo'].' � Panel de administración � Foros',
+'titulo' => $conf['foro_titulo'].' · Panel de administración · Foros',
 'estilo' => '../'.$conf['estilo']
 )) ;
 $ePiel->mostrar('cabecera') ;
@@ -37,7 +37,7 @@ if(isset($_POST['enviar'])) {
 			$conectar->query("update eforo_foros set p_$permiso='$valor' where id='$id_foro'") ;
 		}
 	}
-	aviso('Permisos modificados','Los permisos han sido modificados con �xito.','','../') ;
+	aviso('Permisos modificados','Los permisos han sido modificados con éxito.','','../') ;
 }
 # * Se almacenan todos los rangos en un array
 $con = $conectar->query('select rango,descripcion from eforo_rangos order by rango asc') ;
@@ -47,7 +47,7 @@ while($datos = mysqli_fetch_row($con)) {
 mysqli_free_result($con) ;
 ?>
 <form method="post" action="permisos.php">
-<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>
 <td colspan="7" class="eforo_tabla_titulo"><div class="eforo_titulo_1">Permisos</div></td>
 </tr>
