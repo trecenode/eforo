@@ -1,5 +1,9 @@
 # Eforo 4.1 - 2025
 Esta versión corrige problemas de php antiguos
+- PHP Fixes
+- Nuevo Theme Base "Trece"
+- Tema clásico rollback (con iconos clásicos)
+- Firma.php firmas clásicas con datos del foro (por nostalgia)
 
 [Danilo Ulloa](https://github.com/trecenode)
 
