@@ -29,18 +29,16 @@ if(!empty($_GET['leidos'])) {
 
 require 'eforo_funciones/recientes.php';
 
-// Load common templates and variables
+// Carga de plantillas y variables comunes
 load_common_templates();
 set_common_vars();
 set_menu_vars();
 set_user_vars();
 
-// Load specific templates
 $ePiel->cargar([
 	'foro' => $conf['plantilla'].'foro.pta'
 ]);
 require 'foromenu.php';
-// Display templates in correct order
 $ePiel->mostrar('cabecera');
 $ePiel->mostrar('menu');
 

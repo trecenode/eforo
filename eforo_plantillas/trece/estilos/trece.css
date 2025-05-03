@@ -822,3 +822,7 @@ textarea.form-control {
         margin-bottom: 1.25rem;
     }
 }
+
+.d-flex {
+    display: flex;
+}

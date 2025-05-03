@@ -91,7 +91,7 @@ if(!empty($_GET['tema'])) {
 	}
 }
 if(!empty($_GET['mensaje'])) {
-	if(preg_match('^[0-9]+$',$_GET['mensaje'])) {
+	if(preg_match('/^[0-9]+$/',$_GET['mensaje'])) {
 		# --> Comprueba si existe el mensaje
 		$con = $conectar->query("select count(id) from eforo_mensajes where id_foro='{$_GET['foro']}' and id_tema='{$_GET['tema']}' and id='{$_GET['mensaje']}'") ;
 		if(!mysqli_result($con,0,0)) $error = 'No existe el mensaje.' ;

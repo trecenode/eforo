@@ -22,6 +22,14 @@ require 'foroconfig.php' ;
 require 'eforo_funciones/aviso.php' ;
 require 'eforo_funciones/epaginas.php' ;
 require 'eforo_funciones/sesion.php' ;
+require 'eforo_funciones/global_vars.php';
+
+// Carga de plantillas y variables comunes
+load_common_templates();
+set_common_vars();
+set_menu_vars();
+set_user_vars();
+
 $ePiel->cargar(array(
 'cabecera' => $conf['plantilla'].'cabecera.pta',
 'foroprivados' => $conf['plantilla'].'foroprivados.pta',
@@ -57,7 +65,7 @@ if(isset($_POST['enviar'])) {
 	}
 	mysqli_free_result($con) ;
 }
-if(!empty($_GET['borrar']) && preg_match('^[0-9]+$',$_GET['borrar'])) {
+if(!empty($_GET['borrar']) && preg_match('/^[0-9]+$/',$_GET['borrar'])) {
 	$conectar->query("delete from eforo_privados where id='{$_GET['borrar']}'") ;
 	aviso('Mensaje eliminado','El mensaje ha sido eliminado.') ;
 }

@@ -20,6 +20,14 @@ the Free Software Foundation; either version 2 of the License, or
 
 require 'foroconfig.php' ;
 require 'eforo_funciones/quitar.php' ;
+require 'eforo_funciones/global_vars.php';
+
+// Carga de plantillas y variables comunes
+load_common_templates();
+set_common_vars();
+set_menu_vars();
+set_user_vars();
+
 $ePiel->cargar(array(
 'cabecera' => $conf['plantilla'].'cabecera.pta',
 'forousuario' => $conf['plantilla'].'forousuario.pta',

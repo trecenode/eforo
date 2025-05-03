@@ -327,7 +327,7 @@ insert into eforo_rangos (rango,descripcion) values ('999','Administrador')
 if($_POST['instalacion'] == 2) {
 $codigo .=
 ";
-alter table $tabla_usuarios change fecha fecha_registrado int(10) unsigned not null
+alter table $tabla_usuarios change fecha fecha_registrado datetime unsigned not null
 ;
 alter table $tabla_usuarios add firma text not null
 ;
@@ -337,9 +337,9 @@ alter table $tabla_usuarios add rango smallint(5) not null
 ;
 alter table $tabla_usuarios add rango_fijo tinyint(1) unsigned not null
 ;
-alter table $tabla_usuarios add fecha_conectado int(10) unsigned not null
+alter table $tabla_usuarios add fecha_conectado datetime unsigned not null
 ;
-alter table $tabla_usuarios add fecha_rec_contrasena int(10) unsigned not null
+alter table $tabla_usuarios add fecha_rec_contrasena datetime unsigned not null
 ;
 alter table $tabla_usuarios add gmt tinyint(2) not null
 ;

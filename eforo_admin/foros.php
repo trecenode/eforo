@@ -81,17 +81,18 @@ if(!empty($_GET['borrar'])) {
 if(isset($_POST['editar'])) {
 	foreach($_POST as $nombre => $valor) {
 		switch(true) {
-			case preg_match('^cat_',$nombre) :
-				list(,$id) = explode('_',$nombre) ;
+			case preg_match('/^cat_/',$nombre) :
+				$id = str_replace('cat_','',$nombre) ;
 				$conectar->query("update eforo_categorias set categoria='$valor' where id='$id'") ;
 				break ;
-			case preg_match('^foro_',$nombre) :
-				list(,$id) = explode('_',$nombre) ;
+			case preg_match('/^foro_/',$nombre) :
+				$id = str_replace('foro_','',$nombre) ;
 				$conectar->query("update eforo_foros set foro='$valor' where id='$id'") ;
 				break ;
-			case preg_match('^des_',$nombre) :
-				list(,$id) = explode('_',$nombre) ;
+			case preg_match('/^des_/',$nombre) :
+				$id = str_replace('des_','',$nombre) ;
 				$conectar->query("update eforo_foros set descripcion='$valor' where id='$id'") ;
+				break ;
 		}
 	}
 }
@@ -111,7 +112,7 @@ if(!empty($_GET['mover'])) {
 </tr>
 <tr>
 <td valign="top" class="eforo_tabla_defecto">
-<form method="post" action="foros.php" style="display: inline">
+<form method="post" action="?page=foros" style="display: inline">
 <input type="hidden" name="agregar" value="1" />
 <b>Categoría:</b><br />
 <input type="text" name="categoria" maxlength="100" size="30" class="eforo_formulario" /><br /><br />
@@ -119,7 +120,7 @@ if(!empty($_GET['mover'])) {
 </form>
 </td>
 <td valign="top" class="eforo_tabla_defecto">
-<form method="post" action="foros.php" style="display: inline">
+<form method="post" action="?page=foros" style="display: inline">
 <input type="hidden" name="agregar" value="2" />
 <b>Foro:</b><br />
 <input type="text" name="foro" maxlength="100" size="30" class="eforo_formulario" /><br />
@@ -140,7 +141,7 @@ mysqli_free_result($con) ;
 </td>
 </tr>
 </table><br />
-<form method="post" action="foros.php">
+<form method="post" action="?page=foros">
 <input type="hidden" name="editar" value="1">
 <table width="100%" border="0" cellpadding="3" cellspacing="1" class="eforo_tabla_principal" align="center">
 <tr>

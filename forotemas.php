@@ -22,6 +22,14 @@ require 'foroconfig.php' ;
 require 'eforo_funciones/recientes.php' ;
 require 'eforo_funciones/epaginas.php' ;
 require 'eforo_funciones/aviso.php' ;
+require 'eforo_funciones/global_vars.php';
+
+// Carga de plantillas y variables comunes
+load_common_templates();
+set_common_vars();
+set_menu_vars();
+set_user_vars();
+
 $ePiel->cargar(array(
 'cabecera' => $conf['plantilla'].'cabecera.pta',
 'forotemas' => $conf['plantilla'].'forotemas.pta',

@@ -63,13 +63,108 @@ else {
 <td width="50%" class="eforo_tabla_defecto">
 <b>Administrador:</b><br />ID del administrador (ej. 5. Para 2 o más separa por comas ej. 5,12,150).<br />
 <script type="text/javascript">
-function abrir(url,largo,alto,titulo) {
-	margen1 = (screen.width - largo) / 2 ;
-	margen2 = (screen.height - alto) / 2 ;
-	open(url,'a','left='+margen1+',top='+margen2+',width='+largo+',height='+alto+',scrollbars=no') ;
+function openModal(url, modalTitle) {
+    // Create modal container if it doesn't exist
+    if (!document.getElementById('eforo-modal-container')) {
+        const modalContainer = document.createElement('div');
+        modalContainer.id = 'eforo-modal-container';
+        modalContainer.style.display = 'none';
+        modalContainer.style.position = 'fixed';
+        modalContainer.style.zIndex = '1000';
+        modalContainer.style.left = '0';
+        modalContainer.style.top = '0';
+        modalContainer.style.width = '100%';
+        modalContainer.style.height = '100%';
+        modalContainer.style.backgroundColor = 'rgba(0,0,0,0.5)';
+        modalContainer.style.display = 'flex';
+        modalContainer.style.alignItems = 'center';
+        modalContainer.style.justifyContent = 'center';
+        
+        // Create the modal content
+        const modalContent = document.createElement('div');
+        modalContent.id = 'eforo-modal-content';
+        modalContent.style.backgroundColor = '#fff';
+        modalContent.style.borderRadius = '8px';
+        modalContent.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+        modalContent.style.width = '500px';
+        modalContent.style.maxWidth = '90%';
+        modalContent.style.maxHeight = '90%';
+        modalContent.style.overflowY = 'auto';
+        modalContent.style.display = 'flex';
+        modalContent.style.flexDirection = 'column';
+        
+        // Create the modal header
+        const modalHeader = document.createElement('div');
+        modalHeader.id = 'eforo-modal-header';
+        modalHeader.style.padding = '1rem';
+        modalHeader.style.borderBottom = '1px solid #e9ecef';
+        modalHeader.style.display = 'flex';
+        modalHeader.style.justifyContent = 'space-between';
+        modalHeader.style.alignItems = 'center';
+        
+        // Create the title element
+        const modalTitle = document.createElement('h3');
+        modalTitle.id = 'eforo-modal-title';
+        modalTitle.style.margin = '0';
+        modalTitle.style.fontSize = '1.25rem';
+        
+        // Create the close button
+        const closeButton = document.createElement('button');
+        closeButton.innerHTML = '&times;';
+        closeButton.style.border = 'none';
+        closeButton.style.background = 'none';
+        closeButton.style.fontSize = '1.5rem';
+        closeButton.style.fontWeight = 'bold';
+        closeButton.style.cursor = 'pointer';
+        closeButton.onclick = closeModal;
+        
+        // Create the modal body
+        const modalBody = document.createElement('div');
+        modalBody.id = 'eforo-modal-body';
+        modalBody.style.padding = '1rem';
+        modalBody.style.flex = '1';
+        
+        // Create the iframe for content
+        const iframe = document.createElement('iframe');
+        iframe.id = 'eforo-modal-iframe';
+        iframe.style.width = '100%';
+        iframe.style.height = '300px';
+        iframe.style.border = 'none';
+        
+        // Assemble the modal
+        modalHeader.appendChild(modalTitle);
+        modalHeader.appendChild(closeButton);
+        modalBody.appendChild(iframe);
+        modalContent.appendChild(modalHeader);
+        modalContent.appendChild(modalBody);
+        modalContainer.appendChild(modalContent);
+        document.body.appendChild(modalContainer);
+    }
+    
+    // Show the modal with content
+    const container = document.getElementById('eforo-modal-container');
+    const titleElement = document.getElementById('eforo-modal-title');
+    const iframe = document.getElementById('eforo-modal-iframe');
+    
+    titleElement.textContent = modalTitle || 'Modal Window';
+    iframe.src = url;
+    container.style.display = 'flex';
+    
+    // Prevent scrolling on the main page
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const container = document.getElementById('eforo-modal-container');
+    if (container) {
+        container.style.display = 'none';
+        document.getElementById('eforo-modal-iframe').src = 'about:blank';
+        // Restore scrolling
+        document.body.style.overflow = 'auto';
+    }
 }
 </script>
-<a href="javascript:abrir('obtener_id.php','300','100','Obtener ID de un nick')" class="eforo_enlace">� Obtener ID de un nick</a>
+<a href="javascript:openModal('obtener_id.php','Obtener ID de un nick')" class="eforo_enlace">→ Obtener ID de un nick</a>
 </td>
 <td width="50%" class="eforo_tabla_defecto"><input type="text" name="c_administrador" value="<?php echo implode(',',$conf['admin_id'])?>" maxlength="20" class="eforo_formulario"></td>
 </tr>
