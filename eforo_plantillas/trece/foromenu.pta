@@ -29,21 +29,21 @@
 
                 [blq anonimo]
                 <div class="login-section">
-                    <script type="text/javascript">
-                    function comprobar(a) {
-                        a.u_nick.value = a.u_nick.value.replace(/^\s*|\s*$/g,'');
-                        a.u_contrasena.value = a.u_contrasena.value.replace(/^\s*|\s*$/g,'');
-                        if(a.u_nick.value.length == 0) {
-                            alert('Debes escribir un nick.');
-                            return false;
-                        }
-                        if(a.u_contrasena.value.length == 0) {
-                            alert('Debes escribir una contraseña.');
-                            return false;
-                        }
-                    }
-                    </script>
                     <div class="login-form">
+                        <script type="text/javascript">
+                        function comprobar(a) {
+                            a.u_nick.value = a.u_nick.value.replace(/^\s*|\s*$/g,'');
+                            a.u_contrasena.value = a.u_contrasena.value.replace(/^\s*|\s*$/g,'');
+                            if(a.u_nick.value.length == 0) {
+                                alert('Debes escribir un nick.');
+                                return false;
+                            }
+                            if(a.u_contrasena.value.length == 0) {
+                                alert('Debes escribir una contraseña.');
+                                return false;
+                            }
+                        }
+                        </script>
                         <form name="u_formulario" method="post" action="forousuariopro.php?que=entrar" onsubmit="return comprobar(this)" class="form-inline">
                             <div class="form-group">
                                 <label for="u_nick"><b>Nick:</b></label>

@@ -66,8 +66,8 @@
             <div class="forum-item header">
                 <div class="forum-icon"></div>
                 <div class="forum-info">Tema</div>
-                <div class="forum-stats">Autor</div>
-                <div class="forum-stats">Último</div>
+                <div class="forum-stats-author">Autor</div>
+                <div class="forum-stats-last">Último</div>
                 <div class="forum-stats">Vis</div>
                 <div class="forum-stats">Res</div>
             </div>
@@ -87,8 +87,8 @@
                         {tema.importante}{tema.titulo}
                     </a>
                 </div>
-                <div class="forum-stats">{tema.tema_autor}</div>
-                <div class="forum-stats">{tema.ult_men_autor}</div>
+                <div class="forum-stats-author">{tema.tema_autor}</div>
+                <div class="forum-stats-last">{tema.ult_men_autor}</div>
                 <div class="forum-stats">{tema.num_visitas}</div>
                 <div class="forum-stats">{tema.num_respuestas}</div>
             </div>

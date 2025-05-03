@@ -56,6 +56,17 @@ function borrar(que) {
 			<div class="message-content">
 				<div class="message-topic">
 					<h2>{mensaje.tema}</h2>
+					<div class="message-actions">
+						<button onclick="location = '{mensaje.url_citar}'" class="action-button">
+							<i class="fas fa-quote-right"></i> Citar
+						</button>
+						<button onclick="location = '{mensaje.url_editar}'" class="action-button">
+							<i class="fas fa-edit"></i> Editar
+						</button>
+						<button onclick="if(borrar('{mensaje.que}')) location = '{mensaje.url_borrar}'" class="action-button danger">
+							<i class="fas fa-trash"></i> Borrar
+						</button>
+					</div>
 				</div>
 				<div class="message-body">
 					{mensaje.contenido}
@@ -81,17 +92,6 @@ function borrar(que) {
 				[/blq adjunto]
 			</div>
 			
-			<div class="message-actions">
-				<button onclick="location = '{mensaje.url_citar}'" class="action-button">
-					<i class="fas fa-quote-right"></i> Citar
-				</button>
-				<button onclick="location = '{mensaje.url_editar}'" class="action-button">
-					<i class="fas fa-edit"></i> Editar
-				</button>
-				<button onclick="if(borrar('{mensaje.que}')) location = '{mensaje.url_borrar}'" class="action-button danger">
-					<i class="fas fa-trash"></i> Borrar
-				</button>
-			</div>
 		</div>
 		[/blq mensaje]
 		

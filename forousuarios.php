@@ -40,10 +40,12 @@ $ePiel->mostrar('menu');
 $url_usuarios = $u[0].'forousuarios'.$u[1].$u[5];
 
 // Limpiar ID Usuario
-$idUsuario = intval($_GET['u']);
+if(isset($_GET['u'])) {
+	$idUsuario = intval($_GET['u']);
+}
 
 if(empty($idUsuario)) {
-	$letra = !empty($_GET['letra']) && preg_match('^[a-z]{1}$',$_GET['letra']) // Optimizar
+	$letra = !empty($_GET['letra']) && preg_match('/^[a-z]{1}$/',$_GET['letra'])
 		? " WHERE `nick` LIKE '{$_GET['letra']}%'"
 		: '';
 	$orden = $letra ? '`nick` ASC' : '`id` DESC' ;
